@@ -1,2 +1,2 @@
 # hotzy-store
-E-business store
+E-business store.
