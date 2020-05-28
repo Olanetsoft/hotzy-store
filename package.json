@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Olanetsoft/hotzy-store/issues"
   },
-  "homepage": "https://github.com/Olanetsoft/hotzy-store#readme"
+  "homepage": "https://github.com/Olanetsoft/hotzy-store#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
