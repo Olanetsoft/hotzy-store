@@ -3,6 +3,16 @@ const express = require('express');
 const morgan = require('morgan');
 
 
+//import global error class
+//const AppError = require('./utils/appError');
+
+// //import the global error handler
+// const globalErrorHandler = require('./controller/errorController');
+
+//requiring all routes
+const productRoutes = require('./routes/productRoute');
+
+
 
 const app = express();
 
@@ -17,8 +27,52 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Using morgan only in development
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
-}
+};
 
+//Middleware registered
+//Body parser, reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//registering the route middleware
+app.use(productRoutes);
+
+
+
+
+
+// //Implement a handler to handle all non-existing route
+// app.all('*', (req, res, next) => {
+//     // const err = new Error(`Sorry can't find ${req.originalUrl} on the server😫😫`);
+//     // err.status = 'fail';
+//     // err.statusCode = 400;
+//     next(new AppError(`Sorry can't find ${req.originalUrl} on the server😫😫`, 404))
+// });
+
+
+// //error handling middleware
+// app.use(globalErrorHandler);
 
 
 module.exports = app;
