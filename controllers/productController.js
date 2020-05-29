@@ -7,6 +7,18 @@ const APIFeatures = require('../utilities/apiFeatures');
 
 
 
+
+
+//middleware to query top 5 cheap tours
+exports.aliasTopTours = (req, res, next) => {
+    req.query.limit = '5';
+    req.query.sort = '-ratingsAverage,price';
+    req.query.fields = 'name,price,ratingsAverage,summary,difficultly';
+    next();
+};
+
+
+
 //creating a single product
 exports.createProduct = async (req, res, next) => {
     try {
