@@ -80,6 +80,7 @@ const productSchema = new mongoose.Schema({
 },
     //to make the virtual show up when a request is made you need to enable it here in the schema
     {
+        timestamps: true,
         toJSON: { virtuals: true },
         toObject: { virtuals: true },
     }
