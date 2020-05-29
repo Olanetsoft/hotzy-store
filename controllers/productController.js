@@ -146,3 +146,47 @@ exports.deleteOneProduct = async (req, res, next) => {
     };
 
 };
+
+
+//using aggregation pipeline
+exports.getProductsStats = async (req, res, next) => {
+    try {
+        const statistics = await Product.aggregate([
+            {
+                //filtering a certain countDocuments
+                $match: { ratingsAverage: { $gte: 4.5 } }
+            },
+            {
+                $group: {
+                    _id: { $toUpper: '$categories' },
+                    numOfProducts: { $sum: 1 },
+                    numRatings: { $sum: '$ratingsQuantity' },
+                    avgRating: { $avg: '$ratingsAverage' },
+                    avgPrice: { $avg: '$price' },
+                    minPrice: { $min: '$price' },
+                    maxPrice: { $max: '$price' }
+                }
+            },
+            {
+                //1 added is for ascending
+                $sort: { avgPrice: 1 }
+            }
+        ]);
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                statistics
+            }
+        });
+
+    } catch (err) {
+        //return error to check if tour stats exist
+       // next(new AppError('Unable to get all Stats', 404));
+
+        res.status(404).json({
+            status: "failed to get Stats",
+            message: err
+        });
+    };
+};
