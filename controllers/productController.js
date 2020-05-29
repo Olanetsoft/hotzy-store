@@ -99,3 +99,50 @@ exports.getProducts = async (req, res, next) => {
     }
 
 };
+
+//Updating a product
+exports.updateOneProduct = async (req, res, next) => {
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.productId, req.body, {
+            new: true,
+            runValidators: true
+        });
+
+        // if (!updatedProduct) {
+        //     next(new AppError(`No Document found with ID: ${req.params.productId}`, 404));
+        // }
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                data: updatedProduct
+            }
+        });
+    } catch (err) {
+        //return error to check if tour is updated
+        //next(new AppError('Unable to Update Tour', 404));
+        res.status(404).json({
+            status: "failed",
+            message: err
+        });
+    };
+};
+
+//delete product
+exports.deleteOneProduct = async (req, res, next) => {
+    try {
+        await Product.findByIdAndDelete(req.params.productId);
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    } catch (err) {
+        //return error to check if tour was deleted
+        //next(new AppError(`Unable to delete Tour with ID: ${req.params.id}`, 404));
+        res.status(404).json({
+            status: "failed to delete",
+            message: err
+        });
+    };
+
+};

@@ -15,6 +15,10 @@ router.get('/api/v1/products', productController.getProducts);
 
 router.get('/api/v1/products/top-5-cheap', productController.aliasTopTours, productController.getProducts);
 
+router.patch('/api/v1/product/:productId', productController.updateOneProduct);
+
+router.delete('/api/v1/product/:productId', productController.deleteOneProduct);
+
 
 
 
