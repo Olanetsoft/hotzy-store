@@ -11,6 +11,7 @@ const morgan = require('morgan');
 
 //requiring all routes
 const productRoutes = require('./routes/productRoute');
+const contactRoutes = require('./routes/contactRoute');
 
 
 
@@ -57,6 +58,7 @@ app.use(express.json({ limit: '10kb' }));
 
 //registering the route middleware
 app.use(productRoutes);
+app.use(contactRoutes);
 
 
 

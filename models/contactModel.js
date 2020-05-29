@@ -48,7 +48,7 @@ const contactSchema = new mongoose.Schema({
 
 
 //DOCUMENT MIDDLEWARE: runs before .save() and .create()
-productSchema.pre('save', function (next) {
+contactSchema.pre('save', function (next) {
     this.slug = slugify(this.name, { lower: true });
     next();
 });
@@ -57,6 +57,6 @@ productSchema.pre('save', function (next) {
 
 
 //define the Product Model
-const ContactMessage = mongoose.model('Contact', contactSchema);
+const Contact = mongoose.model('Contact', contactSchema);
 
-module.exports = ContactMessage;
+module.exports = Contact;

@@ -1,21 +1,20 @@
 //importing product model
-const ContactMessage = require('../models/commentModel');
+const Contact = require('../models/contactModel');
 
 
 
 
-//creating a single product
+//creating a single contact
 exports.postContact = async (req, res, next) => {
     try {
-        const newComment = await ContactMessage.create(req.body);
+        const newComment = await Contact.create(req.body);
         res.status(201).json({
             status: 'success 🙌',
-            result: newProduct.length,
             data: {
                 newComment
             }
 
-        })
+        });
     } catch (err) {
         res.status(400).json({
             status: 'failed',
@@ -30,7 +29,7 @@ exports.postContact = async (req, res, next) => {
 exports.getContact = async (req, res, next) => {
     try {
 
-        const comment = await ContactMessage.findOne({ name: req.params.name });
+        const comment = await Contact.findOne({ name: req.params.name });
         //Or Tour.findOne({_id: req.params.id})
 
         res.status(200).json({
@@ -56,7 +55,7 @@ exports.getContact = async (req, res, next) => {
 exports.getAllContacts = async (req, res, next) => {
     try {
 
-        const allComments = await ContactMessage.find();
+        const allComments = await Contact.find();
 
         //SEND RESPONSE IN JSON
         res.status(200).json({
