@@ -54,3 +54,36 @@ exports.getProduct = async (req, res, next) => {
     }
 
 };
+
+
+//get all products
+exports.getProducts = async (req, res, next) => {
+    try {
+        //EXECUTE THE QUERY_OBJ
+        const features = new APIFeatures(Product.find(), req.query)
+            .filter()
+            .sort()
+            .limitFields()
+            .paginate();
+
+        const allProducts = await features.query;
+
+        //SEND RESPONSE IN JSON
+        res.status(200).json({
+            status: 'success',
+            result: allProducts.length,
+            data: {
+                allProducts
+            }
+        });
+    } catch (err) {
+
+        //return error to check if product exist
+        // next(new AppError(`No product found with ID: ${req.params.id}`, 404));
+        res.status(404).json({
+            status: "failed",
+            message: err
+        });
+    }
+
+};
