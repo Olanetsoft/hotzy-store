@@ -1,3 +1,70 @@
 extends base
 
 block content
+    section.banner_part
+        .container
+                .row.align-items-center
+                    .col-lg-12
+                        .banner_slider.owl-carousel
+                            each banner in allBanner
+                                .single_banner_slider
+                                    .row
+                                        .col-lg-5.col-md-8
+                                            .banner_text
+                                                .banner_text_iner
+                                                    h1= banner.name
+                                                        //- | Wood &amp; Cloth
+                                                        //- | Sofa
+                                                    p= banner.description
+                                                        //- | Incididunt ut labore et dolore magna aliqua quis ipsum
+                                                        //- | suspendisse ultrices gravida. Risus commodo viverra
+                                                    a.btn_2(href="#") buy now
+                                        .banner_img.d-none.d-lg-block
+                                            img(src="img/banner_img.png" alt="")
+                            //- .single_banner_slider
+                            //-     .row
+                            //-         .col-lg-5.col-md-8
+                            //-             .banner_text
+                            //-                 .banner_text_iner
+                            //-                     h1
+                            //-                         | Cloth &amp; Wood
+                            //-                         | Sofa
+                            //-                     p
+                            //-                         | Incididunt ut labore et dolore magna aliqua quis ipsum
+                            //-                         | suspendisse ultrices gravida. Risus commodo viverra
+                            //-                     a.btn_2(href="#") buy now
+                            //-         .banner_img.d-none.d-lg-block
+                            //-             img(src="img/banner_img.png" alt="")
+                            //- .single_banner_slider
+                            //-     .row
+                            //-         .col-lg-5.col-md-8
+                            //-             .banner_text
+                            //-                 .banner_text_iner
+                            //-                     h1
+                            //-                         | Wood &amp; Cloth
+                            //-                         | Sofa
+                            //-                     p
+                            //-                         | Incididunt ut labore et dolore magna aliqua quis ipsum
+                            //-                         | suspendisse ultrices gravida. Risus commodo viverra
+                            //-                     a.btn_2(href="#") buy now
+                            //-         .banner_img.d-none.d-lg-block
+                            //-             img(src="img/banner_img.png" alt="")
+                            //
+                                <div class="single_banner_slider">
+                                <div class="row">
+                                <div class="col-lg-5 col-md-8">
+                                <div class="banner_text">
+                                <div class="banner_text_iner">
+                                <h1>Cloth $ Wood Sofa</h1>
+                                <p>Incididunt ut labore et dolore magna aliqua quis ipsum
+                                suspendisse ultrices gravida. Risus commodo viverra</p>
+                                <a href="#" class="btn_2">buy now</a>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="banner_img d-none d-lg-block">
+                                <img src="img/banner_img.png" alt="">
+                                </div>
+                                </div>
+                                </div>
+                        .slider-counter

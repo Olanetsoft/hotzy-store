@@ -6,6 +6,6 @@ const router = express.Router();
 const viewsController = require('../controllers/viewsController');
 
 
-router.get('/home', viewsController.homePage);
+router.get('/home', viewsController.getBanners, viewsController.homePage, );
 
 module.exports = router;

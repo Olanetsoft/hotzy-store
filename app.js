@@ -13,6 +13,7 @@ const morgan = require('morgan');
 const viewsRoutes = require('./routes/viewsRoute');
 const productRoutes = require('./routes/productRoute');
 const contactRoutes = require('./routes/contactRoute');
+const bannerRoutes = require('./routes/bannerRoute');
 
 
 
@@ -65,6 +66,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(viewsRoutes);
 app.use(productRoutes);
 app.use(contactRoutes);
+app.use(bannerRoutes);
 
 
 
