@@ -10,6 +10,7 @@ const morgan = require('morgan');
 // const globalErrorHandler = require('./controller/errorController');
 
 //requiring all routes
+const viewsRoutes = require('./routes/viewsRoute');
 const productRoutes = require('./routes/productRoute');
 const contactRoutes = require('./routes/contactRoute');
 
@@ -61,6 +62,7 @@ app.use(express.json({ limit: '10kb' }));
 
 
 //registering the route middleware
+app.use(viewsRoutes);
 app.use(productRoutes);
 app.use(contactRoutes);
 
