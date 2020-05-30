@@ -52,3 +52,27 @@ exports.getBanners = async (req, res, next) => {
     }
 
 };
+
+
+//Get all premium cat
+exports.getPremiumCategory = async (req, res, next) => {
+    try {
+        //1) Get all the product data from Collection
+        const products = await Product.find();
+        //2) Build template
+        console.log(products)
+        //3) Render template
+        res.status(200).render('home', {
+            products
+        });
+
+    } catch (err) {
+        //next(new AppError('failed to get all tour', 404))
+        console.log(err)
+        res.status(404).json({
+            status: "failed",
+            message: err
+        });
+    }
+
+};

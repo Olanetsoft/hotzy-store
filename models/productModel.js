@@ -49,10 +49,7 @@ const productSchema = new mongoose.Schema({
             message: 'Discount price ({VALUE}) should be below the regular price'
         }
     },
-    image: {
-        type: String,
-        default: 'default.jpg'
-    },
+    image: [String],
     summary: {
         type: String,
         trim: true,
