@@ -17,6 +17,10 @@ const contactRoutes = require('./routes/contactRoute');
 
 const app = express();
 
+//setting the view engine
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 
 //registering a middleware for server static files
 // app.use(express.static(`${__dirname}/public`));
