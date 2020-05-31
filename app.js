@@ -51,17 +51,6 @@ app.use(express.json({ limit: '10kb' }));
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //registering the route middleware
 app.use(viewsRoutes);
 app.use(productRoutes);
