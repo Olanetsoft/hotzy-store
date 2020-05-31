@@ -55,15 +55,19 @@ exports.getBanners = async (req, res, next) => {
 
 
 //Get all premium cat
-exports.getPremiumCategory = async (req, res, next) => {
+exports.getOtherLayouts = async (req, res, next) => {
     try {
         //1) Get all the product data from Collection
         const products = await Product.find();
-        //2) Build template
-        console.log(products)
+
+        //2) Get all Banner
+        const allBanner = await Banner.find();
+
+
         //3) Render template
         res.status(200).render('home', {
-            products
+            products,
+            allBanner
         });
 
     } catch (err) {
