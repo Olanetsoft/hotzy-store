@@ -22,6 +22,8 @@ block content
                                     .banner_img.d-none.d-lg-block
                                         img(src=`img/${banner.images}` alt="")
                     .slider-counter
+    
+    
     // feature_part start
     section.feature_part.padding_top
         .container
@@ -40,6 +42,8 @@ block content
                                     | EXPLORE NOW 
                                     i.fas.fa-play
                                 img(src=`img/feature/${prod.image}` alt=`${prod.image}`)
+        
+        
         // product_list start
     section.product_list.section_padding
         .container
@@ -83,6 +87,8 @@ block content
                                                         i.ti-heart
                                                         a.genric-btn.success.circle.text-center(href="#")
                                                             | View
+       
+       
         // awesome_shop start
     section.our_offer.section_padding
         .container
@@ -105,4 +111,62 @@ block content
                             input.form-control(type="text" placeholder="enter email address" aria-label="Recipient's username" aria-describedby="basic-addon2")
                             .input-group-append
                                 a#basic-addon2.input-group-text.btn_2(href="#") book now
+
+
+
+        // product_list part start
+    section.product_list.best_seller.section_padding
+        .container
+            .row.justify-content-center
+                .col-lg-12
+                    .section_tittle.text-center
+                        h2
+                            | Best Sellers 
+                            span shop
+            .row.align-items-center.justify-content-between
+                .col-lg-12
+                    .best_product_slider.owl-carousel
+                        .single_product_item
+                            img(src="img/product/product_1.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="img/product/product_2.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="img/product/product_3.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="img/product/product_4.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="img/product/product_5.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+    // product_list part end
+
+
+    // subscribe_area part start
+    section.subscribe_area.section_padding
+        .container
+            .row.justify-content-center
+                .col-lg-7
+                    .subscribe_area_text.text-center
+                        h5 Join Our Newsletter
+                        h2
+                            | Subscribe to get Updated
+                            | with new offers
+                        .input-group
+                            input.form-control(type="text" placeholder="enter email address" aria-label="Recipient's username" aria-describedby="basic-addon2")
+                            .input-group-append
+                                a#basic-addon2.input-group-text.btn_2(href="#") subscribe now
+    // ::subscribe_area part end::
 
