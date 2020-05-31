@@ -119,6 +119,23 @@ userSchema.pre(/^find/, function (next) {
 
 
 
+//PROTECT
+//check if user changed password after the token was issued
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+    if (this.passwordChangedAt) {
+        const changedTimeStamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+
+        //console.log(this.passwordChangedAt, JWTTimestamp);
+        return JWTTimestamp < changedTimeStamp; //100 < 200
+    };
+
+    //False means NOT changed
+    return false;
+};
+
+
+
+
 
 
 

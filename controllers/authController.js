@@ -131,3 +131,59 @@ exports.logout = (req, res, next) => {
         status: 'success'
     });
 };
+
+
+//protecting the route against not login user
+exports.protect = async (req, res, next) => {
+    try {
+        let token;
+
+        //1.) Get token and check if it exist
+        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+        // else if (req.cookies.jwt) {
+        //     token = req.cookies.jwt
+        // };
+
+        //Check if no token in the header and return 401 for non authorized
+        if (!token) {
+            return next(new AppError('Please Login to get access 😒', 401));
+        };
+
+
+        //2.) Verifying the token and use promisify function by node
+        const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+
+        //3.) check if user still exists
+        const currentUser = await User.findById(decoded.id);
+        if (!currentUser) {
+            return next(new AppError('The user belonging to this token no longer exist', 401));
+        };
+
+
+        //4.) check if user changed password after the token was issued
+        if (currentUser.changedPasswordAfter(decoded.iat)) {
+            return next(new AppError('User recently changed password! Please log in again.', 401))
+        };
+
+
+        //GRANT ACCESS TO ALL PROTECTED ROUTE
+        //passing user from middleware to middleware
+        req.user = currentUser
+
+        //now use response.local
+        res.locals.user = currentUser
+        
+        next();
+
+    } catch (err) {
+        console.log(err)
+        next(new AppError('Token or Authorization failed 😒', 401));
+        // res.status(400).json({
+        //     status: 'failed',
+        //     message: err
+        // });
+    }
+};

@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 
+//import auth controller
+const authController = require('../controllers/authController');
+
+
 //import tour controller
 const productController = require('./../controllers/productController');
 
@@ -10,6 +14,11 @@ const productController = require('./../controllers/productController');
 router.post('/api/v1/product', productController.createProduct);
 
 router.get('/api/v1/product/:productId', productController.getProduct);
+
+
+
+//To protect all the route after the ones listed above
+router.use(authController.protect);
 
 router.get('/api/v1/products', productController.getProducts);
 
