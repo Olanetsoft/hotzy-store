@@ -28,7 +28,7 @@ block content
             .row.justify-content-center
                 .col-lg-8
                     .section_tittle.text-center
-                        h2 Featured Category
+                        h2 Featured Premium Category
             .row.align-items-center.justify-content-between
                 .col-lg-12.col-sm-12
                     each prod in products
@@ -65,7 +65,7 @@ block content
                                                     a.add_cart.text-center(href="#")
                                                         | + add to cart
                                                         i.ti-heart
-                                                        a.add_cart.text-center(href="#")
+                                                        a.genric-btn.success.circle.text-center(href="#")
                                                             | View
 
                         .single_product_list_slider
@@ -81,5 +81,28 @@ block content
                                                     a.add_cart.text-center(href="#")
                                                         | + add to cart
                                                         i.ti-heart
-                                                        a.add_cart.text-center(href="#")
+                                                        a.genric-btn.success.circle.text-center(href="#")
                                                             | View
+        // awesome_shop start
+    section.our_offer.section_padding
+        .container
+            .row.align-items-center.justify-content-between
+                .col-lg-6.col-md-6
+                    .offer_img
+                        img(src="img/offer_img.png" alt="")
+                .col-lg-6.col-md-6
+                    .offer_text
+                        h2
+                            | Weekly Sale on
+                            | 60% Off All Products
+                        .date_countdown
+                            #timer
+                                #days.date
+                                #hours.date
+                                #minutes.date
+                                #seconds.date
+                        .input-group
+                            input.form-control(type="text" placeholder="enter email address" aria-label="Recipient's username" aria-describedby="basic-addon2")
+                            .input-group-append
+                                a#basic-addon2.input-group-text.btn_2(href="#") book now
+
