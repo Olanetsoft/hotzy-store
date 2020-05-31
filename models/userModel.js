@@ -11,7 +11,8 @@ const bcrypt = require('bcrypt');
 //name,email,photo,password,passwordConfirm
 
 const userSchema = new mongoose.Schema({
-    username: {
+
+    name: {
         type: String,
         required: [true, 'please tell us your name 🤦‍♀️'],
     },
@@ -62,3 +63,10 @@ const userSchema = new mongoose.Schema({
     }
 }
 );
+
+
+
+//define the User Model
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
