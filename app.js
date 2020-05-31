@@ -7,7 +7,7 @@ const morgan = require('morgan');
 //const AppError = require('./utils/appError');
 
 // //import the global error handler
-// const globalErrorHandler = require('./controller/errorController');
+const globalErrorHandler = require('./controllers/errorController');
 
 //requiring all routes
 const viewsRoutes = require('./routes/viewsRoute');
@@ -72,8 +72,8 @@ app.use(usersRoutes);
 // });
 
 
-// //error handling middleware
-// app.use(globalErrorHandler);
+//error handling middleware
+app.use(globalErrorHandler);
 
 
 module.exports = app;
