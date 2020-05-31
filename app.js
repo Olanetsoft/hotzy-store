@@ -4,7 +4,7 @@ const morgan = require('morgan');
 
 
 //import global error class
-//const AppError = require('./utils/appError');
+const AppError = require('./utilities/appError');
 
 // //import the global error handler
 const globalErrorHandler = require('./controllers/errorController');
@@ -63,13 +63,13 @@ app.use(usersRoutes);
 
 
 
-// //Implement a handler to handle all non-existing route
-// app.all('*', (req, res, next) => {
-//     // const err = new Error(`Sorry can't find ${req.originalUrl} on the server😫😫`);
-//     // err.status = 'fail';
-//     // err.statusCode = 400;
-//     next(new AppError(`Sorry can't find ${req.originalUrl} on the server😫😫`, 404))
-// });
+//Implement a handler to handle all non-existing route
+app.all('*', (req, res, next) => {
+    // const err = new Error(`Sorry can't find ${req.originalUrl} on the server😫😫`);
+    // err.status = 'fail';
+    // err.statusCode = 400;
+    next(new AppError(`Sorry can't find ${req.originalUrl} on the server😫😫`, 404))
+});
 
 
 //error handling middleware
