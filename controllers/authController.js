@@ -202,3 +202,45 @@ exports.restrictTo = (...roles) => {
         next();
     }
 };
+
+
+//update password for only logged in user
+exports.updateMyPassword = async (req, res, next) => {
+    try {
+        //1) Get the user from the collection
+        const user = await User.findById(req.user.id).select('+password');
+        //console.log(user);
+
+        //2) check if posted password is correct
+        if (!(await user.correctPassword(req.body.currentPassword, user.password))) {
+            return next(new AppError('Your current password is wrong! 🙄', 401));
+        };
+        //console.log("user 2", user);
+
+        //3) if password is correct, update
+        user.password = req.body.password;
+        user.passwordConfirm = req.body.passwordConfirm;
+        await user.save();
+        //console.log(user);
+
+        //4) Log user in, send jwt
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRATION
+        });
+
+        res.status(201).json({
+            status: 'success',
+            token,
+            data: {
+                user
+            }
+        });
+
+    } catch (err) {
+        //next(new AppError('Unable to Update pass', 404));
+        res.status(400).json({
+            status: 'failed...',
+            message: err
+        });
+    };
+};

@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 //import user controller
-//const userController = require('../controllers/usersControllers');
+const userController = require('../controllers/usersController');
 
 //import auth controller
 const authController = require('../controllers/authController');
@@ -19,6 +19,22 @@ router.post('/api/v1/users/signup', authController.signup);
 
 
 
+
+//To protect all the route after the ones listed above
+router.use(authController.protect);
+
+router.get('/api/v1/users/me', userController.getMe, userController.getUser);
+
+router.patch('/api/v1/users/updateMyPassword', authController.updateMyPassword);
+
+router.patch('/api/v1/users/updateMe', userController.updateMe);
+
+router.delete('/api/v1/users/deleteMe', userController.deleteMe);
+
+
+
+
+
 //Restricting all the routes below to only admin 
 router.use(authController.restrictTo('admin'));
 
@@ -26,9 +42,9 @@ router.get('/api/v1/users', userController.getAllUsers);
 
 router.get('/api/v1/user/:id', userController.getUser);
 
-router.patch('/api/v1/users/:id', userController.updateUser);
+router.patch('/api/v1/user/:id', userController.updateUser);
 
-router.delete('/api/v1/users/:id', userController.deleteUser);
+router.delete('/api/v1/user/:id', userController.deleteUser);
 
 
 

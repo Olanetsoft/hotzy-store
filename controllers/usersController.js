@@ -7,6 +7,101 @@ const AppError = require('../utilities/appError');
 
 
 
+
+//LOGGED-IN USER
+//create a function to filter fields and return new object
+const filterObj = (obj, ...allowedFields) => {
+    const newObj = {};
+
+    //looping through all the fields to check if its one of the allowed fields
+    Object.keys(obj).forEach(el => {
+        if (allowedFields.includes(el)) newObj[el] = obj[el];
+    });
+    return newObj;
+};
+
+
+
+//LOGGED-IN USER
+//updating user Details
+exports.updateMe = async (req, res, next) => {
+    try {
+        //1) create error if user POST password data
+        if (req.body.password || req.body.passwordConfirm) {
+            return next(new AppError('This route is not for password update. please use /updateMyPassword', 400))
+        }
+
+
+        //2) Filtered out unwanted fields names that are not allowed to be updated
+        //create a filtered body by using the function filterObj
+        const filteredBody = filterObj(req.body, 'name', 'email');
+
+        //check if file upload is included for photo
+        if (req.file) {
+            filteredBody.photo = req.file.filename
+        }
+
+
+        //3) Update user DOCUMENT
+        //now get the update users
+        const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
+            new: true,
+            runValidators: true
+        });
+
+
+        //SEND RESPONSE IN JSON
+        res.status(200).json({
+            status: 'success',
+            data: {
+                user: updatedUser
+            }
+        });
+    } catch (err) {
+        next(new AppError('Fail to update user data', 404));
+    };
+};
+
+
+//LOGGED-IN USER
+//implementing get me endpoint to store the user.is for the next middleware
+exports.getMe = async (req, res, next) => {
+    req.params.id = req.user.id;
+    next();
+};
+
+
+
+//LOGGED-IN USER
+//create a delete me
+exports.deleteMe = async (req, res, next) => {
+    try {
+        //find and update the active status to false
+        await User.findByIdAndUpdate(req.user.id, { active: false });
+
+        //SEND RESPONSE IN JSON
+        res.status(204).json({
+            status: 'success',
+            data: null
+
+        });
+    } catch (err) {
+        return next(new AppError('Unable to delete User', 400))
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 //ADMIN
 //get a users
 exports.getUser = async (req, res, next) => {
