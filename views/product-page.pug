@@ -66,7 +66,7 @@ block content
                 #home.tab-pane.fade(role="tabpanel" aria-labelledby="home-tab")
                     p
                         |  #{singleProduct.description}
-                        
+
                 #profile.tab-pane.fade(role="tabpanel" aria-labelledby="profile-tab")
                     .table-responsive
                         table.table
@@ -75,22 +75,22 @@ block content
                                     td
                                         h5 Width
                                     td
-                                        h5 #{singleProduct.Width} mm
+                                        h5 #{singleProduct.Width}mm
                                 tr
                                     td
                                         h5 Height
                                     td
-                                        h5 #{singleProduct.Height} mm
+                                        h5 #{singleProduct.Height}mm
                                 tr
                                     td
                                         h5 Depth
                                     td
-                                        h5 #{singleProduct.Depth} mm
+                                        h5 #{singleProduct.Depth}mm
                                 tr
                                     td
                                         h5 Weight
                                     td
-                                        h5 #{singleProduct.Weight} gm
+                                        h5 #{singleProduct.Weight}gm
                                 tr
                                     td
                                         h5 Quality checking
@@ -313,4 +313,42 @@ block content
                                         button.btn_3(type="submit" value="submit")
                                             | Submit Now
     // ================End Product Description Area =================
+    // product_list part start
+    section.product_list.best_seller
+        .container
+            .row.justify-content-center
+                .col-lg-12
+                    .section_tittle.text-center
+                        h2
+                            | Best Sellers 
+                            span shop
+            .row.align-items-center.justify-content-between
+                .col-lg-12
+                    .best_product_slider.owl-carousel
+                        .single_product_item
+                            img(src="/img/product/product_1.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="/img/product/product_2.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="/img/product/product_3.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="/img/product/product_4.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+                        .single_product_item
+                            img(src="/img/product/product_5.png" alt="")
+                            .single_product_text
+                                h4 Quartz Belt Watch
+                                h3 $150.00
+    // product_list part end
 
