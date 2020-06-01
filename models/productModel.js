@@ -61,12 +61,21 @@ const productSchema = new mongoose.Schema({
     },
     specification: [
         {
-            type: String,
-            Width: String,
-            Height: String,
-            Weight: String,
-            Depth: String,
-            QualityCheck: String,
+            Width: String
+        },
+        {
+            Height: String
+        },
+        {
+            Weight: String
+        },
+        {
+            Depth: String
+        },
+        {
+            QualityCheck: String
+        },
+        {
             EachBoxContains: Number
         }
     ],
