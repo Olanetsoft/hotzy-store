@@ -18,7 +18,7 @@ router.get('/api/v1/product/:productId', productController.getProduct);
 
 
 //To protect all the route after the ones listed above
-router.use(authController.protect);
+router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
 router.get('/api/v1/products', productController.getProducts);
 

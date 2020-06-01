@@ -16,12 +16,14 @@ router.get('/api/v1/users/logout', authController.logout);
 
 router.post('/api/v1/users/signup', authController.signup);
 
+router.post('/api/v1/users/forgotPassword', authController.forgotPassword);
+
 
 
 
 
 //To protect all the route after the ones listed above
-router.use(authController.protect);
+router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
 router.get('/api/v1/users/me', userController.getMe, userController.getUser);
 
@@ -36,7 +38,7 @@ router.delete('/api/v1/users/deleteMe', userController.deleteMe);
 
 
 //Restricting all the routes below to only admin 
-router.use(authController.restrictTo('admin'));
+router.use(authController.restrictAccessTo('admin'));
 
 router.get('/api/v1/users', userController.getAllUsers);
 

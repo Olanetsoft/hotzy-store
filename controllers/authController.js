@@ -14,6 +14,10 @@ const User = require('./../models/userModel');
 const AppError = require('./../utilities/appError');
 
 
+//import the email function
+const sendMail = require('./../utilities/Email');
+
+
 //signup user
 exports.signup = async (req, res, next) => {
     try {
@@ -134,7 +138,7 @@ exports.logout = (req, res, next) => {
 
 
 //protecting the route against not login user
-exports.protect = async (req, res, next) => {
+exports.protectRouteToEnableOnlyLoggedInUser = async (req, res, next) => {
     try {
         let token;
 
@@ -175,7 +179,7 @@ exports.protect = async (req, res, next) => {
 
         //now use response.local
         res.locals.user = currentUser
-        
+
         next();
 
     } catch (err) {
@@ -191,7 +195,7 @@ exports.protect = async (req, res, next) => {
 
 
 //To restrict certain route for example to check user role before deleting, updating a certain routes action
-exports.restrictTo = (...roles) => {
+exports.restrictAccessTo = (...roles) => {
     return (req, res, next) => {
 
         //roles ['admin']
@@ -202,6 +206,7 @@ exports.restrictTo = (...roles) => {
         next();
     }
 };
+
 
 
 //update password for only logged in user
@@ -243,4 +248,71 @@ exports.updateMyPassword = async (req, res, next) => {
             message: err
         });
     };
+};
+
+
+
+//Creating forgot password handler
+exports.forgotPassword = async (req, res, next) => {
+
+    try {
+
+
+        //1) Get user base on the posted email
+        const user = await User.findOne({ email: req.body.email });
+        //verify if the user exists
+        if (!user) {
+            return next(new AppError('There is no such user with the email address.', 404))
+        };
+
+
+        
+
+        //2) Generate the random reset token
+        const resetToken = user.createPasswordResetToken();
+
+        //set validateBeforeSave to false to deactivate all the validator in the schema
+        await user.save({ validateBeforeSave: false });
+
+        const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
+
+
+
+
+        //3)send it to user email
+        const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password kindly ignore this email`;
+
+        try {
+            await sendMail({
+                email: user.email,
+                subject: 'Password Reset Mail. (valid for 10mins)',
+                message
+            });
+
+            //await new Email(user, resetURL).sendPasswordReset();
+
+            res.status(200).json({
+                status: 'success',
+                message: "Token sent to mail!"
+            });
+
+        } catch (err) {
+            user.passwordResetToken = undefined;
+            user.passwordResetExpires = undefined;
+            //set validateBeforeSave to false to deactivate all the validator in the schema
+            await user.save({ validateBeforeSave: false });
+
+            return new AppError('There was an error sending mail. Try again later!', 500);
+        };
+
+
+    } catch (err) {
+        //next(new AppError('Forgot password failed 😢', 404))
+        res.status(400).json({
+            status: 'failed',
+            message: err
+        });
+    }
+
+
 };
