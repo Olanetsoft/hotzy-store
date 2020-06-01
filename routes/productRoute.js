@@ -10,6 +10,9 @@ const authController = require('../controllers/authController');
 const productController = require('./../controllers/productController');
 
 
+
+
+
 //product route
 router.post('/api/v1/product', productController.createProduct);
 
@@ -18,7 +21,7 @@ router.get('/api/v1/product/:productId', productController.getProduct);
 
 
 //To protect all the route after the ones listed above
-router.use(authController.protectRouteToEnableOnlyLoggedInUser);
+//router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
 router.get('/api/v1/products', productController.getProducts);
 

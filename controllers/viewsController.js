@@ -55,7 +55,7 @@ exports.getBanners = async (req, res, next) => {
 
 
 //Get all premium cat
-exports.getOtherLayouts = async (req, res, next) => {
+exports.getOtherLayoutsInHomePage = async (req, res, next) => {
     try {
         //1) Get all the product data from Collection
         const products = await Product.find();
@@ -72,6 +72,40 @@ exports.getOtherLayouts = async (req, res, next) => {
 
     } catch (err) {
         //next(new AppError('failed to get all tour', 404))
+        console.log(err)
+        res.status(404).json({
+            status: "failed",
+            message: err
+        });
+    }
+
+};
+
+
+//Get a single product Details
+exports.getProduct = async (req, res, next) => {
+    try {
+
+        const singleProduct = await Product.find({ name: req.params.name }).populate('reviews');
+        //Or Tour.findOne({_id: req.params.id})
+
+
+        res.status(200).render('product-page', {
+            singleProduct
+        });
+
+
+
+        // res.status(200).json({
+        //     status: 'success',
+        //     data: {
+        //         singleProduct
+        //     }
+        // });
+    } catch (err) {
+
+        //return error to check if product exist
+        // next(new AppError(`No product found with ID: ${req.params.id}`, 404));
         console.log(err)
         res.status(404).json({
             status: "failed",

@@ -6,6 +6,10 @@ const router = express.Router();
 const viewsController = require('../controllers/viewsController');
 
 
-router.get('/home', viewsController.getOtherLayouts, viewsController.homePage);
+router.get('/home', viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
+
+router.get('/product-page/:name', viewsController.getProduct);
+
+
 
 module.exports = router;

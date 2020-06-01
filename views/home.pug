@@ -38,7 +38,7 @@ block content
                             .single_feature_post_text
                                 p Premium Quality
                                 h3= prod.name
-                                a.feature_btn(href="#")
+                                a.feature_btn(href=`/product-page/${prod.slug}`)
                                     | EXPLORE NOW 
                                     i.fas.fa-play
                                 img(src=`img/feature/${prod.image}` alt=`${prod.image}`)
@@ -69,7 +69,7 @@ block content
                                                     a.add_cart.text-center(href="#")
                                                         | + add to cart
                                                         i.ti-heart
-                                                        a.genric-btn.success.circle.text-center(href="#")
+                                                        a.genric-btn.success.circle.text-center(href=`/product-page/${prod.slug}`)
                                                             | View
 
                         .single_product_list_slider
@@ -85,7 +85,7 @@ block content
                                                     a.add_cart.text-center(href="#")
                                                         | + add to cart
                                                         i.ti-heart
-                                                        a.genric-btn.success.circle.text-center(href="#")
+                                                        a.genric-btn.success.circle.text-center(href=`/product-page/${prod.slug}`)
                                                             | View
        
        
