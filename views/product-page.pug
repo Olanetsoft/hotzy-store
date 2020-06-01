@@ -75,22 +75,22 @@ block content
                                     td
                                         h5 Width
                                     td
-                                        h5 128mm
+                                        h5 #{singleProduct.Width} mm
                                 tr
                                     td
                                         h5 Height
                                     td
-                                        h5 508mm
+                                        h5 #{singleProduct.Height} mm
                                 tr
                                     td
                                         h5 Depth
                                     td
-                                        h5 85mm
+                                        h5 #{singleProduct.Depth} mm
                                 tr
                                     td
                                         h5 Weight
                                     td
-                                        h5 52gm
+                                        h5 #{singleProduct.Weight} gm
                                 tr
                                     td
                                         h5 Quality checking
@@ -100,17 +100,12 @@ block content
                                     td
                                         h5 Freshness Duration
                                     td
-                                        h5 03days
-                                tr
-                                    td
-                                        h5 When packeting
-                                    td
-                                        h5 Without touch of hand
+                                        h5 #{singleProduct.freshnessDuration} days
                                 tr
                                     td
                                         h5 Each Box contains
                                     td
-                                        h5 60pcs
+                                        h5 #{singleProduct.EachBoxContains} pcs
                 #contact.tab-pane.fade(role="tabpanel" aria-labelledby="contact-tab")
                     .row
                         .col-lg-6

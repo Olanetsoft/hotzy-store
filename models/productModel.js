@@ -59,26 +59,12 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    specification: [
-        {
-            Width: String
-        },
-        {
-            Height: String
-        },
-        {
-            Weight: String
-        },
-        {
-            Depth: String
-        },
-        {
-            QualityCheck: String
-        },
-        {
-            EachBoxContains: Number
-        }
-    ],
+    Width: Number,
+    Height: Number,
+    Weight: Number,
+    Depth: Number,
+    QualityCheck: Number,
+    EachBoxContains: Number,
     freshnessDuration: {
         type: Number,
         required: [true, 'A product must have a Freshness Duration 😥']
