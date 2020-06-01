@@ -187,3 +187,18 @@ exports.protect = async (req, res, next) => {
         // });
     }
 };
+
+
+
+//To restrict certain route for example to check user role before deleting, updating a certain routes action
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+
+        //roles ['admin']
+        //get the user role from the protect middleware where we passed req.user
+        if (!roles.includes(req.user.role)) {
+            return next(new AppError('You do not have permission to perform this action', 403))
+        }
+        next();
+    }
+};
