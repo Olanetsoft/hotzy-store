@@ -65,6 +65,8 @@ const userSchema = new mongoose.Schema({
 );
 
 
+
+
 //SIGNUP
 //encrypting password
 //using document middleware
@@ -83,6 +85,8 @@ userSchema.pre('save', async function (next) {
 
     next();
 });
+
+
 
 
 

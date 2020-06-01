@@ -267,7 +267,6 @@ exports.forgotPassword = async (req, res, next) => {
 
 
 
-
         //2) Generate the random reset token
         const resetToken = user.createPasswordResetToken();
 
@@ -297,19 +296,19 @@ exports.forgotPassword = async (req, res, next) => {
             });
 
         } catch (err) {
-            console.log("inside mail", err)
+            //console.log("inside mail", err)
             user.passwordResetToken = undefined;
             user.passwordResetExpires = undefined;
             //set validateBeforeSave to false to deactivate all the validator in the schema
             await user.save({ validateBeforeSave: false });
-            console.log(user)
+           
             return new AppError('There was an error sending mail. Try again later!', 500);
         };
 
 
     } catch (err) {
         //next(new AppError('Forgot password failed 😢', 404))
-        console.log(err)
+        //console.log(err)
         res.status(400).json({
             status: 'failed',
             message: err
@@ -317,4 +316,63 @@ exports.forgotPassword = async (req, res, next) => {
     }
 
 
+};
+
+
+
+//Creating reset password handler
+exports.resetPassword = async (req, res, next) => {
+    try {
+
+
+        //1) Get user base on the tokens
+        const hashTheTokenFromParams = crypto
+            .createHash("sha256")
+            .update(req.params.token)
+            .digest('hex');
+
+        //Get the user base on the token gotten from the url params
+        const user = await User.findOne({
+            passwordResetToken: hashTheTokenFromParams,
+            passwordResetExpires: { $gt: Date.now() }
+        });
+
+
+
+        //2) set the new password if token has not expired and there's a user
+        if (!user) {
+            return next(new AppError('Token is invalid or has Expired', 400))
+        };
+
+        user.password = req.body.password;
+        user.passwordConfirm = req.body.passwordConfirm;
+        user.passwordResetToken = undefined;
+        user.passwordResetExpires = undefined;
+
+        //now let save it
+        await user.save();
+
+
+        //3) Update changePasswordAt properties for the current user
+        //4) Log the user in and send JWT
+        //using the jwt to create a signature 
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRATION
+        });
+
+
+        
+        res.status(201).json({
+            status: 'Success',
+            token
+        });
+
+
+    }
+    catch (err) {
+        res.status(400).json({
+            status: 'failed ☹☹☹☹☹',
+            message: err
+        });
+    }
 };
