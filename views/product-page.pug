@@ -1,55 +1,48 @@
 extends base
 
 block append head
-    script(src="/js/theme.js")
-    script(src="/js/stellar.js")
-    script(src="/js/swiper.jquery.js")
-    link(rel="stylesheet" href="/css/lightslider.min.css")
+    //- script(src="/js/theme.js")
+    //- script(src="/js/stellar.js")
+    //- script(src="/js/swiper.jquery.js")
+   
 
 block content
-        // ================Single Product Area =================
-        .product_image_area.section_padding
-            .container
-                .row.s_product_inner.justify-content-between
-                    .col-lg-7.col-xl-7
-                        .product_slider_img
-                            #vertical
-                                div(data-thumb="/img/product/single-product/product_1.png")
-                                    img(src="/img/product/single-product/product_1.png")
-                                div(data-thumb="/img/product/single-product/product_1.png")
-                                    img(src="/img/product/single-product/product_1.png")
-                                div(data-thumb="/img/product/single-product/product_1.png")
-                                    img(src="/img/product/single-product/product_1.png")
-                                div(data-thumb="/img/product/single-product/product_1.png")
-                                    img(src="/img/product/single-product/product_1.png")
-                    .col-lg-5.col-xl-4
-                        .s_product_text
-                            h5
-                                | previous 
-                                span |
-                                |  next
-                            h3 Faded SkyBlu Denim Jeans
-                            h2 $149.99
-                            ul.list
-                                li
-                                    a.active(href="#")
-                                        span Category
-                                        |  : Household
-                                li
-                                    a(href="#")
-                                        span Availibility
-                                        |  : In Stock
-                            p
-                                | First replenish living. Creepeth image image. Creeping can&apos;t, won&apos;t called.
-                                | Two fruitful let days signs sea together all land fly subdue
-                            .card_area.d-flex.justify-content-between.align-items-center
-                                .product_count
-                                    span.inumber-decrement
-                                        i.ti-minus
-                                    input.input-number(type="text" value="1" min="0" max="10")
-                                    span.number-increment
-                                        i.ti-plus
-                                a.btn_3(href="#") add to cart
-                                a.like_us(href="#")
-                                    i.ti-heart
-            // ================End Single Product Area =================
+    .product_image_area.section_padding
+        .container
+            .row.s_product_inner.justify-content-between
+                .col-lg-7.col-xl-7
+                    .product_slider_img
+                        #vertical
+                            div(data-thumb=`/img/product/${singleProduct.image}`)
+                                img(src=`/img/product/${singleProduct.image}`)
+                .col-lg-5.col-xl-4
+                    .s_product_text
+                        h5
+                            | previous 
+                            span |
+                            |  next
+                        h3= singleProduct.name
+                        h2 $#{singleProduct.price}
+                        ul.list
+                            li
+                                a.active(href="#")
+                                    span Category
+                                    |  : #{singleProduct.categories}
+                            li
+                                a(href="#")
+                                    span Availibility
+                                    |  : In Stock
+                        p
+                            |   #{singleProduct.summary}
+                            //- | First replenish living. Creepeth image image. Creeping can&apos;t, won&apos;t called.
+                            //- | Two fruitful let days signs sea together all land fly subdue
+                        .card_area.d-flex.justify-content-between.align-items-center
+                            .product_count
+                                span.inumber-decrement
+                                    i.ti-minus
+                                input.input-number(type="text" value="1" min="0" max="10")
+                                span.number-increment
+                                    i.ti-plus
+                            a.btn_3(href="#") add to cart
+                            a.like_us(href="#")
+                                i.ti-heart

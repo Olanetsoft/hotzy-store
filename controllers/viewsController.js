@@ -86,9 +86,8 @@ exports.getOtherLayoutsInHomePage = async (req, res, next) => {
 exports.getProduct = async (req, res, next) => {
     try {
 
-        const singleProduct = await Product.find({ name: req.params.name }).populate('reviews');
+        const singleProduct = await Product.findOne({slug: req.params.slug})
         //Or Tour.findOne({_id: req.params.id})
-
 
         res.status(200).render('product-page', {
             singleProduct

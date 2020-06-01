@@ -8,7 +8,7 @@ const viewsController = require('../controllers/viewsController');
 
 router.get('/home', viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
 
-router.get('/product-page/:name', viewsController.getProduct);
+router.get('/product-page/:slug', viewsController.getProduct);
 
 
 
