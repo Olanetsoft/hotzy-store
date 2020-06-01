@@ -4,7 +4,7 @@ block append head
     //- script(src="/js/theme.js")
     //- script(src="/js/stellar.js")
     //- script(src="/js/swiper.jquery.js")
-   
+
 
 block content
     .product_image_area.section_padding
@@ -13,8 +13,12 @@ block content
                 .col-lg-7.col-xl-7
                     .product_slider_img
                         #vertical
-                            div(data-thumb=`/img/product/${singleProduct.image}`)
-                                img(src=`/img/product/${singleProduct.image}`)
+                            if (singleProduct.categories === "premium")
+                                div(data-thumb=`/img/product/${singleProduct.image}`)
+                                    img(src=`/img/feature/${singleProduct.image}` alt=`${singleProduct.name}`)
+                            else
+                                div(data-thumb=`/img/product/${singleProduct.image}`)
+                                    img(src=`/img/product/${singleProduct.image}` alt=`${singleProduct.name}`)
                 .col-lg-5.col-xl-4
                     .s_product_text
                         h5
@@ -46,3 +50,272 @@ block content
                             a.btn_3(href="#") add to cart
                             a.like_us(href="#")
                                 i.ti-heart
+        // ================Product Description Area =================
+    section.product_description_area
+        .container
+            ul#myTab.nav.nav-tabs(role="tablist")
+                li.nav-item
+                    a#home-tab.nav-link(data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true") Description
+                li.nav-item
+                    a#profile-tab.nav-link(data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false") Specification
+                li.nav-item
+                    a#contact-tab.nav-link(data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false") Comments
+                li.nav-item
+                    a#review-tab.nav-link.active(data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false") Reviews
+            #myTabContent.tab-content
+                #home.tab-pane.fade(role="tabpanel" aria-labelledby="home-tab")
+                    p
+                        |  #{singleProduct.description}
+                        
+                #profile.tab-pane.fade(role="tabpanel" aria-labelledby="profile-tab")
+                    .table-responsive
+                        table.table
+                            tbody
+                                tr
+                                    td
+                                        h5 Width
+                                    td
+                                        h5 128mm
+                                tr
+                                    td
+                                        h5 Height
+                                    td
+                                        h5 508mm
+                                tr
+                                    td
+                                        h5 Depth
+                                    td
+                                        h5 85mm
+                                tr
+                                    td
+                                        h5 Weight
+                                    td
+                                        h5 52gm
+                                tr
+                                    td
+                                        h5 Quality checking
+                                    td
+                                        h5 yes
+                                tr
+                                    td
+                                        h5 Freshness Duration
+                                    td
+                                        h5 03days
+                                tr
+                                    td
+                                        h5 When packeting
+                                    td
+                                        h5 Without touch of hand
+                                tr
+                                    td
+                                        h5 Each Box contains
+                                    td
+                                        h5 60pcs
+                #contact.tab-pane.fade(role="tabpanel" aria-labelledby="contact-tab")
+                    .row
+                        .col-lg-6
+                            .comment_list
+                                .review_item
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-1.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            h5 12th Feb, 2017 at 05:56 pm
+                                            a.reply_btn(href="#") Reply
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                .review_item.reply
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-2.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            h5 12th Feb, 2017 at 05:56 pm
+                                            a.reply_btn(href="#") Reply
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                .review_item
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-3.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            h5 12th Feb, 2017 at 05:56 pm
+                                            a.reply_btn(href="#") Reply
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                        .col-lg-6
+                            .review_box
+                                h4 Post a comment
+                                form#contactForm.row.contact_form(action="contact_process.php" method="post" novalidate="novalidate")
+                                    .col-md-12
+                                        .form-group
+                                            input#name.form-control(type="text" name="name" placeholder="Your Full name")
+                                    .col-md-12
+                                        .form-group
+                                            input#email.form-control(type="email" name="email" placeholder="Email Address")
+                                    .col-md-12
+                                        .form-group
+                                            input#number.form-control(type="text" name="number" placeholder="Phone Number")
+                                    .col-md-12
+                                        .form-group
+                                            textarea#message.form-control(name="message" rows="1" placeholder="Message")
+                                    .col-md-12.text-right
+                                        button.btn_3(type="submit" value="submit")
+                                            | Submit Now
+                #review.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="review-tab")
+                    .row
+                        .col-lg-6
+                            .row.total_rate
+                                .col-6
+                                    .box_total
+                                        h5 Overall
+                                        h4 4.0
+                                        h6 (03 Reviews)
+                                .col-6
+                                    .rating_list
+                                        h3 Based on 3 Reviews
+                                        ul.list
+                                            li
+                                                a(href="#")
+                                                    | 5 Star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    |  01
+                                            li
+                                                a(href="#")
+                                                    | 4 Star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    |  01
+                                            li
+                                                a(href="#")
+                                                    | 3 Star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    |  01
+                                            li
+                                                a(href="#")
+                                                    | 2 Star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    |  01
+                                            li
+                                                a(href="#")
+                                                    | 1 Star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    |  01
+                            .review_list
+                                .review_item
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-1.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                .review_item
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-2.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                .review_item
+                                    .media
+                                        .d-flex
+                                            img(src="img/product/single-product/review-3.png" alt="")
+                                        .media-body
+                                            h4 Blake Ruiz
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                            i.fa.fa-star
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                        .col-lg-6
+                            .review_box
+                                h4 Add a Review
+                                p Your Rating:
+                                ul.list
+                                    li
+                                        a(href="#")
+                                            i.fa.fa-star
+                                    li
+                                        a(href="#")
+                                            i.fa.fa-star
+                                    li
+                                        a(href="#")
+                                            i.fa.fa-star
+                                    li
+                                        a(href="#")
+                                            i.fa.fa-star
+                                    li
+                                        a(href="#")
+                                            i.fa.fa-star
+                                p Outstanding
+                                form.row.contact_form(action="contact_process.php" method="post" novalidate="novalidate")
+                                    .col-md-12
+                                        .form-group
+                                            input.form-control(type="text" name="name" placeholder="Your Full name")
+                                    .col-md-12
+                                        .form-group
+                                            input.form-control(type="email" name="email" placeholder="Email Address")
+                                    .col-md-12
+                                        .form-group
+                                            input.form-control(type="text" name="number" placeholder="Phone Number")
+                                    .col-md-12
+                                        .form-group
+                                            textarea.form-control(name="message" rows="1" placeholder="Review")
+                                    .col-md-12.text-right
+                                        button.btn_3(type="submit" value="submit")
+                                            | Submit Now
+    // ================End Product Description Area =================
+
