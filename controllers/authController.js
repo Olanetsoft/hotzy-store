@@ -266,7 +266,7 @@ exports.forgotPassword = async (req, res, next) => {
         };
 
 
-        
+
 
         //2) Generate the random reset token
         const resetToken = user.createPasswordResetToken();
@@ -297,17 +297,19 @@ exports.forgotPassword = async (req, res, next) => {
             });
 
         } catch (err) {
+            console.log("inside mail", err)
             user.passwordResetToken = undefined;
             user.passwordResetExpires = undefined;
             //set validateBeforeSave to false to deactivate all the validator in the schema
             await user.save({ validateBeforeSave: false });
-
+            console.log(user)
             return new AppError('There was an error sending mail. Try again later!', 500);
         };
 
 
     } catch (err) {
         //next(new AppError('Forgot password failed 😢', 404))
+        console.log(err)
         res.status(400).json({
             status: 'failed',
             message: err
