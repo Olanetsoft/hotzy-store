@@ -111,44 +111,44 @@ block content
                         .col-lg-6
                             .comment_list
                                 .review_item
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-1.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            h5 12th Feb, 2017 at 05:56 pm
-                                            a.reply_btn(href="#") Reply
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
-                                .review_item.reply
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-2.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            h5 12th Feb, 2017 at 05:56 pm
-                                            a.reply_btn(href="#") Reply
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
-                                .review_item
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-3.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            h5 12th Feb, 2017 at 05:56 pm
-                                            a.reply_btn(href="#") Reply
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                    each comment in newComment
+                                        .media
+                                            .d-flex
+                                                img(src="/img/product/single-product/review-1.png" alt="")
+                                            .media-body
+                                                h4= comment.fullName
+                                                h5= comment.createdAt
+                                                //- h5 12th Feb, 2017 at 05:56 pm
+                                                //- a.reply_btn(href="#") Reply
+                                        p
+                                            | #{comment.message}
+                                            
+                                //- .review_item.reply
+                                //-     .media
+                                //-         .d-flex
+                                //-             img(src="/img/product/single-product/review-2.png" alt="")
+                                //-         .media-body
+                                //-             h4 Blake Ruiz
+                                //-             h5 12th Feb, 2017 at 05:56 pm
+                                //-             a.reply_btn(href="#") Reply
+                                //-     p
+                                //-         | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                //-         | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                //-         | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                //-         | ullamco laboris nisi ut aliquip ex ea commodo
+                                //- .review_item
+                                //-     .media
+                                //-         .d-flex
+                                //-             img(src="/img/product/single-product/review-3.png" alt="")
+                                //-         .media-body
+                                //-             h4 Blake Ruiz
+                                //-             h5 12th Feb, 2017 at 05:56 pm
+                                //-             a.reply_btn(href="#") Reply
+                                //-     p
+                                //-         | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                //-         | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                //-         | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                //-         | ullamco laboris nisi ut aliquip ex ea commodo
                         .col-lg-6
                             .review_box
                                 h4 Post a comment

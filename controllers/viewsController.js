@@ -4,6 +4,9 @@ const Product = require('../models/productModel');
 //importing banner model
 const Banner = require('../models/bannerModel');
 
+//importing Comment model
+const Comment = require('../models/commentModel');
+
 
 //the home page
 exports.homePage = async (req, res, next) => {
@@ -86,6 +89,8 @@ exports.getOtherLayoutsInHomePage = async (req, res, next) => {
 exports.getProduct = async (req, res, next) => {
     try {
 
+        const newComment = await Comment.find()
+
         const singleProduct = await Product.findOne({slug: req.params.slug}).populate({
             path: 'reviews',
             fields: 'reviews rating user'
@@ -93,7 +98,8 @@ exports.getProduct = async (req, res, next) => {
         //Or Tour.findOne({_id: req.params.id})
 
         res.status(200).render('product-page', {
-            singleProduct
+            singleProduct,
+            newComment
         });
 
 
