@@ -68,7 +68,14 @@ const productSchema = new mongoose.Schema({
     freshnessDuration: {
         type: Number,
         required: [true, 'A product must have a Freshness Duration 😥']
-    }
+    },
+    //adding guides by creating reference to the user
+    comment: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 },
     //to make the virtual show up when a request is made you need to enable it here in the schema
     {

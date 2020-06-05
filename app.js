@@ -16,6 +16,7 @@ const contactRoutes = require('./routes/contactRoute');
 const bannerRoutes = require('./routes/bannerRoute');
 const usersRoutes = require('./routes/usersRoute');
 const commentsRoutes = require('./routes/commentsRoute');
+const reviewsRoutes = require('./routes/reviewsRoute');
 
 
 
@@ -60,6 +61,7 @@ app.use(productRoutes);
 app.use(contactRoutes);
 app.use(commentsRoutes);
 app.use(bannerRoutes);
+app.use(reviewsRoutes);
 
 
 
