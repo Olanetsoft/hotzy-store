@@ -34,3 +34,64 @@ exports.createReview = async (req, res, next) => {
         })
     };
 };
+
+
+//Get all reviews
+exports.getAllReviews = async (req, res, next) => {
+    try {
+        let filter = {};
+        //this is added to che if the params include tourId then is should return reviews with respect to the tourId else return all reviews
+        if (req.params.tourId) filter = { tour: req.params.tourId }
+
+         //EXECUTE THE QUERY_OBJ
+         const features = new APIFeatures(Review.find(filter), req.query)
+         .filter()
+         .sort()
+         .limitFields()
+         .paginate();
+
+        const allReviews = await features.query;
+
+        //SEND RESPONSE IN JSON
+        res.status(200).json({
+            status: 'success',
+            result: allReviews.length,
+            data: {
+                allReviews
+            }
+        });
+
+    } catch (err) {
+        next(new AppError('Trying to get all reviews failed', 404))
+
+    }
+};
+
+
+
+//get single review
+exports.getSingleReview = async (req, res, next) => {
+    try {
+        const singleReview = await Review.findById(req.params.id);
+
+        //Or Review.findOne({_id: req.params.id})
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                singleReview
+            }
+        });
+    } catch (err) {
+        //return error to check if tour exist
+        next(new AppError(`No Review found with ID: ${req.params.id}`, 404));
+    }
+};
+
+
+
+// //delete review
+// exports.deleteReview = factory.deleteOneDocument(Review);
+
+// //update review
+// exports.updateReview = factory.updateOneDocument(Review);

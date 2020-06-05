@@ -13,9 +13,14 @@ const authController = require('./../controllers/authController');
 
 
 
+
+router.get('/api/v1/reviews', reviewsController.getAllReviews);
+
+router.get('/api/v1/review/:id', reviewsController.getSingleReview);
+
+
 //To protect all the review route
 router.use(authController.protectRouteToEnableOnlyLoggedInUser);
-
 
 
 router.post('/api/v1/review', authController.restrictAccessTo('user'), reviewsController.createReview);
