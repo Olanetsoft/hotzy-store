@@ -55,11 +55,12 @@ app.use(express.json({ limit: '10kb' }));
 
 
 //registering the route middleware
+app.use(commentsRoutes);
 app.use(usersRoutes);
+app.use(commentsRoutes);
 app.use(viewsRoutes);
 app.use(productRoutes);
 app.use(contactRoutes);
-app.use(commentsRoutes);
 app.use(bannerRoutes);
 app.use(reviewsRoutes);
 

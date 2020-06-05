@@ -9,6 +9,7 @@ const AppError = require('../utilities/appError');
 
 
 
+
 //create a new review
 exports.createReview = async (req, res, next) => {
     try {
@@ -43,12 +44,12 @@ exports.getAllReviews = async (req, res, next) => {
         //this is added to che if the params include tourId then is should return reviews with respect to the tourId else return all reviews
         if (req.params.tourId) filter = { tour: req.params.tourId }
 
-         //EXECUTE THE QUERY_OBJ
-         const features = new APIFeatures(Review.find(filter), req.query)
-         .filter()
-         .sort()
-         .limitFields()
-         .paginate();
+        //EXECUTE THE QUERY_OBJ
+        const features = new APIFeatures(Review.find(filter), req.query)
+            .filter()
+            .sort()
+            .limitFields()
+            .paginate();
 
         const allReviews = await features.query;
 
@@ -102,16 +103,15 @@ exports.updateReview = async (req, res, next) => {
         if (!review) {
             next(new AppError(`No Document found with ID: ${req.params.id}`, 404));
         }
-        
+
         res.status(200).json({
-           
+
             status: 'success',
             data: {
                 review
             }
         });
     } catch (err) {
-        console.log(err);
         //return error to check if review is updated
         next(new AppError('Unable to Update Review', 404));
     };

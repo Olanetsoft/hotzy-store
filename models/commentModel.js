@@ -34,6 +34,17 @@ const commentSchema = new mongoose.Schema({
         trim: true,
         maxlength: [1000, 'A comment message must have less or equal 1000 characters🤦‍♀️'],
         minlength: [20, 'A comment message must have more or equal 20 characters🤦‍♀️']
+    },
+    product: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Product',
+        required: [true, 'Review must belong to a Product.']
+
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Review must belong to a user 😦 ']
     }
 
 }, {
@@ -51,6 +62,21 @@ commentSchema.pre('save', function (next) {
 });
 
 
+//instance methods
+//Adding this will make all the query automatically populate all the user details
+commentSchema.pre(/^find/, function (next) {
+    this.populate({
+        path: 'user',
+        //this was added to show only this field upon request
+        select: 'name photo'
+    });
+    // this.populate({
+    //     path: 'tour',
+    //     //this was added not to show this field upon request
+    //     select: 'name'
+    // });
+    next();
+});
 
 
 

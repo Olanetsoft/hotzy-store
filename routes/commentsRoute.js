@@ -6,12 +6,23 @@ const router = express.Router();
 const commentController = require('./../controllers/commentController');
 
 
-//product route
-router.post('/api/v1/comment-message', commentController.postComment);
+
+//import authentication controller module
+const authController = require('./../controllers/authController');
+
+
+//To protect all the comment route
+router.use(authController.protectRouteToEnableOnlyLoggedInUser);
+
+
+//comment route
+
+router.get('/api/v1/comment-messages', commentController.getAllComments);
+
+router.post('/api/v1/comment-message', authController.restrictAccessTo('user'), commentController.postComment);
 
 // router.get('/api/v1/contact-message/:name', contactController.getContact);
 
-// router.get('/api/v1/contact-messages', contactController.getAllContacts);
 
 
 

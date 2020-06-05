@@ -39,7 +39,7 @@ router.delete('/api/v1/users/deleteMe', userController.deleteMe);
 
 
 //Restricting all the routes below to only admin 
-//router.use(authController.restrictAccessTo('admin'));
+router.use(authController.restrictAccessTo('admin'));
 
 router.get('/api/v1/users', userController.getAllUsers);
 

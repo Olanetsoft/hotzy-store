@@ -17,17 +17,17 @@ const reviewSchema = new mongoose.Schema({
         min: 1,
         max: 5
     },
-    // product: {
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: 'Product',
-    //     required: [true, 'Review must belong to a Product.']
+    product: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Product',
+        required: [true, 'Review must belong to a Product.']
 
-    // },
-    // user: {
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: 'User',
-    //     required: [true, 'Review must belong to a user 😦 ']
-    // }
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Review must belong to a user 😦 ']
+    }
 },
     {
         timestamps: true,
@@ -50,24 +50,9 @@ reviewSchema.pre(/^find/, function (next) {
     //     path: 'tour',
     //     //this was added not to show this field upon request
     //     select: 'name'
-    // }).populate({
-    //     path: 'user',
-    //     //this was added to show only this field upon request
-    //     select: 'name photo'
     // });
     next();
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -108,12 +93,13 @@ reviewSchema.statics.calcAverageRatings = async function (productId) {
 };
 
 
-// //to update it when a new review is created
-// reviewSchema.post('save', function (next) {
-//     //this points to current review
-//     this.constructor.calcAverageRatings(this.tour);
 
-// });
+//to update it when a new review is created
+reviewSchema.post('save', function (next) {
+    //this points to current review
+    this.constructor.calcAverageRatings(this.product);
+
+});
 
 
 
@@ -126,11 +112,11 @@ reviewSchema.pre(/^findOneAnd/, async function (next) {
 
 
 
-// //To update review and delete
-// //REMEMBER: findByIdAndUpdate is a shorthand for findOneAndUpdateById
-// reviewSchema.post(/^findOneAnd/, async function () {
-//     await this.r.constructor.calcAverageRatings(this.r.tour);
-// });
+//To update review and delete
+//REMEMBER: findByIdAndUpdate is a shorthand for findOneAndUpdateById
+reviewSchema.post(/^findOneAnd/, async function () {
+    await this.r.constructor.calcAverageRatings(this.r.product);
+});
 
 
 
