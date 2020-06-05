@@ -25,6 +25,10 @@ router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
 router.post('/api/v1/review', authController.restrictAccessTo('user'), reviewsController.createReview);
 
+router.patch('/api/v1/review/:id', authController.restrictAccessTo('user', 'admin'), reviewsController.updateReview);
+
+router.delete('/api/v1/review/:id', authController.restrictAccessTo('user', 'admin'), reviewsController.deleteReview);
+
 
 
 

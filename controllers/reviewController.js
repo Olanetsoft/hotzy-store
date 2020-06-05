@@ -90,8 +90,51 @@ exports.getSingleReview = async (req, res, next) => {
 
 
 
-// //delete review
-// exports.deleteReview = factory.deleteOneDocument(Review);
 
-// //update review
-// exports.updateReview = factory.updateOneDocument(Review);
+//Updating a review
+exports.updateReview = async (req, res, next) => {
+    try {
+        const review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+
+        if (!review) {
+            next(new AppError(`No Document found with ID: ${req.params.id}`, 404));
+        }
+        
+        res.status(200).json({
+           
+            status: 'success',
+            data: {
+                review
+            }
+        });
+    } catch (err) {
+        console.log(err);
+        //return error to check if review is updated
+        next(new AppError('Unable to Update Review', 404));
+    };
+};
+
+
+
+
+//Deleting a Review
+exports.deleteReview = async (req, res, next) => {
+    try {
+        const doc = await Review.findByIdAndDelete(req.params.id);
+
+        if (!doc) {
+            next(new AppError(`No Document found with ID: ${req.params.id}`, 404));
+        }
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    } catch (err) {
+        //return error to check if review was deleted
+        next(new AppError(`Unable to delete Document with ID: ${req.params.id}`, 404));
+    };
+};
+
