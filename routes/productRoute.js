@@ -18,12 +18,13 @@ router.post('/api/v1/product', productController.createProduct);
 
 router.get('/api/v1/product/:productId', productController.getProduct);
 
+router.get('/api/v1/products', productController.getProducts);
+
+
 
 
 //To protect all the route after the ones listed above
 router.use(authController.protectRouteToEnableOnlyLoggedInUser);
-
-router.get('/api/v1/products', productController.getProducts);
 
 router.get('/api/v1/products-stats', productController.getProductsStats);
 

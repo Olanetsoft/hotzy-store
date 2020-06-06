@@ -64,7 +64,7 @@ reviewSchema.pre(/^find/, function (next) {
 reviewSchema.statics.calcAverageRatings = async function (productId) {
     const stats = await this.aggregate([
         {
-            $match: { tour: productId }
+            $match: { product: productId }
         },
         {
             $group: {

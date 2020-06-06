@@ -24,7 +24,7 @@ router.patch('/api/v1/users/resetPassword/:token', authController.resetPassword)
 
 
 //To protect all the route after the ones listed above
-//router.use(authController.protectRouteToEnableOnlyLoggedInUser);
+router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
 router.get('/api/v1/users/me', userController.getMe, userController.getUser);
 
