@@ -2,6 +2,9 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
+//requiring the cookie parser
+const cookieParser = require('cookie-parser');
+
 
 //import global error class
 const AppError = require('./utilities/appError');
@@ -9,18 +12,23 @@ const AppError = require('./utilities/appError');
 // //import the global error handler
 const globalErrorHandler = require('./controllers/errorController');
 
-//requiring all routes
-const viewsRoutes = require('./routes/viewsRoute');
-const productRoutes = require('./routes/productRoute');
-const contactRoutes = require('./routes/contactRoute');
-const bannerRoutes = require('./routes/bannerRoute');
-const usersRoutes = require('./routes/usersRoute');
-const commentsRoutes = require('./routes/commentsRoute');
-const reviewsRoutes = require('./routes/reviewsRoute');
-
 
 
 const app = express();
+
+
+//requiring all routes
+const productRoutes = require('./routes/productRoute');
+const usersRoutes = require('./routes/usersRoute');
+const reviewsRoutes = require('./routes/reviewsRoute');
+const bannerRoutes = require('./routes/bannerRoute');
+const viewsRoutes = require('./routes/viewsRoute');
+const contactRoutes = require('./routes/contactRoute');
+const commentsRoutes = require('./routes/commentsRoute');
+
+
+
+
 
 //setting the view engine
 app.set('view engine', 'pug');
@@ -39,12 +47,12 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 };
 
+
 //Middleware registered
 //Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
-
-
+app.use(cookieParser());
 
 
 
@@ -55,14 +63,20 @@ app.use(express.json({ limit: '10kb' }));
 
 
 //registering the route middleware
+app.use(commentsRoutes);
 app.use(productRoutes);
-app.use(reviewsRoutes);
-app.use(commentsRoutes);
-app.use(commentsRoutes);
-app.use(viewsRoutes);
-app.use(contactRoutes);
-app.use(bannerRoutes);
 app.use(usersRoutes);
+app.use(viewsRoutes);
+
+
+
+app.use(reviewsRoutes);
+
+app.use(bannerRoutes);
+
+app.use(contactRoutes);
+
+
 
 
 

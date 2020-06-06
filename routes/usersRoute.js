@@ -24,30 +24,30 @@ router.patch('/api/v1/users/resetPassword/:token', authController.resetPassword)
 
 
 //To protect all the route after the ones listed above
-router.use(authController.protectRouteToEnableOnlyLoggedInUser);
+//router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
-router.get('/api/v1/users/me', userController.getMe, userController.getUser);
+router.get('/api/v1/users/me', userController.getMe, authController.protectRouteToEnableOnlyLoggedInUser, userController.getUser);
 
-router.patch('/api/v1/users/updateMyPassword', authController.updateMyPassword);
+router.patch('/api/v1/users/updateMyPassword', authController.protectRouteToEnableOnlyLoggedInUser, authController.updateMyPassword);
 
-router.patch('/api/v1/users/updateMe', userController.updateMe);
+router.patch('/api/v1/users/updateMe', authController.protectRouteToEnableOnlyLoggedInUser, userController.updateMe);
 
-router.delete('/api/v1/users/deleteMe', userController.deleteMe);
+router.delete('/api/v1/users/deleteMe', authController.protectRouteToEnableOnlyLoggedInUser, userController.deleteMe);
 
 
 
 
 
 //Restricting all the routes below to only admin 
-router.use(authController.restrictAccessTo('admin'));
+//router.use(authController.restrictAccessTo('admin'));
 
-router.get('/api/v1/users', userController.getAllUsers);
+router.get('/api/v1/users', authController.protectRouteToEnableOnlyLoggedInUser, authController.restrictAccessTo('admin'), userController.getAllUsers);
 
-router.get('/api/v1/user/:id', userController.getUser);
+router.get('/api/v1/user/:id', authController.protectRouteToEnableOnlyLoggedInUser, authController.restrictAccessTo('admin'), userController.getUser);
 
-router.patch('/api/v1/user/:id', userController.updateUser);
+router.patch('/api/v1/user/:id', authController.protectRouteToEnableOnlyLoggedInUser, authController.restrictAccessTo('admin'), userController.updateUser);
 
-router.delete('/api/v1/user/:id', userController.deleteUser);
+router.delete('/api/v1/user/:id', authController.protectRouteToEnableOnlyLoggedInUser, authController.restrictAccessTo('admin'), userController.deleteUser);
 
 
 

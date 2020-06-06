@@ -7,15 +7,15 @@ const { promisify } = require('util');
 
 //using the json web token
 const jwt = require('jsonwebtoken');
-const User = require('./../models/userModel');
+const User = require('../models/userModel');
 
 
 //importing error class
-const AppError = require('./../utilities/appError');
+const AppError = require('../utilities/appError');
 
 
 //import the email function
-const sendMail = require('./../utilities/Email');
+const sendMail = require('../utilities/Email');
 
 
 //signup user

@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 //import tour controller
-const contactController = require('./../controllers/contactController');
+const contactController = require('../controllers/contactController');
 
 
 //product route

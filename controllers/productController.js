@@ -92,6 +92,7 @@ exports.getProducts = async (req, res, next) => {
 
         //return error to check if product exist
         // next(new AppError(`No product found with ID: ${req.params.id}`, 404));
+        //console.log(err)
         res.status(404).json({
             status: "failed",
             message: err
