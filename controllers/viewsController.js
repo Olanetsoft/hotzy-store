@@ -131,3 +131,11 @@ exports.loginUser = (req, res, next) => {
         title: 'Login'
     });
 };
+
+
+//signup
+exports.signup = (req, res, next) => {
+    res.status(200).render('signup', {
+        title: 'Signup'
+    });
+};

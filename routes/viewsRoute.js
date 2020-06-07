@@ -15,4 +15,6 @@ router.get('/product-page/:slug', viewsController.getProduct);
 
 router.get('/login', authController.isLoggedIn, viewsController.loginUser);
 
+router.get('/signup', authController.isLoggedIn, viewsController.signup);
+
 module.exports = router;
