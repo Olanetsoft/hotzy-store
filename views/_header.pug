@@ -64,11 +64,18 @@ header.main_menu.home_menu
                             if user
                                 ul.navbar-nav
                                     li.nav-item
-                                        a.nav-link(href="/login") Welcome
+                                        a.nav-link.logout(href="") Logout 
+                                            //- img.nav__user-img(src=`/img/users/${user.photo}` alt=`${user.name}`)
+                                            img.nav__user-img(src=`/img/default.jpg`)
+                                            span= user.name.split(' ')[0]
+                                        
                             else
                                 ul.navbar-nav
                                     li.nav-item
-                                        a.nav-link(href="/login") Login / Signup
+                                        a.nav-link(href="/login") Login 
+                                ul.navbar-nav
+                                    li.nav-item
+                                        a.nav-link(href="#") Register
     #search_input_box.search_input
         .container
             form.d-flex.justify-content-between.search-inner
