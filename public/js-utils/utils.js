@@ -107,17 +107,16 @@ export const postComment = async (name, email, message, subject) => {
                 subject
             }
         });
-        //console.log(result)
         if (result.data.status === 'success') {
             //alert("Login omo aiye")
-            showAlert('success', `${type.toUpperCase()} Message Sent Successfully!`);
+            showAlert('success', "Message Sent Successfully!");
             window.setTimeout(() => {
                 location.assign('/contact');
             }, 1500)
         };
     } catch (err) {
-        //console.log(err)
-        showAlert('error', "Please all contact message fields are required");
+        console.log(err)
+        //showAlert('error', "Please all contact message fields are required");
     }
 
 };

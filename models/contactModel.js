@@ -8,32 +8,22 @@ const contactSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'A must have a name 🤦‍♀️'],
-        unique: true,
-        trim: true,
-        maxlength: [20, 'A name must have less or equal 20 characters🤦‍♀️'],
-        minlength: [5, 'A name must have more or equal 5 characters🤦‍♀️']
+        trim: true
     },
     subject: {
         type: String,
         required: [true, 'A subject must have a name 🤦‍♀️'],
-        unique: true,
-        trim: true,
-        maxlength: [20, 'A subject must have less or equal 20 characters🤦‍♀️'],
-        minlength: [10, 'A subject must have more or equal 5 characters🤦‍♀️']
+        trim: true
     },
     message: {
         type: String,
         required: [true, 'A message must have a name 🤦‍♀️'],
-        unique: true,
-        trim: true,
-        maxlength: [1000, 'A message must have less or equal 1000 characters🤦‍♀️'],
-        minlength: [20, 'A message must have more or equal 20 characters🤦‍♀️']
+        trim: true
     },
 
     email: {
         type: String,
         required: [true, 'Please provide an email 😥'],
-        unique: true,
         lowercase: true,
         //using the validator installed
         validate: [validator.isEmail, 'Please provide a valid email 🙄']

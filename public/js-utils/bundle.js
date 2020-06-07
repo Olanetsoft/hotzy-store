@@ -8577,10 +8577,9 @@ var postComment = /*#__PURE__*/function () {
           case 3:
             result = _context4.sent;
 
-            //console.log(result)
             if (result.data.status === 'success') {
               //alert("Login omo aiye")
-              (0, _alert.showAlert)('success', "".concat(type.toUpperCase(), " Message Sent Successfully!"));
+              (0, _alert.showAlert)('success', "Message Sent Successfully!");
               window.setTimeout(function () {
                 location.assign('/contact');
               }, 1500);
@@ -8593,8 +8592,7 @@ var postComment = /*#__PURE__*/function () {
           case 8:
             _context4.prev = 8;
             _context4.t0 = _context4["catch"](0);
-            //console.log(err)
-            (0, _alert.showAlert)('error', "Please all contact message fields are required");
+            console.log(_context4.t0); //showAlert('error', "Please all contact message fields are required");
 
           case 11:
           case "end":
