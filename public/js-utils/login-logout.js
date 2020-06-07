@@ -66,22 +66,24 @@ export const logout = async () => {
 
 
 //exporting a js file is not like node just add export
-export const signup = async (email, password) => {
+export const signup = async (name, email, password, passwordConfirm) => {
     try {
         const result = await axios({
             method: 'POST',
-            url: '/api/v1/users/login',
+            url: '/api/v1/users/signup',
             data: {
+                name,
                 email,
-                password
+                password,
+                passwordConfirm
             }
         });
         //console.log(result)
         if (result.data.status === 'success') {
             //alert("Login omo aiye")
-            showAlert('success', 'Logged in Successfully');
+            showAlert('success', 'Sign up Successful');
             window.setTimeout(() => {
-                location.assign('/home');
+                location.assign('/login');
             }, 1500)
         };
     } catch (err) {

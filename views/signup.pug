@@ -19,7 +19,7 @@ block content
                             h3
                                 br
                                 |                                 Sign up now
-                            form.row.contact_form(action='#' method='post' novalidate='novalidate')
+                            form.row.contact_form.signup(action='#' method='post' novalidate='novalidate')
                                 .col-md-12.form-group.p_star
                                     input#name.form-control(type='text' name='name' value='' placeholder='name')
                                 .col-md-12.form-group.p_star
@@ -27,7 +27,7 @@ block content
                                 .col-md-12.form-group.p_star
                                     input#password.form-control(type='password' name='password' placeholder='password', required)
                                 .col-md-12.form-group.p_star
-                                    input#confirmPassword.form-control(type='password' name='password' placeholder='Confirm Password', required)
+                                    input#passwordConfirm.form-control(type='password' name='passwordConfirm' placeholder='Confirm Password', required)
                                 .col-md-12.form-group
                                     button.btn_3(type='submit' value='submit')
                                         | Sign up
