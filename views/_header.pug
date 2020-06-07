@@ -61,9 +61,14 @@ header.main_menu.home_menu
                                             </div>
                                             </div>
                         #navbarSupportedContent.collapse.navbar-collapse.main-menu-item
-                            ul.navbar-nav
-                                li.nav-item
-                                    a.nav-link(href="login.html") Login / Signup
+                            if user
+                                ul.navbar-nav
+                                    li.nav-item
+                                        a.nav-link(href="/login") Welcome
+                            else
+                                ul.navbar-nav
+                                    li.nav-item
+                                        a.nav-link(href="/login") Login / Signup
     #search_input_box.search_input
         .container
             form.d-flex.justify-content-between.search-inner

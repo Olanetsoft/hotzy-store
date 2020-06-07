@@ -8,6 +8,8 @@
     "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js-utils/index.js --out-dir ./public/js-utils --out-file bundle.js",
+    "build:js": "parcel build ./public/js-utils/index.js --out-dir ./public/js-utils --out-file bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,8 @@
   },
   "homepage": "https://github.com/Olanetsoft/hotzy-store#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
     "bcrypt": "^4.0.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -30,6 +34,7 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.8",
     "nodemon": "^2.0.4",
+    "parcel": "^1.12.4",
     "pug": "^3.0.0",
     "slugify": "^1.4.0",
     "validator": "^13.0.0"

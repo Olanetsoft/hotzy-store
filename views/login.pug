@@ -1,0 +1,35 @@
+extends base
+
+block content
+    // ================login_part Area =================
+    section.login_part.padding_top
+        .container
+            .row.align-items-center
+                .col-lg-6.col-md-6
+                    .login_part_text.text-center
+                        .login_part_text_iner
+                            h2 New to our Shop?
+                            p
+                                | There are advances being made in science and technology
+                                | everyday, and a good example of this is the
+                            a.btn_3(href='#') Create an Account
+                .col-lg-6.col-md-6
+                    .login_part_form
+                        .login_part_form_iner
+                            h3
+                                | Welcome Back ! 
+                                br
+                                |                                 Please Sign in now
+                            form.row.contact_form(action='#' method='post' novalidate='novalidate')
+                                .col-md-12.form-group.p_star
+                                    input#email.form-control(type='email' name='name' placeholder='you@example.com', required)
+                                .col-md-12.form-group.p_star
+                                    input#password.form-control(type='password' name='password' placeholder='••••••••', required)
+                                .col-md-12.form-group
+                                    .creat_account.d-flex.align-items-center
+                                        input#f-option(type='checkbox' name='selector')
+                                        label(for='f-option') Remember me
+                                    button.btn_3(type='submit' value='submit')
+                                        | log in
+                                    a.lost_pass(href='#') forget password?
+    // ================login_part end =================

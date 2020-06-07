@@ -54,7 +54,7 @@ app.use(express.json({ limit: '10kb' }));
 
 app.use(cookieParser());
 
-
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 
 
@@ -67,8 +67,6 @@ app.use(commentsRoutes);
 app.use(productRoutes);
 app.use(usersRoutes);
 app.use(viewsRoutes);
-
-
 
 app.use(reviewsRoutes);
 

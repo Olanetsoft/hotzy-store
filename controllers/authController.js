@@ -137,6 +137,49 @@ exports.logout = (req, res, next) => {
 };
 
 
+//to check if user is logged in
+//and only render pages
+exports.isLoggedIn = async (req, res, next) => {
+    // try {
+
+    if (req.cookies.jwt) {
+        try {
+            // Verify the token 
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+
+
+            //2.) check if user still exists
+            const currentUser = await User.findById(decoded.id);
+            if (!currentUser) {
+                return next();
+            };
+
+
+            //3.) check if user changed password after the token was issued
+            if (currentUser.changedPasswordAfter(decoded.iat)) {
+                return next()
+            };
+
+            //There is a loggedIn user
+            //now use response.local
+            res.locals.user = currentUser
+            return next();
+        } catch (err) {
+            return next();
+        }
+    }
+    next();
+    // } catch (err) {
+    //     next(new AppError('failed 😒', 401));
+    //     // res.status(400).json({
+    //     //     status: 'failed',
+    //     //     message: err
+    //     // });
+    // }
+};
+
+
+
 //protecting the route against not login user
 exports.protectRouteToEnableOnlyLoggedInUser = async (req, res, next) => {
     try {
@@ -146,9 +189,9 @@ exports.protectRouteToEnableOnlyLoggedInUser = async (req, res, next) => {
         if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
             token = req.headers.authorization.split(' ')[1];
         }
-        // else if (req.cookies.jwt) {
-        //     token = req.cookies.jwt
-        // };
+        else if (req.cookies.jwt) {
+            token = req.cookies.jwt
+        };
 
         //Check if no token in the header and return 401 for non authorized
         if (!token) {
