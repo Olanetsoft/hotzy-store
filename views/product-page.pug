@@ -58,8 +58,8 @@ block content
                     a#home-tab.nav-link(data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true") Description
                 li.nav-item
                     a#profile-tab.nav-link(data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false") Specification
-                li.nav-item
-                    a#contact-tab.nav-link(data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false") Comments
+                //- li.nav-item
+                //-     a#contact-tab.nav-link(data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false") Comments
                 li.nav-item
                     a#review-tab.nav-link.active(data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false") Reviews
             #myTabContent.tab-content
@@ -106,22 +106,22 @@ block content
                                         h5 Each Box contains
                                     td
                                         h5 #{singleProduct.EachBoxContains} pcs
-                #contact.tab-pane.fade(role="tabpanel" aria-labelledby="contact-tab")
-                    .row
-                        .col-lg-6
-                            .comment_list
-                                .review_item
-                                    each comment in newComment
-                                        .media
-                                            .d-flex
-                                                img(src="/img/product/single-product/review-1.png" alt="")
-                                            .media-body
-                                                h4= comment.fullName
-                                                h5= comment.createdAt
-                                                //- h5 12th Feb, 2017 at 05:56 pm
-                                                //- a.reply_btn(href="#") Reply
-                                        p
-                                            | #{comment.message}
+                //- #contact.tab-pane.fade(role="tabpanel" aria-labelledby="contact-tab")
+                //-     .row
+                //-         .col-lg-6
+                //-             .comment_list
+                //-                 .review_item
+                //-                     each comment in newComment
+                //-                         .media
+                //-                             .d-flex
+                //-                                 img(src="/img/product/single-product/review-1.png" alt="")
+                //-                             .media-body
+                //-                                 h4= comment.fullName
+                //-                                 h5= comment.createdAt
+                //-                                 //- h5 12th Feb, 2017 at 05:56 pm
+                //-                                 //- a.reply_btn(href="#") Reply
+                //-                         p
+                //-                             | #{comment.message}
                                             
                                 //- .review_item.reply
                                 //-     .media

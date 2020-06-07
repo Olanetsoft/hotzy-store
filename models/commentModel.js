@@ -38,14 +38,14 @@ const commentSchema = new mongoose.Schema({
     product: {
         type: mongoose.Schema.ObjectId,
         ref: 'Product',
-        required: [true, 'Review must belong to a Product.']
+        required: [true, 'Comment must belong to a Product.']
 
     },
-    user: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: [true, 'Review must belong to a user 😦 ']
-    }
+    // user: {
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'User',
+    //     required: [true, 'Comment must belong to a user 😦 ']
+    // }
 
 }, {
     timestamps: true

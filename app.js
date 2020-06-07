@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 
 //registering the route middleware
-app.use(commentsRoutes);
+//app.use(commentsRoutes);
 app.use(productRoutes);
 app.use(usersRoutes);
 app.use(viewsRoutes);

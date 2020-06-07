@@ -92,17 +92,17 @@ exports.getOtherLayoutsInHomePage = async (req, res, next) => {
 exports.getProduct = async (req, res, next) => {
     try {
 
-        const newComment = await Comment.find()
-
+        //const newComment = await Comment.find()
         const singleProduct = await Product.findOne({slug: req.params.slug}).populate({
             path: 'reviews',
             fields: 'reviews rating user'
-        });
+        })
         //Or Tour.findOne({_id: req.params.id})
 
+
+
         res.status(200).render('product-page', {
-            singleProduct,
-            newComment
+            singleProduct
         });
 
 
@@ -152,37 +152,24 @@ exports.getContactPage = (req, res, next) => {
 };
 
 
-//update details
-exports.postContact = async (req, res, next) => {
+// //update details
+// exports.postContact = async (req, res, next) => {
 
-    try {
-        const newContact = await Contact.create(req.body);
-        res.status(201).json({
-            status: 'success 🙌',
-            result: newContact.length,
-            data: {
-                newComment
-            }
+//     try {
+//         const newContact = await Contact.create(req.body);
+//         res.status(201).json({
+//             status: 'success 🙌',
+//             result: newContact.length,
+//             data: {
+//                 newComment
+//             }
 
-        })
-    } catch (err) {
-        res.status(400).json({
-            status: 'failed',
-            message: err
-        })
-        //console.log("FIle not created: " + err);
-    };
-    // const updatedUser = await User.findByIdAndUpdate(req.user.id, {
-    //     name: req.body.name,
-    //     email: req.body.email
-    // },
-    //     {
-    //         new: true,
-    //         runValidators: true
-    //     }
-    // );
-    // res.status(200).render('account', {
-    //     title: 'Your Account',
-    //     user: updatedUser
-    // });
-};
+//         })
+//     } catch (err) {
+//         res.status(400).json({
+//             status: 'failed',
+//             message: err
+//         })
+//         //console.log("FIle not created: " + err);
+//     };
+// };
