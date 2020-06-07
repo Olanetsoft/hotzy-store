@@ -7,15 +7,16 @@ const Contact = require('../models/contactModel');
 //creating a single contact
 exports.postContact = async (req, res, next) => {
     try {
-        const newComment = await Contact.create(req.body);
+        const newContact = await Contact.create(req.body);
         res.status(201).json({
-            status: 'success 🙌',
+            status: 'success',
             data: {
-                newComment
+                newContact
             }
 
         });
     } catch (err) {
+        //console.log(err)
         res.status(400).json({
             status: 'failed',
             message: err

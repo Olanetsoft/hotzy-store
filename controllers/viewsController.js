@@ -7,6 +7,9 @@ const Banner = require('../models/bannerModel');
 //importing Comment model
 const Comment = require('../models/commentModel');
 
+//importing Comment model
+const Contact = require('../models/contactModel');
+
 
 //the home page
 exports.homePage = async (req, res, next) => {
@@ -146,4 +149,40 @@ exports.getContactPage = (req, res, next) => {
     res.status(200).render('contact', {
         title: 'Contact Us'
     });
+};
+
+
+//update details
+exports.postContact = async (req, res, next) => {
+
+    try {
+        const newContact = await Contact.create(req.body);
+        res.status(201).json({
+            status: 'success 🙌',
+            result: newContact.length,
+            data: {
+                newComment
+            }
+
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'failed',
+            message: err
+        })
+        //console.log("FIle not created: " + err);
+    };
+    // const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+    //     name: req.body.name,
+    //     email: req.body.email
+    // },
+    //     {
+    //         new: true,
+    //         runValidators: true
+    //     }
+    // );
+    // res.status(200).render('account', {
+    //     title: 'Your Account',
+    //     user: updatedUser
+    // });
 };

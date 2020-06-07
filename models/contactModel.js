@@ -26,8 +26,8 @@ const contactSchema = new mongoose.Schema({
         required: [true, 'A message must have a name 🤦‍♀️'],
         unique: true,
         trim: true,
-        maxlength: [1000, 'A message must have less or equal 20 characters🤦‍♀️'],
-        minlength: [20, 'A message must have more or equal 5 characters🤦‍♀️']
+        maxlength: [1000, 'A message must have less or equal 1000 characters🤦‍♀️'],
+        minlength: [20, 'A message must have more or equal 20 characters🤦‍♀️']
     },
 
     email: {

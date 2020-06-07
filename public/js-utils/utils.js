@@ -94,4 +94,33 @@ export const signup = async (name, email, password, passwordConfirm) => {
 };
 
 
+//exporting a js file is not like node just add export
+export const postComment = async (name, email, message, subject) => {
+    try {
+        const result = await axios({
+            method: 'POST',
+            url: '/api/v1/contact-message',
+            data: {
+                name,
+                email,
+                message,
+                subject
+            }
+        });
+        //console.log(result)
+        if (result.data.status === 'success') {
+            //alert("Login omo aiye")
+            showAlert('success', `${type.toUpperCase()} Message Sent Successfully!`);
+            window.setTimeout(() => {
+                location.assign('/contact');
+            }, 1500)
+        };
+    } catch (err) {
+        //console.log(err)
+        showAlert('error', "Please all contact message fields are required");
+    }
+
+};
+
+
 

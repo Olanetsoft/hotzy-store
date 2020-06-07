@@ -58,7 +58,7 @@ block content
                 .col-12
                     h2.contact-title Get in Touch
                 .col-lg-8
-                    form#contactForm.form-contact.contact_form(action='contact_process.php' method='post' novalidate='novalidate')
+                    form#contactForm.form-contact.contact_form.contact-us(action='#' method='post' novalidate='novalidate')
                         .row
                             .col-12
                                 .form-group
@@ -73,7 +73,7 @@ block content
                                 .form-group
                                     input#subject.form-control(name='subject' type='text' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject')
                         .form-group.mt-3
-                            a.btn_3.button-contactForm(href='#') Send Message
+                            button.btn_3.button-contactForm(type='submit' value='submit') Send Message
                 .col-lg-4
                     .media.contact-info
                         span.contact-info__icon
