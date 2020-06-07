@@ -1,0 +1,96 @@
+extends base
+
+block content
+    // ================Home Banner Area =================
+    // breadcrumb start
+    section.breadcrumb.breadcrumb_bg
+        .container
+            .row.justify-content-center
+                .col-lg-8
+                    .breadcrumb_iner
+                        .breadcrumb_iner_item
+                            h2 contact us
+                            p
+                                | Home 
+                                span -
+                                |  contact us
+    // breadcrumb start
+    // ================ contact section start =================
+    section.contact-section.padding_top
+        .container
+            .d-none.d-sm-block.mb-5.pb-4
+                #map(style='height: 480px;')
+                script.
+                    function initMap() {
+                    var uluru = {
+                    lat: 6.465422,
+                    lng: 3.406448
+                    };
+                    var grayStyles = [{
+                    featureType: "all",
+                    stylers: [{
+                    saturation: -90
+                    },
+                    {
+                    lightness: 50
+                    }
+                    ]
+                    },
+                    {
+                    elementType: 'labels.text.fill',
+                    stylers: [{
+                    color: '#ccdee9'
+                    }]
+                    }
+                    ];
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                    lat: 6.465422,
+                    lng: 3.406448
+                    },
+                    zoom: 12,
+                    styles: grayStyles,
+                    scrollwheel: false
+                    });
+                    }
+                script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAK46JmTJ6salnDgw_kDV7_x2jb9kXyv0o&callback=initMap')
+            .row
+                .col-12
+                    h2.contact-title Get in Touch
+                .col-lg-8
+                    form#contactForm.form-contact.contact_form(action='contact_process.php' method='post' novalidate='novalidate')
+                        .row
+                            .col-12
+                                .form-group
+                                    textarea#message.form-control.w-100(name='message' cols='30' rows='9' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message')
+                            .col-sm-6
+                                .form-group
+                                    input#name.form-control(name='name' type='text' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name')
+                            .col-sm-6
+                                .form-group
+                                    input#email.form-control(name='email' type='email' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address')
+                            .col-12
+                                .form-group
+                                    input#subject.form-control(name='subject' type='text' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject')
+                        .form-group.mt-3
+                            a.btn_3.button-contactForm(href='#') Send Message
+                .col-lg-4
+                    .media.contact-info
+                        span.contact-info__icon
+                            i.ti-home
+                        .media-body
+                            h3 Buttonwood, California.
+                            p Rosemead, CA 91770
+                    .media.contact-info
+                        span.contact-info__icon
+                            i.ti-tablet
+                        .media-body
+                            h3 00 (440) 9865 562
+                            p Mon to Fri 9am to 6pm
+                    .media.contact-info
+                        span.contact-info__icon
+                            i.ti-email
+                        .media-body
+                            h3 support@colorlib.com
+                            p Send us your query anytime!
+    // ================ contact section end =================

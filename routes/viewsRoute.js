@@ -17,4 +17,6 @@ router.get('/login', authController.isLoggedIn, viewsController.loginUser);
 
 router.get('/signup', viewsController.signup);
 
+router.get('/contact', viewsController.getContactPage);
+
 module.exports = router;

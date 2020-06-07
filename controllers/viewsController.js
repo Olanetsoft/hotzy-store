@@ -139,3 +139,11 @@ exports.signup = (req, res, next) => {
         title: 'Signup'
     });
 };
+
+
+//contact
+exports.getContactPage = (req, res, next) => {
+    res.status(200).render('contact', {
+        title: 'Contact Us'
+    });
+};
