@@ -38,8 +38,6 @@ block content
                                     |  : In Stock
                         p
                             |   #{singleProduct.summary}
-                            //- | First replenish living. Creepeth image image. Creeping can&apos;t, won&apos;t called.
-                            //- | Two fruitful let days signs sea together all land fly subdue
                         .card_area.d-flex.justify-content-between.align-items-center
                             .product_count
                                 span.inumber-decrement
@@ -227,54 +225,53 @@ block content
                                                     i.fa.fa-star
                                                     |  01
                             .review_list
-                                .review_item
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-1.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
-                                .review_item
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-2.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
-                                .review_item
-                                    .media
-                                        .d-flex
-                                            img(src="/img/product/single-product/review-3.png" alt="")
-                                        .media-body
-                                            h4 Blake Ruiz
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                            i.fa.fa-star
-                                    p
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        | sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        | ullamco laboris nisi ut aliquip ex ea commodo
+                                each review in singleProduct.reviews
+                                    .review_item
+                                        .media
+                                            .d-flex
+                                                img.nav__user-img_review(src=`/img/${review.user.photo}` alt="")
+                                            .media-body
+                                                h4= review.user.name.toUpperCase()
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                        p
+                                            |  #{review.review}
+                                        
+                                //- .review_item
+                                //-     .media
+                                //-         .d-flex
+                                //-             img(src="/img/product/single-product/review-2.png" alt="")
+                                //-         .media-body
+                                //-             h4 Blake Ruiz
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-     p
+                                //-         | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                //-         | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                //-         | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                //-         | ullamco laboris nisi ut aliquip ex ea commodo
+                                //- .review_item
+                                //-     .media
+                                //-         .d-flex
+                                //-             img(src="/img/product/single-product/review-3.png" alt="")
+                                //-         .media-body
+                                //-             h4 Blake Ruiz
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-             i.fa.fa-star
+                                //-     p
+                                //-         | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                //-         | sed do eiusmod tempor incididunt ut labore et dolore magna
+                                //-         | aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                //-         | ullamco laboris nisi ut aliquip ex ea commodo
                         .col-lg-6
                             .review_box
                                 h4 Add a Review

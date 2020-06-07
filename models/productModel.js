@@ -85,6 +85,16 @@ productSchema.virtual('durationWeeks').get(function () {
 });
 
 
+//to create a virtual document thats not literally in the DB for reviews
+//to virtual populate
+productSchema.virtual('reviews', {
+    ref: 'Review',
+    foreignField: 'product',
+    localField: '_id'
+});
+
+
+
 //DOCUMENT MIDDLEWARE: runs before .save() and .create()
 productSchema.pre('save', function (next) {
     this.slug = slugify(this.name, { lower: true });
