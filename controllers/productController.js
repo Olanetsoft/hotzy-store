@@ -183,11 +183,71 @@ exports.getProductsStats = async (req, res, next) => {
 
     } catch (err) {
         //return error to check if tour stats exist
-       // next(new AppError('Unable to get all Stats', 404));
+        // next(new AppError('Unable to get all Stats', 404));
 
         res.status(404).json({
             status: "failed to get Stats",
             message: err
         });
     };
+};
+
+
+
+//All about products to cart
+exports.postCart = (req, res, next) => {
+
+    const prodId = req.params.productId;
+
+    Product.findById(prodId)
+        .then(product => {
+            return req.user.addToCart(product);
+        })
+        .then(result => {
+
+
+            //SEND RESPONSE IN JSON
+            res.status(200).json({
+                status: 'success',
+                result: result.length,
+                data: {
+                    result
+                }
+            });
+
+        });
+};
+
+
+
+exports.getCart = (req, res, next) => {
+
+    req.user
+        .populate('cart.items.productId')
+        .execPopulate()
+        .then(user => {
+            const products = user.cart.items;
+
+            //SEND RESPONSE IN JSON
+            res.status(200).json({
+                status: 'success',
+                result: products.length,
+                data: {
+                    products
+                }
+            });
+            // res.render('shop/cart', {
+            //     path: '/cart',
+            //     pageTitle: 'Your Cart',
+            //     products: products
+            // });
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect('/500');
+            // const error = new Error(err);
+            // error.httpStatusCode = 500;
+            // return next(error);
+        });
+
 };

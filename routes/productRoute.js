@@ -24,17 +24,26 @@ router.get('/api/v1/product/:productId', productController.getProduct);
 
 
 
+//All about user cart
+router.post('/api/v1/cart/:productId', authController.protectRouteToEnableOnlyLoggedInUser, productController.postCart);
+
+router.get('/api/v1/cart', authController.protectRouteToEnableOnlyLoggedInUser, productController.getCart);
+
+
+
+
+
 
 //To protect all the route after the ones listed above
 //router.use(authController.protectRouteToEnableOnlyLoggedInUser);
 
-router.get('/api/v1/products-stats',authController.protectRouteToEnableOnlyLoggedInUser, productController.getProductsStats);
+router.get('/api/v1/products-stats', authController.protectRouteToEnableOnlyLoggedInUser, productController.getProductsStats);
 
-router.get('/api/v1/products/top-5-cheap',authController.protectRouteToEnableOnlyLoggedInUser, productController.aliasTopTours, productController.getProducts);
+router.get('/api/v1/products/top-5-cheap', authController.protectRouteToEnableOnlyLoggedInUser, productController.aliasTopTours, productController.getProducts);
 
-router.patch('/api/v1/product/:productId', authController.protectRouteToEnableOnlyLoggedInUser,productController.updateOneProduct);
+router.patch('/api/v1/product/:productId', authController.protectRouteToEnableOnlyLoggedInUser, productController.updateOneProduct);
 
-router.delete('/api/v1/product/:productId',authController.protectRouteToEnableOnlyLoggedInUser, productController.deleteOneProduct);
+router.delete('/api/v1/product/:productId', authController.protectRouteToEnableOnlyLoggedInUser, productController.deleteOneProduct);
 
 
 
