@@ -9,9 +9,9 @@ const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
 
 
-router.get('/home',authController.isLoggedIn, viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
+router.get('/home', authController.isLoggedIn, viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
 
-router.get('/product-page/:slug', viewsController.getProduct);
+router.get('/product-page/:slug', authController.isLoggedIn, viewsController.getProduct);
 
 router.get('/login', authController.isLoggedIn, viewsController.loginUser);
 

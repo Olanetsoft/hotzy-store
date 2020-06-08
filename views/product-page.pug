@@ -274,40 +274,46 @@ block content
                         .col-lg-6
                             .review_box
                                 h4 Add a Review
-                                p Your Rating:
-                                ul.list
-                                    li
-                                        a(href="#")
-                                            i.fa.fa-star
-                                    li
-                                        a(href="#")
-                                            i.fa.fa-star
-                                    li
-                                        a(href="#")
-                                            i.fa.fa-star
-                                    li
-                                        a(href="#")
-                                            i.fa.fa-star
-                                    li
-                                        a(href="#")
-                                            i.fa.fa-star
-                                p Outstanding
-                                form.row.contact_form(action="contact_process.php" method="post" novalidate="novalidate")
-                                    .col-md-12
-                                        .form-group
-                                            input.form-control(type="text" name="name" placeholder="Your Full name")
-                                    .col-md-12
-                                        .form-group
-                                            input.form-control(type="email" name="email" placeholder="Email Address")
-                                    .col-md-12
-                                        .form-group
-                                            input.form-control(type="text" name="number" placeholder="Phone Number")
-                                    .col-md-12
-                                        .form-group
-                                            textarea.form-control(name="message" rows="1" placeholder="Review")
-                                    .col-md-12.text-right
-                                        button.btn_3(type="submit" value="submit")
-                                            | Submit Now
+                                if (user)
+                                    p Select Your Rating:
+                                    ul.list
+                                        li
+                                            a(href="#")
+                                                i.fa.fa-star
+                                        li
+                                            a(href="#")
+                                                i.fa.fa-star
+                                        li
+                                            a(href="#")
+                                                i.fa.fa-star
+                                        li
+                                            a(href="#")
+                                                i.fa.fa-star
+                                        li
+                                            a(href="#")
+                                                i.fa.fa-star
+                                    
+                                    p Outstanding
+                                
+                                    form.row.contact_form(action="contact_process.php" method="post" novalidate="novalidate")
+                                        .col-md-12
+                                            .form-group
+                                                input.form-control(type="text" name="name" placeholder="Your Full name")
+                                        .col-md-12
+                                            .form-group
+                                                input.form-control(type="email" name="email" placeholder="Email Address")
+                                        .col-md-12
+                                            .form-group
+                                                input.form-control(type="text" name="number" placeholder="Phone Number")
+                                        .col-md-12
+                                            .form-group
+                                                textarea.form-control(name="message" rows="1" placeholder="Review")
+                                        .col-md-12.text-right
+                                            button.btn_3(type="submit" value="submit")
+                                                | Submit Now
+                                else
+                                     a.btn_3(href="/login")
+                                                | Login to Submit a Review
     // ================End Product Description Area =================
     // product_list part start
     section.product_list.best_seller

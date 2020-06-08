@@ -53,7 +53,7 @@ block content
                     scrollwheel: false
                     });
                     }
-                script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAK46JmTJ6salnDgw_kDV7_x2jb9kXyv0o&callback=initMap')
+                script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&callback=initMap`)
             .row
                 .col-12
                     h2.contact-title Get in Touch
