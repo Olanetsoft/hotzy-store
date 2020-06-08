@@ -24,10 +24,25 @@ router.get('/api/v1/product/:productId', productController.getProduct);
 
 
 
+
+
+
+
 //All about user cart
 router.post('/api/v1/cart/:productId', authController.protectRouteToEnableOnlyLoggedInUser, productController.postCart);
 
 router.get('/api/v1/cart', authController.protectRouteToEnableOnlyLoggedInUser, productController.getCart);
+
+router.post('/api/v1/cart-delete-item/:productId', authController.protectRouteToEnableOnlyLoggedInUser, productController.postCartDeleteProduct);
+
+
+
+
+//All about user order
+
+router.get('/api/v1/checkout', authController.protectRouteToEnableOnlyLoggedInUser, productController.getCheckout);
+
+
 
 
 
