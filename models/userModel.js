@@ -60,6 +60,14 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
         select: false
+    },
+    cart: {
+        items: [
+            {
+                productId: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
+                quantity: { type: Number, required: true }
+            }
+        ]
     }
 }
 );
