@@ -1,6 +1,9 @@
 //importing product model
 const Product = require('../models/productModel');
 
+//importing Order model
+const Order = require('../models/orderModel');
+
 
 //importing apiFeatures class
 const APIFeatures = require('../utilities/apiFeatures');
@@ -298,6 +301,36 @@ exports.getCheckout = (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
+            // const error = new Error(err);
+            // error.httpStatusCode = 500;
+            // return next(error);
+        });
+};
+
+
+exports.getOrders = (req, res, next) => {
+    Order.find({ 'user.userId': req.user.id })
+        .then(orders => {
+
+
+            //SEND RESPONSE IN JSON
+            res.status(200).json({
+                status: 'success',
+                result: orders.length,
+                data: {
+                    orders
+                }
+            });
+
+            // res.render('shop/orders', {
+            //     path: '/orders',
+            //     pageTitle: 'Your Orders',
+            //     orders: orders
+            // });
+        })
+        .catch(err => {
+            console.log(err)
+            // //res.redirect('/500');
             // const error = new Error(err);
             // error.httpStatusCode = 500;
             // return next(error);

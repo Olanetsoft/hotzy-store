@@ -42,7 +42,7 @@ router.post('/api/v1/cart-delete-item/:productId', authController.protectRouteTo
 
 router.get('/api/v1/checkout', authController.protectRouteToEnableOnlyLoggedInUser, productController.getCheckout);
 
-
+router.get('/api/v1/orders', authController.protectRouteToEnableOnlyLoggedInUser, productController.getOrders);
 
 
 
