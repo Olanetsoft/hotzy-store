@@ -172,9 +172,9 @@ block content
                             .row.total_rate
                                 .col-6
                                     .box_total
-                                        h5 Overall
-                                        h4 4.0
-                                        h6 (03 Reviews)
+                                        h5 Average
+                                        h4= singleProduct.ratingsAverage
+                                        h6 (#{singleProduct.ratingsQuantity} Reviews)
                                 .col-6
                                     .rating_list
                                         h3 Based on 3 Reviews
@@ -232,7 +232,6 @@ block content
                                                 img.nav__user-img_review(src=`/img/${review.user.photo}` alt="")
                                             .media-body
                                                 h4= review.user.name.toUpperCase()
-                                                i.fa.fa-star
                                                 i.fa.fa-star
                                                 i.fa.fa-star
                                                 i.fa.fa-star
