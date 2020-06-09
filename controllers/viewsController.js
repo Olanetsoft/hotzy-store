@@ -152,6 +152,14 @@ exports.getContactPage = (req, res, next) => {
 };
 
 
+//cart
+exports.getCartPage = (req, res, next) => {
+    res.status(200).render('cart', {
+        title: 'My Cart'
+    });
+};
+
+
 // //update details
 // exports.postContact = async (req, res, next) => {
 

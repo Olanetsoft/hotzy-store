@@ -1,0 +1,92 @@
+extends base
+
+block content
+    // ================Home Banner Area =================
+    // breadcrumb start
+    section.breadcrumb.breadcrumb_bg
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .breadcrumb_iner
+              .breadcrumb_iner_item
+                h2 My Cart Products
+                p
+                  | Home 
+                  span -
+                  | cart
+    // breadcrumb start
+    // ================Cart Area =================
+    section.cart_area.padding_top
+      .container
+        .cart_inner
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th(scope="col").text-center Product
+                  th(scope="col").text-center Price
+                  th(scope="col").text-center Quantity
+                  th(scope="col").text-center Total
+              tbody
+                tr
+                  td
+                    .media
+                      .d-flex.text-center
+                        img(src="img/product/single-product/cart-1.jpg" alt="")
+                      .media-body.text-center
+                        p Minimalistic shop for multipurpose use
+                  td
+                    h5.text-center $360.00
+                  td
+                    h5.text-center 1
+                  td
+                    h5 $720.00
+               
+                tr.bottom_button
+                  td
+                    a.btn_1(href="#") Update Cart
+                  td
+                  td
+                  td
+                    .cupon_text.float-right
+                      a.btn_1(href="#") Close Coupon
+                tr
+                  td
+                  td
+                  td
+                    h5 Subtotal
+                  td
+                    h5 $2160.00
+                //- tr.shipping_area
+                  td
+                  td
+                  td
+                    h5 Shipping
+                  td
+                    .shipping_box
+                      ul.list
+                        li
+                          a(href="#") Flat Rate: $5.00
+                        li
+                          a(href="#") Free Shipping
+                        li
+                          a(href="#") Flat Rate: $10.00
+                        li.active
+                          a(href="#") Local Delivery: $2.00
+                      h6
+                        | Calculate Shipping
+                        i.fa.fa-caret-down(aria-hidden="true")
+                      select.shipping_select
+                        option(value="1") Bangladesh
+                        option(value="2") India
+                        option(value="4") Pakistan
+                      select.shipping_select.section_bg
+                        option(value="1") Select a State
+                        option(value="2") Select a State
+                        option(value="4") Select a State
+                      input(type="text" placeholder="Postcode/Zipcode")
+                      a.btn_1(href="#") Update Details
+            .checkout_btn_inner.float-right
+              a.btn_1(href="/home") Continue Shopping
+              a.btn_1.checkout_btn_1(href="orders") Proceed to checkout
+    // ================End Cart Area =================

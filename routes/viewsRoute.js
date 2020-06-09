@@ -19,6 +19,10 @@ router.get('/signup', viewsController.signup);
 
 router.get('/contact', viewsController.getContactPage);
 
+router.get('/cart', viewsController.getCartPage);
+
+
+
 //router.post('/api/v1/contact-message', viewsController.postContact);
 
 module.exports = router;
