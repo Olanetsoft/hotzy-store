@@ -167,19 +167,11 @@ exports.getCartPage = (req, res, next) => {
         .execPopulate()
         .then(user => {
             const products = user.cart.items;
-            console.log(products)
+            //console.log(products)
             res.status(200).render('cart', {
                 title: 'My Cart',
                 products
             });
-            // //SEND RESPONSE IN JSON
-            // res.status(200).json({
-            //     status: 'success',
-            //     result: products.length,
-            //     data: {
-            //         products
-            //     }
-            // });
         })
         .catch(err => {
             console.log(err)
