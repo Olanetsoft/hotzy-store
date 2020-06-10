@@ -167,10 +167,16 @@ exports.getCartPage = (req, res, next) => {
         .execPopulate()
         .then(user => {
             const products = user.cart.items;
+
+            let total = 0;
+            products.forEach(p => {
+                total += p.quantity * p.productId.price;
+            });
             //console.log(products)
             res.status(200).render('cart', {
                 title: 'My Cart',
-                products
+                products,
+                total
             });
         })
         .catch(err => {
