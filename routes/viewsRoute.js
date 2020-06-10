@@ -19,7 +19,7 @@ router.get('/signup', viewsController.signup);
 
 router.get('/contact', viewsController.getContactPage);
 
-router.get('/cart', viewsController.getCartPage);
+router.get('/cart', authController.isLoggedIn, viewsController.getCartPage);
 
 
 

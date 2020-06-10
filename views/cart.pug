@@ -28,20 +28,21 @@ block content
                   th(scope="col").text-center Quantity
                   th(scope="col").text-center Total
               tbody
-                tr
-                  td
-                    .media
-                      .d-flex.text-center
-                        img(src="img/product/single-product/cart-1.jpg" alt="")
-                      .media-body.text-center
-                        p Minimalistic shop for multipurpose use
-                  td
-                    h5.text-center $360.00
-                  td
-                    h5.text-center 1
-                  td
-                    h5 $720.00
-               
+                each prod in products
+                  tr
+                    td
+                      .media
+                        .d-flex.text-center
+                          img(src="img/product/single-product/cart-1.jpg" alt="")
+                        .media-body.text-center
+                          p= prod.productId.name
+                    td
+                      h5.text-center $#{prod.productId.price}
+                    td
+                      h5.text-center= prod.quantity
+                    td
+                      h5 $720.00
+                
                 tr.bottom_button
                   td
                     a.btn_1(href="#") Update Cart

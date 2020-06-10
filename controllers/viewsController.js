@@ -10,6 +10,13 @@ const Comment = require('../models/commentModel');
 //importing Comment model
 const Contact = require('../models/contactModel');
 
+//import AppError
+const AppError = require('../utilities/appError');
+
+
+
+
+
 
 //the home page
 exports.homePage = async (req, res, next) => {
@@ -93,7 +100,7 @@ exports.getProduct = async (req, res, next) => {
     try {
 
         //const newComment = await Comment.find()
-        const singleProduct = await Product.findOne({slug: req.params.slug}).populate({
+        const singleProduct = await Product.findOne({ slug: req.params.slug }).populate({
             path: 'reviews',
             fields: 'reviews rating user'
         })
@@ -154,10 +161,56 @@ exports.getContactPage = (req, res, next) => {
 
 //cart
 exports.getCartPage = (req, res, next) => {
-    res.status(200).render('cart', {
-        title: 'My Cart'
-    });
+    if (!req.user) next(new AppError('Please login', 404))
+    req.user
+        .populate('cart.items.productId')
+        .execPopulate()
+        .then(user => {
+            const products = user.cart.items;
+            console.log(products)
+            res.status(200).render('cart', {
+                title: 'My Cart',
+                products
+            });
+            // //SEND RESPONSE IN JSON
+            // res.status(200).json({
+            //     status: 'success',
+            //     result: products.length,
+            //     data: {
+            //         products
+            //     }
+            // });
+        })
+        .catch(err => {
+            console.log(err)
+        });
+
 };
+
+
+//cart
+exports.getCartDetails = (req, res, next) => {
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // //update details
