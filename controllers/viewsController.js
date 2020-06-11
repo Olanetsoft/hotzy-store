@@ -190,9 +190,11 @@ exports.getCartPage = (req, res, next) => {
 
 
 //cart
-exports.getCartDetails = (req, res, next) => {
+exports.getCheckout = (req, res, next) => {
 
-
+    res.status(200).render('checkout', {
+        title: 'checkout page'
+    });
 };
 
 

@@ -1,0 +1,145 @@
+extends base
+
+block content
+    section.checkout_area.padding_top
+        .container
+            //- .returning_customer
+            //-     .check_title
+            //-         h2
+            //-             | Returning Customer?
+            //-             a(href="#") Click here to login
+            //-     p
+            //-         | If you have shopped with us before, please enter your details in the
+            //-         | boxes below. If you are a new customer, please proceed to the
+            //-         | Billing &amp; Shipping section.
+            //-     form.row.contact_form(action="#" method="post" novalidate="novalidate")
+            //-         .col-md-6.form-group.p_star
+            //-             input#name.form-control(type="text" name="name" value=" ")
+            //-             span.placeholder(data-placeholder="Username or Email")
+            //-         .col-md-6.form-group.p_star
+            //-             input#password.form-control(type="password" name="password" value="")
+            //-             span.placeholder(data-placeholder="Password")
+            //-         .col-md-12.form-group
+            //-             button.btn_3(type="submit" value="submit")
+            //-                 | log in
+            //-             .creat_account
+            //-                 input#f-option(type="checkbox" name="selector")
+            //-                 label(for="f-option") Remember me
+            //-             a.lost_pass(href="#") Lost your password?
+            .cupon_area
+                .check_title
+                    h2
+                        | Have a coupon?
+                        a(href="#") Click here to enter your code
+                input(type="text" placeholder="Enter coupon code")
+                a.tp_btn(href="#") Apply Coupon
+            .billing_details
+                .row
+                    //- .col-lg-8
+                    //-     h3 Billing Details
+                    //-     form.row.contact_form(action="#" method="post" novalidate="novalidate")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#first.form-control(type="text" name="name")
+                    //-             span.placeholder(data-placeholder="First name")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#last.form-control(type="text" name="name")
+                    //-             span.placeholder(data-placeholder="Last name")
+                    //-         .col-md-12.form-group
+                    //-             input#company.form-control(type="text" name="company" placeholder="Company name")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#number.form-control(type="text" name="number")
+                    //-             span.placeholder(data-placeholder="Phone number")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#email.form-control(type="text" name="compemailany")
+                    //-             span.placeholder(data-placeholder="Email Address")
+                    //-         .col-md-12.form-group.p_star
+                    //-             select.country_select
+                    //-                 option(value="1") Country
+                    //-                 option(value="2") Country
+                    //-                 option(value="4") Country
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#add1.form-control(type="text" name="add1")
+                    //-             span.placeholder(data-placeholder="Address line 01")
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#add2.form-control(type="text" name="add2")
+                    //-             span.placeholder(data-placeholder="Address line 02")
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#city.form-control(type="text" name="city")
+                    //-             span.placeholder(data-placeholder="Town/City")
+                    //-         .col-md-12.form-group.p_star
+                    //-             select.country_select
+                    //-                 option(value="1") District
+                    //-                 option(value="2") District
+                    //-                 option(value="4") District
+                    //-         .col-md-12.form-group
+                    //-             input#zip.form-control(type="text" name="zip" placeholder="Postcode/ZIP")
+                    //-         .col-md-12.form-group
+                    //-             .creat_account
+                    //-                 input#f-option2(type="checkbox" name="selector")
+                    //-                 label(for="f-option2") Create an account?
+                    //-         .col-md-12.form-group
+                    //-             .creat_account
+                    //-                 h3 Shipping Details
+                    //-                 input#f-option3(type="checkbox" name="selector")
+                    //-                 label(for="f-option3") Ship to a different address?
+                    //-             textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
+                    
+                    .col-lg-12
+                        .order_box
+                            h2 Your Order
+                            ul.list
+                                li
+                                    a(href="#")
+                                        | Product
+                                        span Total
+                                li
+                                    a(href="#")
+                                        | Fresh Blackberry
+                                        span.middle x 02
+                                        span.last $720.00
+                                li
+                                    a(href="#")
+                                        | Fresh Tomatoes
+                                        span.middle x 02
+                                        span.last $720.00
+                                li
+                                    a(href="#")
+                                        | Fresh Brocoli
+                                        span.middle x 02
+                                        span.last $720.00
+                            ul.list.list_2
+                                li
+                                    a(href="#")
+                                        | Subtotal
+                                        span $2160.00
+                                li
+                                    a(href="#")
+                                        | Shipping
+                                        span Flat rate: $50.00
+                                li
+                                    a(href="#")
+                                        | Total
+                                        span $2210.00
+                            .payment_item
+                                .radion_btn
+                                    input#f-option5(type="radio" name="selector")
+                                    label(for="f-option5") Check payments
+                                    .check
+                                p
+                                    | Please send a check to Store Name, Store Street, Store Town,
+                                    | Store State / County, Store Postcode.
+                            .payment_item.active
+                                .radion_btn
+                                    input#f-option6(type="radio" name="selector")
+                                    label(for="f-option6") Paypal 
+                                    img(src="img/product/single-product/card.jpg" alt="")
+                                    .check
+                                p
+                                    | Please send a check to Store Name, Store Street, Store Town,
+                                    | Store State / County, Store Postcode.
+                            .creat_account
+                                input#f-option4(type="checkbox" name="selector")
+                                label(for="f-option4") I&rsquo;ve read and accept the 
+                                a(href="#") terms &amp; conditions*
+                            a.btn_3(href="#") Proceed to Paypal
+    // ================End Checkout Area =================

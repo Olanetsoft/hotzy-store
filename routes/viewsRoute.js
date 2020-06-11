@@ -21,6 +21,8 @@ router.get('/contact', viewsController.getContactPage);
 
 router.get('/cart', authController.isLoggedIn, viewsController.getCartPage);
 
+router.get('/checkout', authController.isLoggedIn, viewsController.getCheckout);
+
 
 
 //router.post('/api/v1/contact-message', viewsController.postContact);
