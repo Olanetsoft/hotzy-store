@@ -161,22 +161,25 @@ exports.getContactPage = (req, res, next) => {
 
 //cart
 exports.getCartPage = (req, res, next) => {
-    if (!req.user) next(new AppError('Please login', 404))
+    if (!req.user) res.redirect('/login')
     req.user
         .populate('cart.items.productId')
         .execPopulate()
         .then(user => {
+            
             const products = user.cart.items;
 
             let total = 0;
             products.forEach(p => {
                 total += p.quantity * p.productId.price;
             });
+           
             //console.log(products)
             res.status(200).render('cart', {
                 title: 'My Cart',
                 products,
-                total
+                total,
+                //totalSum
             });
         })
         .catch(err => {

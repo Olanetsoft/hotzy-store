@@ -1,21 +1,6 @@
 extends base
 
 block content
-    // ================Home Banner Area =================
-    // breadcrumb start
-    section.breadcrumb.breadcrumb_bg
-      .container
-        .row.justify-content-center
-          .col-lg-8
-            .breadcrumb_iner
-              .breadcrumb_iner_item
-                h2 My Cart Products
-                p
-                  | Home 
-                  span -
-                  | cart
-    // breadcrumb start
-    // ================Cart Area =================
     section.cart_area.padding_top
       .container
         .cart_inner
@@ -26,38 +11,37 @@ block content
                   th(scope="col").text-center Product
                   th(scope="col").text-center Price
                   th(scope="col").text-center Quantity
-                  th(scope="col").text-center Total
-              tbody
+                  //- th(scope="col").text-center Total
+              tbody.text-center
                 each prod in products
-                  tr
-                    td
-                      .media
+                  tr.text-center
+                    td.text-center
+                      .media.text-center
                         .d-flex.text-center
                           img(src="img/product/single-product/cart-1.jpg" alt="")
                         .media-body.text-center
-                          p= prod.productId.name
-                    td
+                          p.text-center= prod.productId.name
+                    td.text-center
                       h5.text-center $ #{prod.productId.price}
-                    td
+                    td.text-center
                       h5.text-center= prod.quantity
-                    td
-                      h5 $ #{total}
+                    //- td.text-center
+                    //-   h5 $ #{total}
                 
-                tr.bottom_button
-                  td
-                    a.btn_1(href="#") Update Cart
-                  td
-                  td
-                  td
-                    .cupon_text.float-right
-                      a.btn_1(href="#") Close Coupon
+                //- tr.bottom_button
+                //-   td
+                //-     a.btn_1(href="#") Update Cart
+                //-   td
+                //-   td
+                //-   td
+                //-     .cupon_text.float-right
+                //-       a.btn_1(href="#") Close Coupon
                 tr
-                  td
                   td
                   td
                     h5 Subtotal
                   td
-                    h5 $2160.00
+                    h5 $ #{total}
                 //- tr.shipping_area
                   td
                   td
