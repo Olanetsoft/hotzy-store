@@ -83,8 +83,8 @@ block content
                     //-                 input#f-option3(type="checkbox" name="selector")
                     //-                 label(for="f-option3") Ship to a different address?
                     //-             textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
-                    
-                    .col-lg-12
+
+                    .col-lg-6.align-items-center
                         .order_box
                             h2 Your Order
                             ul.list
@@ -92,54 +92,62 @@ block content
                                     a(href="#")
                                         | Product
                                         span Total
-                                li
-                                    a(href="#")
-                                        | Fresh Blackberry
-                                        span.middle x 02
-                                        span.last $720.00
-                                li
-                                    a(href="#")
-                                        | Fresh Tomatoes
-                                        span.middle x 02
-                                        span.last $720.00
-                                li
-                                    a(href="#")
-                                        | Fresh Brocoli
-                                        span.middle x 02
-                                        span.last $720.00
-                            ul.list.list_2
-                                li
-                                    a(href="#")
-                                        | Subtotal
-                                        span $2160.00
-                                li
-                                    a(href="#")
-                                        | Shipping
-                                        span Flat rate: $50.00
-                                li
-                                    a(href="#")
-                                        | Total
-                                        span $2210.00
-                            .payment_item
-                                .radion_btn
-                                    input#f-option5(type="radio" name="selector")
-                                    label(for="f-option5") Check payments
-                                    .check
-                                p
-                                    | Please send a check to Store Name, Store Street, Store Town,
-                                    | Store State / County, Store Postcode.
-                            .payment_item.active
-                                .radion_btn
-                                    input#f-option6(type="radio" name="selector")
-                                    label(for="f-option6") Paypal 
-                                    img(src="img/product/single-product/card.jpg" alt="")
-                                    .check
-                                p
-                                    | Please send a check to Store Name, Store Street, Store Town,
-                                    | Store State / County, Store Postcode.
-                            .creat_account
-                                input#f-option4(type="checkbox" name="selector")
-                                label(for="f-option4") I&rsquo;ve read and accept the 
-                                a(href="#") terms &amp; conditions*
-                            a.btn_3(href="#") Proceed to Paypal
-    // ================End Checkout Area =================
+                                each prod in products
+                                    li
+                                        a(href="#")
+                                            | #{prod.productId.name}
+                                            span.middle x #{prod.quantity}
+                                            span.last $ #{prod.productId.price}
+                                //- li
+                                //-     a(href="#")
+                                //-         | Fresh Tomatoes
+                                //-         span.middle x 02
+                                //-         span.last $720.00
+                                //- li
+                                //-     a(href="#")
+                                //-         | Fresh Brocoli
+                                //-         span.middle x 02
+                                //-         span.last $720.00
+                                ul.list.list_2
+                                    li
+                                        a(href="#")
+                                            | Subtotal
+                                            span $ #{total}
+                                    - const v = total + 50
+                                    li
+                                        a(href="#")
+                                            | Shipping
+                                            span Flat rate: $50.00
+                                    li
+                                        a(href="#")
+                                            | Total
+                                            span $ #{v}
+                                br
+                                .payment_item
+                                    .radion_btn
+                                        input#f-option5(type="radio" name="selector")
+                                        label(for="f-option5") Paystack
+                                        img(src="img/product/single-product/card.jpg" alt="")
+                                        .check
+
+                                    p
+                                        | Please send a check to Store Name, Store Street, Store Town,
+                                        | Store State / County, Store Postcode.
+                                    br
+                                a.btn_3(href="#") Continue with Paystack
+                                br
+                                .payment_item.active
+                                    .radion_btn
+                                        input#f-option6(type="radio" name="selector")
+                                        label(for="f-option6") Paypal 
+                                        img(src="img/product/single-product/card.jpg" alt="")
+                                        .check
+                                    p
+                                        | Please send a check to Store Name, Store Street, Store Town,
+                                        | Store State / County, Store Postcode.
+                                .creat_account
+                                    input#f-option4(type="checkbox" name="selector")
+                                    label(for="f-option4") I&rsquo;ve read and accept the 
+                                    a(href="#") terms &amp; conditions*
+                                a.btn_3(href="#") Proceed to Paypal
+        // ================End Checkout Area =================

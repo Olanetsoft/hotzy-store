@@ -166,14 +166,14 @@ exports.getCartPage = (req, res, next) => {
         .populate('cart.items.productId')
         .execPopulate()
         .then(user => {
-            
+
             const products = user.cart.items;
 
             let total = 0;
             products.forEach(p => {
                 total += p.quantity * p.productId.price;
             });
-           
+
             //console.log(products)
             res.status(200).render('cart', {
                 title: 'My Cart',
@@ -191,10 +191,29 @@ exports.getCartPage = (req, res, next) => {
 
 //cart
 exports.getCheckout = (req, res, next) => {
+    if (!req.user) res.redirect('/login')
+    req.user
+        .populate('cart.items.productId')
+        .execPopulate()
+        .then(user => {
 
-    res.status(200).render('checkout', {
-        title: 'checkout page'
-    });
+            const products = user.cart.items;
+
+            let total = 0;
+            products.forEach(p => {
+                total += p.quantity * p.productId.price;
+            });
+
+            res.status(200).render('checkout', {
+                products,
+                total,
+                //totalSum
+                title: 'checkout page'
+            });
+        })
+        .catch(err => {
+            console.log(err)
+        });
 };
 
 
