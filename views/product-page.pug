@@ -278,36 +278,43 @@ block content
                                     p Select Your Rating:
                                     ul.list
                                         li
-                                            a(href="#")
-                                                i.fa.fa-star
+                                            a.i.fa.fa-star
                                         li
-                                            a(href="#")
-                                                i.fa.fa-star
+                                            a.i.fa.fa-star
                                         li
-                                            a(href="#")
-                                                i.fa.fa-star
+                                            a.i.fa.fa-star
                                         li
-                                            a(href="#")
-                                                i.fa.fa-star
+                                            a.i.fa.fa-star
                                         li
-                                            a(href="#")
-                                                i.fa.fa-star
+                                            a.i.fa.fa-star
+                                        //- li
+                                        //-     a(href="#")
+                                        //-         i.fa.fa-star
                                     
                                     p Outstanding
                                 
-                                    form.row.contact_form(action="contact_process.php" method="post" novalidate="novalidate")
+                                    form.row.contact_form.review(action="#" method="post" novalidate="novalidate")
                                         .col-md-12
                                             .form-group
-                                                input.form-control(type="text" name="name" placeholder="Your Full name")
+                                                input#reviewDetails.form-control(type="text" name="review" placeholder="Your Review")
                                         .col-md-12
                                             .form-group
-                                                input.form-control(type="email" name="email" placeholder="Email Address")
+                                                input#rating.form-control(type="number" name="rating" placeholder="Rating" min="1" max="5")
+                                        
                                         .col-md-12
                                             .form-group
-                                                input.form-control(type="text" name="number" placeholder="Phone Number")
+                                                input#userId.form-control(type="hidden" name="userId" value= user.id)
+                                        
                                         .col-md-12
                                             .form-group
-                                                textarea.form-control(name="message" rows="1" placeholder="Review")
+                                                input#productId.form-control(type="hidden" name="productId" value= singleProduct.id)
+                                        
+                                        //- .col-md-12
+                                        //-     .form-group
+                                        //-         input.form-control(type="text" name="number" placeholder="Phone Number")
+                                        //- .col-md-12
+                                        //-     .form-group
+                                        //-         textarea.form-control(name="message" rows="1" placeholder="Review")
                                         .col-md-12.text-right
                                             button.btn_3(type="submit" value="submit")
                                                 | Submit Now

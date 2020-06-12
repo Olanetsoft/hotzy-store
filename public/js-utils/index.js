@@ -3,7 +3,7 @@ import '@babel/polyfill';
 
 
 //import login.js code
-import { login, logout, signup, postComment } from './utils';
+import { login, logout, signup, postComment, postReview } from './utils';
 
 
 
@@ -12,6 +12,7 @@ const loginForm = document.querySelector('.contact_form.login');
 const logoutBtn = document.querySelector('.nav-link.logout');
 const signupForm = document.querySelector('.contact_form.signup');
 const contactPageForm = document.querySelector('.contact_form.contact-us');
+const reviewPageForm = document.querySelector('.contact_form.review');
 
 
 
@@ -56,14 +57,34 @@ if (contactPageForm) {
         //VALUES
         //get the details
         const name = document.getElementById('name').value;
-        console.log(name);
+        //console.log(name);
         const email = document.getElementById('email').value;
-        console.log(email);
+        //console.log(email);
         const message = document.getElementById('message').value;
-        console.log(message);
+        //console.log(message);
         const subject = document.getElementById('subject').value;
-        console.log(subject);
+        //console.log(subject);
         postComment(name, email, message, subject);
+
+    });
+};
+
+
+//review
+if (reviewPageForm) {
+    reviewPageForm.addEventListener('submit', e => {
+        e.preventDefault();
+        //VALUES
+        //get the details
+        const review = document.getElementById('reviewDetails').value;
+        //console.log(review);
+        const rating = document.getElementById('rating').value;
+        //console.log(rating);
+        const userId = document.getElementById('userId').value;
+        //console.log(userId);
+        const productId = document.getElementById('productId').value;
+        //console.log(productId);
+        postReview(review, rating, userId, productId);
 
     });
 };

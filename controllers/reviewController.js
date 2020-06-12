@@ -29,8 +29,9 @@ exports.createReview = async (req, res, next) => {
 
         })
     } catch (err) {
+        console.log(err)
         res.status(400).json({
-            status: 'failed 🤷‍♀️',
+            status: 'failed',
             message: err
         })
     };
