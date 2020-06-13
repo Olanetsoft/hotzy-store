@@ -14,7 +14,7 @@ const Contact = require('../models/contactModel');
 const AppError = require('../utilities/appError');
 
 
-
+var Cart = require('../models/cartModel');
 
 
 
@@ -160,60 +160,72 @@ exports.getContactPage = (req, res, next) => {
 
 
 //cart
-exports.getCartPage = (req, res, next) => {
-    //if (!req.user) res.redirect('/login')
-    req.user
-        .populate('cart.items.productId')
-        .execPopulate()
-        .then(user => {
+// exports.getCartPage = (req, res, next) => {
+//     //if (!req.user) res.redirect('/login')
+//     req.user
+//         .populate('cart.items.productId')
+//         .execPopulate()
+//         .then(user => {
 
-            const products = user.cart.items;
+//             const products = user.cart.items;
 
-            let total = 0;
-            products.forEach(p => {
-                total += p.quantity * p.productId.price;
-            });
+//             let total = 0;
+//             products.forEach(p => {
+//                 total += p.quantity * p.productId.price;
+//             });
 
-            //console.log(products)
-            res.status(200).render('cart', {
-                title: 'My Cart',
-                products,
-                total,
-                //totalSum
-            });
-        })
-        .catch(err => {
-            console.log(err)
-        });
+//             //console.log(products)
+//             res.status(200).render('cart', {
+//                 title: 'My Cart',
+//                 products,
+//                 total,
+//                 //totalSum
+//             });
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         });
 
-};
+// };
 
 
 //cart
 exports.getCheckout = (req, res, next) => {
-    if (!req.user) res.redirect('/login')
-    req.user
-        .populate('cart.items.productId')
-        .execPopulate()
-        .then(user => {
+    // if (!req.user) res.redirect('/login')
+    // req.user
+    //     .populate('cart.items.productId')
+    //     .execPopulate()
+    //     .then(user => {
 
-            const products = user.cart.items;
+    //         const products = user.cart.items;
 
-            let total = 0;
-            products.forEach(p => {
-                total += p.quantity * p.productId.price;
-            });
+    //         let total = 0;
+    //         products.forEach(p => {
+    //             total += p.quantity * p.productId.price;
+    //         });
 
-            res.status(200).render('checkout', {
-                products,
-                total,
-                //totalSum
-                title: 'checkout page'
-            });
-        })
-        .catch(err => {
-            console.log(err)
-        });
+    //         res.status(200).render('checkout', {
+    //             products,
+    //             total,
+    //             //totalSum
+    //             title: 'checkout page'
+    //         });
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     });
+
+    if (!req.session.cart) {
+        return res.render('checkout', { products: null });
+    }
+    var cart = new Cart(req.session.cart);
+
+    res.render('checkout', {
+
+        products: cart.generateArray(),
+        totalPrice: cart.totalPrice
+
+    });
 };
 
 

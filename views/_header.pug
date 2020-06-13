@@ -53,8 +53,13 @@ header.main_menu.home_menu
                                     a(href="")
                                         i.ti-heart
                                     .dropdown.cart
-                                        a#navbarDropdown3.dropdown-toggle(href="/cart")
-                                            i.fas.fa-cart-plus
+                                        a#navbarDropdown3.dropdown-toggle(href="/shopping-cart")
+                                            i.fas.fa-shopping-cart &nbsp;&nbsp;&nbsp;
+                                            if session.cart
+                                                span= session.cart.totalQty
+                                            else
+                                                span= 0
+                                            
                                         //
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <div class="single_product">

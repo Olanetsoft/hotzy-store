@@ -3,88 +3,92 @@ extends base
 block content
     section.checkout_area.padding_top
         .container
-            //- .returning_customer
-            //-     .check_title
-            //-         h2
-            //-             | Returning Customer?
-            //-             a(href="#") Click here to login
-            //-     p
-            //-         | If you have shopped with us before, please enter your details in the
-            //-         | boxes below. If you are a new customer, please proceed to the
-            //-         | Billing &amp; Shipping section.
-            //-     form.row.contact_form(action="#" method="post" novalidate="novalidate")
-            //-         .col-md-6.form-group.p_star
-            //-             input#name.form-control(type="text" name="name" value=" ")
-            //-             span.placeholder(data-placeholder="Username or Email")
-            //-         .col-md-6.form-group.p_star
-            //-             input#password.form-control(type="password" name="password" value="")
-            //-             span.placeholder(data-placeholder="Password")
-            //-         .col-md-12.form-group
-            //-             button.btn_3(type="submit" value="submit")
-            //-                 | log in
-            //-             .creat_account
-            //-                 input#f-option(type="checkbox" name="selector")
-            //-                 label(for="f-option") Remember me
-            //-             a.lost_pass(href="#") Lost your password?
-            .cupon_area
+            .returning_customer
                 .check_title
                     h2
-                        | Have a coupon?
-                        a(href="#") Click here to enter your code
-                input(type="text" placeholder="Enter coupon code")
-                a.tp_btn(href="#") Apply Coupon
+                        | Returning Customer?
+                        //- a(href="#") Click here to login
+                if user
+                    h2 Hey   
+                        | #{user.name.toUpperCase()} Proceed to payment
+                else
+                    p
+                        | If you have shopped with us before, please enter your details in the
+                        | boxes below. If you are a new customer, please proceed to the
+                        | Billing &amp; Shipping section.
+                    form.row.contact_form.returning_user_login(action="#" method="post" novalidate="novalidate")
+                        .col-md-6.form-group.p_star
+                            input#name.form-control(type="email" name="email" value=" ")
+                            span.placeholder(data-placeholder='you@example.com')
+                        .col-md-6.form-group.p_star
+                            input#password.form-control(type="password" name="password" value="")
+                            span.placeholder(data-placeholder='••••••••')
+                        .col-md-12.form-group
+                            button.btn_3(type="submit" value="submit")
+                                | log in
+                            .creat_account
+                                input#f-option(type="checkbox" name="selector")
+                                label(for="f-option") Remember me
+                            // a.lost_pass(href="#") Lost your password?
+            //- .cupon_area
+            //-     .check_title
+            //-         h2
+            //-             | Have a coupon?
+            //-             a(href="#") Click here to enter your code
+            //-     input(type="text" placeholder="Enter coupon code")
+            //-     a.tp_btn(href="#") Apply Coupon
             .billing_details
                 .row
-                    //- .col-lg-8
-                    //-     h3 Billing Details
-                    //-     form.row.contact_form(action="#" method="post" novalidate="novalidate")
-                    //-         .col-md-6.form-group.p_star
-                    //-             input#first.form-control(type="text" name="name")
-                    //-             span.placeholder(data-placeholder="First name")
-                    //-         .col-md-6.form-group.p_star
-                    //-             input#last.form-control(type="text" name="name")
-                    //-             span.placeholder(data-placeholder="Last name")
-                    //-         .col-md-12.form-group
-                    //-             input#company.form-control(type="text" name="company" placeholder="Company name")
-                    //-         .col-md-6.form-group.p_star
-                    //-             input#number.form-control(type="text" name="number")
-                    //-             span.placeholder(data-placeholder="Phone number")
-                    //-         .col-md-6.form-group.p_star
-                    //-             input#email.form-control(type="text" name="compemailany")
-                    //-             span.placeholder(data-placeholder="Email Address")
-                    //-         .col-md-12.form-group.p_star
-                    //-             select.country_select
-                    //-                 option(value="1") Country
-                    //-                 option(value="2") Country
-                    //-                 option(value="4") Country
-                    //-         .col-md-12.form-group.p_star
-                    //-             input#add1.form-control(type="text" name="add1")
-                    //-             span.placeholder(data-placeholder="Address line 01")
-                    //-         .col-md-12.form-group.p_star
-                    //-             input#add2.form-control(type="text" name="add2")
-                    //-             span.placeholder(data-placeholder="Address line 02")
-                    //-         .col-md-12.form-group.p_star
-                    //-             input#city.form-control(type="text" name="city")
-                    //-             span.placeholder(data-placeholder="Town/City")
-                    //-         .col-md-12.form-group.p_star
-                    //-             select.country_select
-                    //-                 option(value="1") District
-                    //-                 option(value="2") District
-                    //-                 option(value="4") District
-                    //-         .col-md-12.form-group
-                    //-             input#zip.form-control(type="text" name="zip" placeholder="Postcode/ZIP")
-                    //-         .col-md-12.form-group
-                    //-             .creat_account
-                    //-                 input#f-option2(type="checkbox" name="selector")
-                    //-                 label(for="f-option2") Create an account?
-                    //-         .col-md-12.form-group
-                    //-             .creat_account
-                    //-                 h3 Shipping Details
-                    //-                 input#f-option3(type="checkbox" name="selector")
-                    //-                 label(for="f-option3") Ship to a different address?
-                    //-             textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
+                    .col-lg-8
+                        h3 Billing Details
+                        form.row.contact_form(action="#" method="post" novalidate="novalidate")
+                            .col-md-6.form-group.p_star
+                                input#first.form-control(type="text" name="name")
+                                span.placeholder(data-placeholder="First name")
+                            .col-md-6.form-group.p_star
+                                input#last.form-control(type="text" name="name")
+                                span.placeholder(data-placeholder="Last name")
+                            .col-md-12.form-group
+                                input#company.form-control(type="text" name="company" placeholder="Company name")
+                            .col-md-6.form-group.p_star
+                                input#number.form-control(type="text" name="number")
+                                span.placeholder(data-placeholder="Phone number")
+                            .col-md-6.form-group.p_star
+                                input#email.form-control(type="text" name="compemailany")
+                                span.placeholder(data-placeholder="Email Address")
+                            .col-md-12.form-group.p_star
+                                select.country_select
+                                    option(value="1") Country
+                                    option(value="2") Country
+                                    option(value="4") Country
+                            .col-md-12.form-group.p_star
+                                input#add1.form-control(type="text" name="add1")
+                                span.placeholder(data-placeholder="Address line 01")
+                            .col-md-12.form-group.p_star
+                                input#add2.form-control(type="text" name="add2")
+                                span.placeholder(data-placeholder="Address line 02")
+                            .col-md-12.form-group.p_star
+                                input#city.form-control(type="text" name="city")
+                                span.placeholder(data-placeholder="Town/City")
+                            .col-md-12.form-group.p_star
+                                select.country_select
+                                    option(value="1") District
+                                    option(value="2") District
+                                    option(value="4") District
+                            .col-md-12.form-group
+                                input#zip.form-control(type="text" name="zip" placeholder="Postcode/ZIP")
+                            .col-md-12.form-group
+                                .creat_account
+                                    input#f-option2(type="checkbox" name="selector")
+                                    label(for="f-option2") Create an account?
+                            .col-md-12.form-group
+                                .creat_account
+                                    h3 Shipping Details
+                                    input#f-option3(type="checkbox" name="selector")
+                                    label(for="f-option3") Ship to a different address?
+                                textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
 
-                    .col-lg-6.align-items-center
+                    .col-lg-4.align-items-center
                         .order_box
                             h2 Your Order
                             ul.list
@@ -95,9 +99,9 @@ block content
                                 each prod in products
                                     li
                                         a(href="#")
-                                            | #{prod.productId.name}
-                                            span.middle x #{prod.quantity}
-                                            span.last $ #{prod.productId.price}
+                                            | #{prod.item.name}
+                                            span.middle x #{prod.qty}
+                                            span.last $ #{prod.item.price}
                                 //- li
                                 //-     a(href="#")
                                 //-         | Fresh Tomatoes
@@ -112,8 +116,8 @@ block content
                                     li
                                         a(href="#")
                                             | Subtotal
-                                            span $ #{total}
-                                    - const v = total + 50
+                                            span $ #{totalPrice}
+                                    - const v = totalPrice + 50
                                     li
                                         a(href="#")
                                             | Shipping

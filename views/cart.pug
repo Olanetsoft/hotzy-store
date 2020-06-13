@@ -1,10 +1,11 @@
 extends base
 
 block content
-    section.cart_area.padding_top
-      .container
-        .cart_inner
-          .table-responsive
+  section.cart_area.padding_top
+    .container
+      .cart_inner
+        .table-responsive
+          if products
             table.table
               thead
                 tr
@@ -20,28 +21,17 @@ block content
                         .d-flex.text-center
                           img(src="img/product/single-product/cart-1.jpg" alt="")
                         .media-body.text-center
-                          p.text-center= prod.productId.name
+                          p.text-center= prod.item.name
                     td.text-center
-                      h5.text-center $ #{prod.productId.price}
+                      h5.text-center $ #{prod.item.price}
                     td.text-center
-                      h5.text-center= prod.quantity
-                    //- td.text-center
-                    //-   h5 $ #{total}
-                
-                //- tr.bottom_button
-                //-   td
-                //-     a.btn_1(href="#") Update Cart
-                //-   td
-                //-   td
-                //-   td
-                //-     .cupon_text.float-right
-                //-       a.btn_1(href="#") Close Coupon
+                      h5.text-center= prod.qty
                 tr
                   td
                   td
                     h5 Subtotal
                   td
-                    h5 $ #{total}
+                    h5 $ #{totalPrice}
                 //- tr.shipping_area
                   td
                   td
@@ -74,4 +64,20 @@ block content
             .checkout_btn_inner.float-right
               a.btn_1(href="/home") Continue Shopping
               a.btn_1.checkout_btn_1(href="/checkout") Proceed to checkout
-    // ================End Cart Area =================
+          else
+            table.table
+              thead
+                tr
+                  th(scope="col").text-center Product
+                  th(scope="col").text-center Price
+                  th(scope="col").text-center Quantity
+                  //- th(scope="col").text-center Total
+              tbody.text-center
+                tr.text-center
+                  td.text-center
+                    h5 NO ITEM FOUND IN CART. 
+                  td
+                    a.btn_1(href="/home")  Visit Store
+                  td
+
+  // ================End Cart Area =================

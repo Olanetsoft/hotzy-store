@@ -21,21 +21,37 @@ router.get('/signup', viewsController.signup);
 
 router.get('/contact', viewsController.getContactPage);
 
-router.get('/cart', authController.isLoggedIn, viewsController.getCartPage);
+//router.get('/cart', authController.isLoggedIn, viewsController.getCartPage);
 
 router.get('/checkout', authController.isLoggedIn, viewsController.getCheckout);
 
 
 router.get('/add-to-cart/:id/:slug', function (req, res, next) {
+    
     var productId = req.params.id;
     var slug = req.params.slug
     var cart = new Cart(req.session.cart ? req.session.cart : {});
     Product.findById(productId, function (err, product) {
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart)
+        //console.log(req.session.cart)
         res.redirect(`/product-page/${slug}`);
     });
+});
+
+router.get('/shopping-cart', function (req, res, next) {
+    if (!req.session.cart) {
+        return res.render('cart', { products: null });
+    }
+    var cart = new Cart(req.session.cart);
+
+    res.render('cart', {
+
+        products: cart.generateArray(),
+        totalPrice: cart.totalPrice
+
+    });
+
 });
 
 
