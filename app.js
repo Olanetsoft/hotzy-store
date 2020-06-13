@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 //requiring the cookie parser
 const cookieParser = require('cookie-parser');
@@ -11,6 +12,10 @@ const AppError = require('./utilities/appError');
 
 // //import the global error handler
 const globalErrorHandler = require('./controllers/errorController');
+
+//Including session
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 
 
@@ -57,6 +62,22 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 
+app.use(session({
+    secret: 'mylongsuperfuckingsecretpleasedontcopy',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+app.use(function(req, res, next) {
+    req.session.cookie.maxAge = 180 * 60 * 1000; // 3 hours
+     next();
+ });
+
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 
 
 

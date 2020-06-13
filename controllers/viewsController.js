@@ -161,7 +161,7 @@ exports.getContactPage = (req, res, next) => {
 
 //cart
 exports.getCartPage = (req, res, next) => {
-    if (!req.user) res.redirect('/login')
+    //if (!req.user) res.redirect('/login')
     req.user
         .populate('cart.items.productId')
         .execPopulate()
