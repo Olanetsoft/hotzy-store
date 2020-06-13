@@ -216,7 +216,7 @@ exports.getCheckout = (req, res, next) => {
     //     });
 
     if (!req.session.cart) {
-        return res.render('checkout', { products: null });
+        return res.render('shopping-cart');
     }
     var cart = new Cart(req.session.cart);
 
