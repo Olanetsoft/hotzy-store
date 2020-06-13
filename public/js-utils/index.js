@@ -3,12 +3,13 @@ import '@babel/polyfill';
 
 
 //import login.js code
-import { login, logout, signup, postComment, postReview } from './utils';
+import { login, login2, logout, signup, postComment, postReview } from './utils';
 
 
 
 //DOM ELEMENT
 const loginForm = document.querySelector('.contact_form.login');
+const loginForm2 = document.querySelector('.contact_form.returning_user_login');
 const logoutBtn = document.querySelector('.nav-link.logout');
 const signupForm = document.querySelector('.contact_form.signup');
 const contactPageForm = document.querySelector('.contact_form.contact-us');
@@ -26,6 +27,19 @@ if (loginForm) {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         login(email, password);
+    });
+};
+
+
+//Login from checkout page
+if (loginForm2) {
+    loginForm2.addEventListener('submit', e => {
+        e.preventDefault();
+        //VALUES
+        //get the email and password
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        login2(email, password);
     });
 };
 

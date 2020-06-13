@@ -8371,7 +8371,7 @@ exports.showAlert = showAlert;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.postReview = exports.postComment = exports.signup = exports.logout = exports.login = void 0;
+exports.postReview = exports.postComment = exports.signup = exports.logout = exports.login2 = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8435,13 +8435,14 @@ var login = /*#__PURE__*/function () {
   return function login(_x, _x2) {
     return _ref.apply(this, arguments);
   };
-}(); //logout
+}(); //for login from checkout page
+//exporting a js file is not like node just add export
 
 
 exports.login = login;
 
-var logout = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+var login2 = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(email, password) {
     var result;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -8450,12 +8451,68 @@ var logout = /*#__PURE__*/function () {
             _context2.prev = 0;
             _context2.next = 3;
             return (0, _axios.default)({
+              method: 'POST',
+              url: '/api/v1/users/login',
+              data: {
+                email: email,
+                password: password
+              }
+            });
+
+          case 3:
+            result = _context2.sent;
+
+            //console.log(result)
+            if (result.data.status === 'success') {
+              //alert("Login omo aiye")
+              (0, _alert.showAlert)('success', 'Logged in Successfully');
+              window.setTimeout(function () {
+                location.assign('/checkout');
+              }, 1500);
+            }
+
+            ;
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            //console.log(err)
+            (0, _alert.showAlert)('error', _context2.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  }));
+
+  return function login2(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}(); //logout
+
+
+exports.login2 = login2;
+
+var logout = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+    var result;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return (0, _axios.default)({
               method: 'GET',
               url: '/api/v1/users/logout'
             });
 
           case 3:
-            result = _context2.sent;
+            result = _context3.sent;
 
             //console.log(result);
             if (result.data.status = 'success') {
@@ -8469,27 +8526,27 @@ var logout = /*#__PURE__*/function () {
               // }, 1500)
             }
 
-            _context2.next = 10;
+            _context3.next = 10;
             break;
 
           case 7:
-            _context2.prev = 7;
-            _context2.t0 = _context2["catch"](0);
-            console.log(_context2.t0); ///showAlert('error', 'Error logging out ! Try again')
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            console.log(_context3.t0); ///showAlert('error', 'Error logging out ! Try again')
 
           case 10:
             ;
 
           case 11:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2, null, [[0, 7]]);
+    }, _callee3, null, [[0, 7]]);
   }));
 
   return function logout() {
-    return _ref2.apply(this, arguments);
+    return _ref3.apply(this, arguments);
   };
 }(); //exporting a js file is not like node just add export
 
@@ -8497,14 +8554,14 @@ var logout = /*#__PURE__*/function () {
 exports.logout = logout;
 
 var signup = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(name, email, password, passwordConfirm) {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(name, email, password, passwordConfirm) {
     var result;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.prev = 0;
-            _context3.next = 3;
+            _context4.prev = 0;
+            _context4.next = 3;
             return (0, _axios.default)({
               method: 'POST',
               url: '/api/v1/users/signup',
@@ -8517,7 +8574,7 @@ var signup = /*#__PURE__*/function () {
             });
 
           case 3:
-            result = _context3.sent;
+            result = _context4.sent;
 
             //console.log(result)
             if (result.data.status === 'success') {
@@ -8529,25 +8586,25 @@ var signup = /*#__PURE__*/function () {
             }
 
             ;
-            _context3.next = 11;
+            _context4.next = 11;
             break;
 
           case 8:
-            _context3.prev = 8;
-            _context3.t0 = _context3["catch"](0);
+            _context4.prev = 8;
+            _context4.t0 = _context4["catch"](0);
             //console.log(err)
-            (0, _alert.showAlert)('error', _context3.t0.response.data.message);
+            (0, _alert.showAlert)('error', _context4.t0.response.data.message);
 
           case 11:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3, null, [[0, 8]]);
+    }, _callee4, null, [[0, 8]]);
   }));
 
-  return function signup(_x3, _x4, _x5, _x6) {
-    return _ref3.apply(this, arguments);
+  return function signup(_x5, _x6, _x7, _x8) {
+    return _ref4.apply(this, arguments);
   };
 }(); //exporting a js file is not like node just add export
 
@@ -8555,14 +8612,14 @@ var signup = /*#__PURE__*/function () {
 exports.signup = signup;
 
 var postComment = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(name, email, message, subject) {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(name, email, message, subject) {
     var result;
-    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
-            _context4.prev = 0;
-            _context4.next = 3;
+            _context5.prev = 0;
+            _context5.next = 3;
             return (0, _axios.default)({
               method: 'POST',
               url: '/api/v1/contact-message',
@@ -8575,7 +8632,7 @@ var postComment = /*#__PURE__*/function () {
             });
 
           case 3:
-            result = _context4.sent;
+            result = _context5.sent;
 
             if (result.data.status === 'success') {
               //alert("Login omo aiye")
@@ -8586,24 +8643,24 @@ var postComment = /*#__PURE__*/function () {
             }
 
             ;
-            _context4.next = 11;
+            _context5.next = 11;
             break;
 
           case 8:
-            _context4.prev = 8;
-            _context4.t0 = _context4["catch"](0);
-            console.log(_context4.t0); //showAlert('error', "Please all contact message fields are required");
+            _context5.prev = 8;
+            _context5.t0 = _context5["catch"](0);
+            console.log(_context5.t0); //showAlert('error', "Please all contact message fields are required");
 
           case 11:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
       }
-    }, _callee4, null, [[0, 8]]);
+    }, _callee5, null, [[0, 8]]);
   }));
 
-  return function postComment(_x7, _x8, _x9, _x10) {
-    return _ref4.apply(this, arguments);
+  return function postComment(_x9, _x10, _x11, _x12) {
+    return _ref5.apply(this, arguments);
   };
 }(); //exporting a js file is not like node just add export
 
@@ -8611,14 +8668,14 @@ var postComment = /*#__PURE__*/function () {
 exports.postComment = postComment;
 
 var postReview = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(review, rating, userId, productId, slug) {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(review, rating, userId, productId, slug) {
     var result;
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
-            _context5.prev = 0;
-            _context5.next = 3;
+            _context6.prev = 0;
+            _context6.next = 3;
             return (0, _axios.default)({
               method: 'POST',
               url: '/api/v1/review',
@@ -8631,7 +8688,7 @@ var postReview = /*#__PURE__*/function () {
             });
 
           case 3:
-            result = _context5.sent;
+            result = _context6.sent;
 
             if (result.data.status === 'success') {
               (0, _alert.showAlert)('success', "Review Sent Successfully!");
@@ -8641,25 +8698,25 @@ var postReview = /*#__PURE__*/function () {
             }
 
             ;
-            _context5.next = 12;
+            _context6.next = 12;
             break;
 
           case 8:
-            _context5.prev = 8;
-            _context5.t0 = _context5["catch"](0);
-            console.log(_context5.t0);
-            (0, _alert.showAlert)('error', _context5.t0);
+            _context6.prev = 8;
+            _context6.t0 = _context6["catch"](0);
+            console.log(_context6.t0);
+            (0, _alert.showAlert)('error', _context6.t0);
 
           case 12:
           case "end":
-            return _context5.stop();
+            return _context6.stop();
         }
       }
-    }, _callee5, null, [[0, 8]]);
+    }, _callee6, null, [[0, 8]]);
   }));
 
-  return function postReview(_x11, _x12, _x13, _x14, _x15) {
-    return _ref5.apply(this, arguments);
+  return function postReview(_x13, _x14, _x15, _x16, _x17) {
+    return _ref6.apply(this, arguments);
   };
 }();
 
@@ -8928,6 +8985,7 @@ var _utils = require("./utils");
 //import login.js code
 //DOM ELEMENT
 var loginForm = document.querySelector('.contact_form.login');
+var loginForm2 = document.querySelector('.contact_form.returning_user_login');
 var logoutBtn = document.querySelector('.nav-link.logout');
 var signupForm = document.querySelector('.contact_form.signup');
 var contactPageForm = document.querySelector('.contact_form.contact-us');
@@ -8941,6 +8999,19 @@ if (loginForm) {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     (0, _utils.login)(email, password);
+  });
+}
+
+; //Login from checkout page
+
+if (loginForm2) {
+  loginForm2.addEventListener('submit', function (e) {
+    e.preventDefault(); //VALUES
+    //get the email and password
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    (0, _utils.login2)(email, password);
   });
 }
 
@@ -9030,7 +9101,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50268" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60819" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
