@@ -66,9 +66,9 @@ block content
                                                 .single_product_text.text-center
                                                     h4= prod.name
                                                     h3 $ #{prod.price}
-                                                    a.add_cart.text-center(href="#")
+                                                    a.add_cart.text-center(href=`/add-to-cart/${prod._id}/${prod.slug}`)
                                                         | + add to cart
-                                                        i.ti-heart
+                                                        //- i.ti-heart
                                                         a.genric-btn.success.circle.text-center(href=`/product-page/${prod.slug}`)
                                                             | View
 
@@ -82,9 +82,9 @@ block content
                                                 .single_product_text.text-center
                                                     h4= prod.name
                                                     h3 $ #{prod.price}
-                                                    a.add_cart.text-center(href="#")
+                                                    a.add_cart.text-center(href=`/add-to-cart/${prod._id}/${prod.slug}`)
                                                         | + add to cart
-                                                        i.ti-heart
+                                                        //- i.ti-heart
                                                         a.genric-btn.success.circle.text-center(href=`/product-page/${prod.slug}`)
                                                             | View
        
