@@ -20,7 +20,7 @@ const reviewSchema = new mongoose.Schema({
     product: {
         type: mongoose.Schema.ObjectId,
         ref: 'Product',
-        //required: [true, 'Review must belong to a Product.']
+        required: [true, 'Review must belong to a Product.']
 
     },
     user: {

@@ -124,7 +124,7 @@ export const postComment = async (name, email, message, subject) => {
 
 
 //exporting a js file is not like node just add export
-export const postReview = async (review, rating, userId, productId) => {
+export const postReview = async (review, rating, userId, productId, slug) => {
     try {
         const result = await axios({
             method: 'POST',
@@ -138,13 +138,13 @@ export const postReview = async (review, rating, userId, productId) => {
         });
         if (result.data.status === 'success') {
             showAlert('success', "Review Sent Successfully!");
-            // window.setTimeout(() => {
-            //     location.assign('/');
-            // }, 1500)
+            window.setTimeout(() => {
+                location.assign(`/product-page/${slug}`);
+            }, 1500)
         };
     } catch (err) {
         console.log(err)
-        //showAlert('error', "Please all contact message fields are required");
+        showAlert('error', err);
     }
 
 };

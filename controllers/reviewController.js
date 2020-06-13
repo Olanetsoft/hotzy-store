@@ -16,11 +16,11 @@ exports.createReview = async (req, res, next) => {
 
         //Allow nested route
         //Also set the tour an user from the params if its not passed to the body
-        if (!req.body.tour) req.body.tour = req.params.tourId;
+        if (!req.body.product) req.body.product = req.body.productId;
         if (!req.body.user) req.body.user = req.user.id;
 
         const newReview = await Review.create(req.body);
-
+        console.log(newReview)
         res.status(201).json({
             status: 'success',
             data: {

@@ -84,7 +84,9 @@ if (reviewPageForm) {
         //console.log(userId);
         const productId = document.getElementById('productId').value;
         //console.log(productId);
-        postReview(review, rating, userId, productId);
-
+        const slug = document.getElementById('slug').value;
+        //console.log(productId);
+        postReview(review, rating, userId, productId, slug);
+        //reviewPageForm.reset()
     });
 };

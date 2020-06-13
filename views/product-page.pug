@@ -307,7 +307,10 @@ block content
                                         
                                         .col-md-12
                                             .form-group
-                                                input#productId.form-control(type="hidden" name="productId" value= singleProduct.id)
+                                                input#productId.form-control(type="hidden" name="productId" value=singleProduct._id)
+                                        .col-md-12
+                                            .form-group
+                                                input#slug.form-control(type="hidden" name="slug" value=singleProduct.slug)
                                         
                                         //- .col-md-12
                                         //-     .form-group
