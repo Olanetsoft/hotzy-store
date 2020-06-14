@@ -2,6 +2,15 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const compression = require('compression');
+const cors = require('cors');
+const hpp = require('hpp');
+const mongoSanitizer = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+
 
 //requiring the cookie parser
 const cookieParser = require('cookie-parser');
@@ -41,9 +50,18 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 
+////using cors to set Access-Control-Allow-Origin
+app.use(cors());
+
+
 //registering a middleware for server static files
 // app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+//using the helmet to set secure http headers
+app.use(helmet());
 
 
 
@@ -54,6 +72,23 @@ if (process.env.NODE_ENV === 'development') {
 };
 
 
+
+//using rateLimit
+const limiter = rateLimit({
+    //set the max depending on your application
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many request from this IP, please try again in an hour!'
+});
+
+
+//applying the limiter on only the route that starts with /api
+app.use('/api', limiter);
+
+
+
+
+
 //Middleware registered
 //Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
@@ -61,6 +96,17 @@ app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
+
+//Data sanitization against NoSql query injection
+app.use(mongoSanitizer());
+
+//Data sanitization against XSS
+app.use(xss());
+
+
+app.use(compression());
+
 
 
 app.use(session({
