@@ -9,6 +9,8 @@ const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
 
 
+
+
 router.get('/', authController.isLoggedIn, viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
 
 router.get('/product-page/:slug', authController.isLoggedIn, viewsController.getProduct);
@@ -18,6 +20,9 @@ router.get('/login', authController.isLoggedIn, viewsController.loginUser);
 router.get('/signup', viewsController.signup);
 
 router.get('/contact', viewsController.getContactPage);
+
+router.get('/forgot', viewsController.getForgotPasswordPage);
+
 
 router.get('/order', authController.isLoggedIn,viewsController.getOrderPage);
 

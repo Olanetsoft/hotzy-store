@@ -175,4 +175,52 @@ export const postReview = async (review, rating, userId, productId, slug) => {
 };
 
 
+//exporting a js file is not like node just add export
+export const postForgetPassword = async (email) => {
+    try {
+        const result = await axios({
+            method: 'POST',
+            url: '/api/v1/users/forgotPassword',
+            data: {
+                email
+            }
+        });
+        if (result.data.status === 'success') {
+            showAlert('success', "Please check your mail inbox!");
+            window.setTimeout(() => {
+                location.assign(`/login`);
+            }, 1500)
+        };
+    } catch (err) {
+        //console.log(err)
+        showAlert('error', err);
+    }
+
+};
+
+
+//exporting a js file is not like node just add export
+export const patchResetPassword = async (token) => {
+    try {
+        const result = await axios({
+            method: 'PATCH',
+            url: `/api/v1/users/resetPassword/:${token}`,
+            data: {
+                token
+            }
+        });
+        if (result.data.status === 'success') {
+            showAlert('success', "Password reset Successfully!");
+            window.setTimeout(() => {
+                location.assign(`/`);
+            }, 1500)
+        };
+    } catch (err) {
+        //console.log(err)
+        showAlert('error', err);
+    }
+
+};
+
+
 

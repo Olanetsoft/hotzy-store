@@ -1,0 +1,18 @@
+extends base
+
+block content
+    // ================Tracking Box Area =================
+    section.tracking_box_area.padding_top
+        .container
+            .row.align-items-center
+                .col-lg-12.align-items-center
+                    .tracking_box_inner
+                        p
+                            | Kindly enter your &quot;New Password&quot;  to recover your account fully.
+
+                        form.row.tracking_form.reset(action="#" method="post" novalidate="novalidate")
+                            .col-md-12.form-group.text-center
+                                input#email.form-control(type="email" name="email" placeholder="Email Address")
+                            .col-md-12.form-group.text-center
+                                button.btn_3(type="submit" value="submit") Submit
+    // ================End Tracking Box Area =================

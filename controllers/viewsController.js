@@ -158,10 +158,19 @@ exports.getContactPage = (req, res, next) => {
     });
 };
 
+
 //order
 exports.getOrderPage = (req, res, next) => {
     res.status(200).render('order', {
         title: 'My Order'
+    });
+};
+
+
+//order
+exports.getForgotPasswordPage = (req, res, next) => {
+    res.status(200).render('forgot', {
+        title: 'Forgot Password ?'
     });
 };
 

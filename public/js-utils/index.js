@@ -3,7 +3,16 @@ import '@babel/polyfill';
 
 
 //import login.js code
-import { login, login2, logout, signup, postComment, postReview } from './utils';
+import {
+    login,
+    login2,
+    logout,
+    signup,
+    postComment,
+    postReview,
+    postForgetPassword,
+    patchResetPassword
+} from './utils';
 
 
 
@@ -14,6 +23,7 @@ const logoutBtn = document.querySelector('.nav-link.logout');
 const signupForm = document.querySelector('.contact_form.signup');
 const contactPageForm = document.querySelector('.contact_form.contact-us');
 const reviewPageForm = document.querySelector('.contact_form.review');
+const forgotPasswordPageForm = document.querySelector('.tracking_form');
 
 
 
@@ -101,6 +111,20 @@ if (reviewPageForm) {
         const slug = document.getElementById('slug').value;
         //console.log(productId);
         postReview(review, rating, userId, productId, slug);
+        //reviewPageForm.reset()
+    });
+};
+
+
+//forgot password
+if (forgotPasswordPageForm) {
+    forgotPasswordPageForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        //VALUES
+        //get the details
+        const email = document.getElementById('email').value;
+        postForgetPassword(email);
         //reviewPageForm.reset()
     });
 };

@@ -407,7 +407,7 @@ exports.resetPassword = async (req, res, next) => {
 
         
         res.status(201).json({
-            status: 'Success',
+            status: 'success',
             token
         });
 
@@ -415,7 +415,7 @@ exports.resetPassword = async (req, res, next) => {
     }
     catch (err) {
         res.status(400).json({
-            status: 'failed ☹☹☹☹☹',
+            status: 'failed',
             message: err
         });
     }

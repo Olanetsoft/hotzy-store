@@ -8371,7 +8371,7 @@ exports.showAlert = showAlert;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.postReview = exports.postComment = exports.signup = exports.logout = exports.login2 = exports.login = void 0;
+exports.patchResetPassword = exports.postForgetPassword = exports.postReview = exports.postComment = exports.signup = exports.logout = exports.login2 = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8717,9 +8717,115 @@ var postReview = /*#__PURE__*/function () {
   return function postReview(_x13, _x14, _x15, _x16, _x17) {
     return _ref6.apply(this, arguments);
   };
-}();
+}(); //exporting a js file is not like node just add export
+
 
 exports.postReview = postReview;
+
+var postForgetPassword = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(email) {
+    var result;
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            _context7.next = 3;
+            return (0, _axios.default)({
+              method: 'POST',
+              url: '/api/v1/users/forgotPassword',
+              data: {
+                email: email
+              }
+            });
+
+          case 3:
+            result = _context7.sent;
+
+            if (result.data.status === 'success') {
+              (0, _alert.showAlert)('success', "Please check your mail inbox!");
+              window.setTimeout(function () {
+                location.assign("/login");
+              }, 1500);
+            }
+
+            ;
+            _context7.next = 11;
+            break;
+
+          case 8:
+            _context7.prev = 8;
+            _context7.t0 = _context7["catch"](0);
+            //console.log(err)
+            (0, _alert.showAlert)('error', _context7.t0);
+
+          case 11:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 8]]);
+  }));
+
+  return function postForgetPassword(_x18) {
+    return _ref7.apply(this, arguments);
+  };
+}(); //exporting a js file is not like node just add export
+
+
+exports.postForgetPassword = postForgetPassword;
+
+var patchResetPassword = /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(token) {
+    var result;
+    return regeneratorRuntime.wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.prev = 0;
+            _context8.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/users/resetPassword/:".concat(token),
+              data: {
+                token: token
+              }
+            });
+
+          case 3:
+            result = _context8.sent;
+
+            if (result.data.status === 'success') {
+              (0, _alert.showAlert)('success', "Password reset Successfully!");
+              window.setTimeout(function () {
+                location.assign("/");
+              }, 1500);
+            }
+
+            ;
+            _context8.next = 11;
+            break;
+
+          case 8:
+            _context8.prev = 8;
+            _context8.t0 = _context8["catch"](0);
+            //console.log(err)
+            (0, _alert.showAlert)('error', _context8.t0);
+
+          case 11:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8, null, [[0, 8]]);
+  }));
+
+  return function patchResetPassword(_x19) {
+    return _ref8.apply(this, arguments);
+  };
+}();
+
+exports.patchResetPassword = patchResetPassword;
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -8988,7 +9094,8 @@ var loginForm2 = document.querySelector('.contact_form.returning_user_login');
 var logoutBtn = document.querySelector('.nav-link.logout');
 var signupForm = document.querySelector('.contact_form.signup');
 var contactPageForm = document.querySelector('.contact_form.contact-us');
-var reviewPageForm = document.querySelector('.contact_form.review'); //Login
+var reviewPageForm = document.querySelector('.contact_form.review');
+var forgotPasswordPageForm = document.querySelector('.tracking_form'); //Login
 
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
@@ -9068,6 +9175,18 @@ if (reviewPageForm) {
     var slug = document.getElementById('slug').value; //console.log(productId);
 
     (0, _utils.postReview)(review, rating, userId, productId, slug); //reviewPageForm.reset()
+  });
+}
+
+; //forgot password
+
+if (forgotPasswordPageForm) {
+  forgotPasswordPageForm.addEventListener('submit', function (e) {
+    e.preventDefault(); //VALUES
+    //get the details
+
+    var email = document.getElementById('email').value;
+    (0, _utils.postForgetPassword)(email); //reviewPageForm.reset()
   });
 }
 
