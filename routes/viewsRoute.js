@@ -5,6 +5,7 @@ const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 var Cart = require('../models/cartModel');
 var Product = require('../models/productModel');
+var Order = require('../models/orderModel');
 
 //import authentication controller module
 const viewsController = require('../controllers/viewsController');
@@ -64,45 +65,34 @@ router.post('/create-order', authController.isLoggedIn, function (req, res, next
     const token = req.body.stripeToken; // Using Express
     let totalSum = 0;
 
+    var cart = new Cart(req.session.cart);
 
-    req.user
-        .populate('cart.items.productId')
-        .execPopulate()
-        .then(user => {
-            user.cart.items.forEach(p => {
-                totalSum += p.quantity * p.productId.price;
-            });
+    //var products = cart.generateArray();
 
-            const products = user.cart.items.map(i => {
-                return { quantity: i.quantity, product: { ...i.productId._doc } };
-            });
-            const order = new Order({
-                user: {
-                    email: req.user.email,
-                    userId: req.user
-                },
-                products: products
-            });
-            return order.save();
-        })
-        .then(result => {
-            const charge = stripe.charges.create({
-                amount: totalSum * 100,
-                currency: 'usd',
-                description: 'Demo Order',
-                source: token,
-                metadata: { order_id: result._id.toString() }
-            });
-            return req.user.clearCart();
-        })
-        .then(() => {
-            res.redirect('/orders');
-        })
-        .catch(err => {
-            const error = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        });
+    const products = cart.generateArray().map(i => {
+        return { quantity: i.qty, product: { ...i.productId } };
+    });
+    var totalPrice = cart.totalPrice;
+
+    if (!req.user) return res.render('login', { products: null });
+
+    const order = new Order({
+        user: {
+            email: req.user.email,
+            userId: req.user
+        },
+        products: products
+    });
+    order.save();
+    const charge = stripe.charges.create({
+        amount: totalPrice * 100,
+        currency: 'usd',
+        description: 'Product Order',
+        source: token,
+        //metadata: { order_id: result._id.toString() }
+    });
+    res.redirect('/home');
+
 });
 //router.post('/api/v1/contact-message', viewsController.postContact);
 

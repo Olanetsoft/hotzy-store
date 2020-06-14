@@ -6,10 +6,12 @@ const orderSchema = new Schema({
     products: [
         {
             product: {
-                type: Object, required: true
+                type: Object, 
+                required: true
             },
             quantity: {
-                type: Number, required: true
+                type: Number, 
+                required: true
             }
         }
     ],
