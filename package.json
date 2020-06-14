@@ -38,6 +38,7 @@
     "nodemailer": "^6.4.8",
     "nodemon": "^2.0.4",
     "parcel": "^1.12.4",
+    "paystack-node": "^0.2.4",
     "pug": "^3.0.0",
     "slugify": "^1.4.0",
     "stripe": "^8.63.0",

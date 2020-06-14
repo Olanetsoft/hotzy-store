@@ -75,7 +75,7 @@ exports.order = (req, res, next) => {
         source: token,
         //metadata: { order_id: result._id.toString() }
     });
-    //req.session.destroy();
+    req.session.destroy();
     var p = cart.generateArray();
     //console.log(p)
     
