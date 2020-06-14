@@ -110,11 +110,10 @@ export const signup = async (name, email, password, passwordConfirm) => {
             //alert("Login omo aiye")
             showAlert('success', 'Sign up Successful');
             window.setTimeout(() => {
-                location.assign('/login');
+                location.assign('/');
             }, 1500)
         };
     } catch (err) {
-        //console.log(err)
         showAlert('error', err.response.data.message);
     }
 
@@ -135,7 +134,6 @@ export const postComment = async (name, email, message, subject) => {
             }
         });
         if (result.data.status === 'success') {
-            //alert("Login omo aiye")
             showAlert('success', "Message Sent Successfully!");
             window.setTimeout(() => {
                 location.assign('/contact');
@@ -143,7 +141,7 @@ export const postComment = async (name, email, message, subject) => {
         };
     } catch (err) {
         console.log(err)
-        //showAlert('error', "Please all contact message fields are required");
+        showAlert('error', err.response.data.message);
     }
 
 };
@@ -170,7 +168,7 @@ export const postReview = async (review, rating, userId, productId, slug) => {
             }, 1500)
         };
     } catch (err) {
-        console.log(err)
+        //console.log(err)
         showAlert('error', err);
     }
 

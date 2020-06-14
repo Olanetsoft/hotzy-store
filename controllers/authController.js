@@ -57,7 +57,7 @@ exports.signup = async (req, res, next) => {
 
 
         res.status(201).json({
-            status: 'Success',
+            status: 'success',
             token,
             data: {
                 newUser

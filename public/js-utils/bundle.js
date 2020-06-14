@@ -8581,7 +8581,7 @@ var signup = /*#__PURE__*/function () {
               //alert("Login omo aiye")
               (0, _alert.showAlert)('success', 'Sign up Successful');
               window.setTimeout(function () {
-                location.assign('/login');
+                location.assign('/');
               }, 1500);
             }
 
@@ -8592,7 +8592,6 @@ var signup = /*#__PURE__*/function () {
           case 8:
             _context4.prev = 8;
             _context4.t0 = _context4["catch"](0);
-            //console.log(err)
             (0, _alert.showAlert)('error', _context4.t0.response.data.message);
 
           case 11:
@@ -8635,7 +8634,6 @@ var postComment = /*#__PURE__*/function () {
             result = _context5.sent;
 
             if (result.data.status === 'success') {
-              //alert("Login omo aiye")
               (0, _alert.showAlert)('success', "Message Sent Successfully!");
               window.setTimeout(function () {
                 location.assign('/contact');
@@ -8643,15 +8641,16 @@ var postComment = /*#__PURE__*/function () {
             }
 
             ;
-            _context5.next = 11;
+            _context5.next = 12;
             break;
 
           case 8:
             _context5.prev = 8;
             _context5.t0 = _context5["catch"](0);
-            console.log(_context5.t0); //showAlert('error', "Please all contact message fields are required");
+            console.log(_context5.t0);
+            (0, _alert.showAlert)('error', _context5.t0.response.data.message);
 
-          case 11:
+          case 12:
           case "end":
             return _context5.stop();
         }
@@ -8698,16 +8697,16 @@ var postReview = /*#__PURE__*/function () {
             }
 
             ;
-            _context6.next = 12;
+            _context6.next = 11;
             break;
 
           case 8:
             _context6.prev = 8;
             _context6.t0 = _context6["catch"](0);
-            console.log(_context6.t0);
+            //console.log(err)
             (0, _alert.showAlert)('error', _context6.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context6.stop();
         }
@@ -9101,7 +9100,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50449" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52450" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
