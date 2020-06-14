@@ -1,6 +1,12 @@
-
 //importing tour model
 const Product = require('../models/productModel');
+
+
+const stripe = require('stripe')(process.env.STRIPE_KEY);
+
+
+var Cart = require('../models/cartModel');
+var Order = require('../models/orderModel');
 
 
 
@@ -71,6 +77,6 @@ exports.order = (req, res, next) => {
         //metadata: { order_id: result._id.toString() }
     });
     req.session.destroy();
-    res.redirect('/home');
+    res.redirect('/order');
 
 };

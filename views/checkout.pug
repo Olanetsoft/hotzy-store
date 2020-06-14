@@ -138,6 +138,10 @@ block content
                                         | Please send a check to Store Name, Store Street, Store Town,
                                         | Store State / County, Store Postcode.
                                     br
+                                .creat_account
+                                    input#f-option4(type="checkbox" name="selector")
+                                    label(for="f-option4") I&rsquo;ve read and accept the 
+                                    a(href="#") terms &amp; conditions*
                                 a.btn_3(href="#") Continue with Paystack
                                 br
                                 .payment_item.active
@@ -156,6 +160,6 @@ block content
                                 .centered
                                     form(action="/create-order" method="POST")
                                         script.stripe-button(src="https://checkout.stripe.com/checkout.js" data-key="pk_test_51GtiZ7KDOrmKc458YaNRnaNlmE6uI6IgNEwcPMtYWyP9JsTvrxyB7VD16zM2W6netqsFkNg0ZP9M9bxEZzf3tyEf00pBQDiNYI" data-amount= v*100 data-name="Your Order" data-description="All the items you ordered" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="usd")
-                                //- button.button.green.fsize-16.f-weight-400(type="submit") Purchase Here!
-                                //- a.btn_3(type="submit") PROCEED WITH PAYPAL
+                                            //- button.button.green.fsize-16.f-weight-400(type="submit") Purchase Here!
+                                        button.btn_3(type="submit") PROCEED WITH STRIPE...
         // ================End Checkout Area =================

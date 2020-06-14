@@ -1,0 +1,100 @@
+extends base
+
+block content
+    // ================ confirmation part start =================
+    section.confirmation_part.padding_top
+        .container
+            .row
+                .col-lg-12
+                    .confirmation_tittle
+                        span Thank you. Your order has been received.
+                .col-lg-6.col-lx-4
+                    .single_confirmation_details
+                        h4 order info
+                        ul
+                            li
+                                p order number
+                                span : 60235
+                            li
+                                p data
+                                span : Oct 03, 2017
+                            li
+                                p total
+                                span : USD 2210
+                            li
+                                p mayment methord
+                                span : Check payments
+                .col-lg-6.col-lx-4
+                    .single_confirmation_details
+                        h4 Billing Address
+                        ul
+                            li
+                                p Street
+                                span : 56/8
+                            li
+                                p city
+                                span : Los Angeles
+                            li
+                                p country
+                                span : United States
+                            li
+                                p postcode
+                                span : 36952
+                .col-lg-6.col-lx-4
+                    .single_confirmation_details
+                        h4 shipping Address
+                        ul
+                            li
+                                p Street
+                                span : 56/8
+                            li
+                                p city
+                                span : Los Angeles
+                            li
+                                p country
+                                span : United States
+                            li
+                                p postcode
+                                span : 36952
+            .row
+                .col-lg-12
+                    .order_details_iner
+                        h3 Order Details
+                        table.table.table-borderless
+                            thead
+                                tr
+                                    th(scope="col" colspan="2") Product
+                                    th(scope="col") Quantity
+                                    th(scope="col") Total
+                            tbody
+                                tr
+                                    th(colspan="2")
+                                        span Pixelstore fresh Blackberry
+                                    th x02
+                                    th
+                                        span $720.00
+                                tr
+                                    th(colspan="2")
+                                        span Pixelstore fresh Blackberry
+                                    th x02
+                                    th
+                                        span $720.00
+                                tr
+                                    th(colspan="2")
+                                        span Pixelstore fresh Blackberry
+                                    th x02
+                                    th
+                                        span $720.00
+                                tr
+                                    th(colspan="3") Subtotal
+                                    th
+                                        span $2160.00
+                                tr
+                                    th(colspan="3") shipping
+                                    th
+                                        span flat rate: $50.00
+                            tfoot
+                                tr
+                                    th(scope="col" colspan="3") Quantity
+                                    th(scope="col") Total
+    // ================ confirmation part end =================

@@ -1,12 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const stripe = require('stripe')(process.env.STRIPE_KEY);
-
-
-var Cart = require('../models/cartModel');
-var Product = require('../models/productModel');
-var Order = require('../models/orderModel');
 
 
 
