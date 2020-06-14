@@ -23,7 +23,7 @@ export const login = async (email, password) => {
             //alert("Login omo aiye")
             showAlert('success', 'Logged in Successfully');
             window.setTimeout(() => {
-                location.assign('/home');
+                location.assign('/');
             }, 1500)
         };
     } catch (err) {
@@ -76,7 +76,7 @@ export const logout = async () => {
             //to give the user some feedback when logging out
             document.querySelector('.nav-link.logout').textContent = 'Logging Out...';
             window.setTimeout(() => {
-                location.assign('/home')
+                location.assign('/')
             }, 1500)
 
             // showAlert('error', 'Logging out...');

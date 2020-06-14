@@ -9,7 +9,7 @@ const viewsController = require('../controllers/viewsController');
 const authController = require('../controllers/authController');
 
 
-router.get('/home', authController.isLoggedIn, viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
+router.get('/', authController.isLoggedIn, viewsController.getOtherLayoutsInHomePage, viewsController.homePage);
 
 router.get('/product-page/:slug', authController.isLoggedIn, viewsController.getProduct);
 

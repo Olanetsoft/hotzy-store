@@ -8410,7 +8410,7 @@ var login = /*#__PURE__*/function () {
               //alert("Login omo aiye")
               (0, _alert.showAlert)('success', 'Logged in Successfully');
               window.setTimeout(function () {
-                location.assign('/home');
+                location.assign('/');
               }, 1500);
             }
 
@@ -8467,7 +8467,7 @@ var login2 = /*#__PURE__*/function () {
               //alert("Login omo aiye")
               (0, _alert.showAlert)('success', 'Logged in Successfully');
               window.setTimeout(function () {
-                location.assign('/home');
+                location.assign('/checkout');
               }, 1500);
             }
 
@@ -8519,7 +8519,7 @@ var logout = /*#__PURE__*/function () {
               //to give the user some feedback when logging out
               document.querySelector('.nav-link.logout').textContent = 'Logging Out...';
               window.setTimeout(function () {
-                location.assign('/home');
+                location.assign('/');
               }, 1500); // showAlert('error', 'Logging out...');
               // window.setTimeout(() => {
               //     location.assign('/')
@@ -9101,7 +9101,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61462" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50449" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
