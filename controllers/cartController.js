@@ -48,7 +48,6 @@ exports.order = (req, res, next) => {
     // Token is created using Checkout or Elements!
     // Get the payment token ID submitted by the form:
     const token = req.body.stripeToken; // Using Express
-    let totalSum = 0;
 
     var cart = new Cart(req.session.cart);
 
@@ -76,7 +75,13 @@ exports.order = (req, res, next) => {
         source: token,
         //metadata: { order_id: result._id.toString() }
     });
-    req.session.destroy();
-    res.redirect('/order');
+    //req.session.destroy();
+    var p = cart.generateArray();
+    //console.log(p)
+    
+    res.render('order', {
+        p,
+        totalPrice
+    });
 
 };

@@ -19,6 +19,8 @@ router.get('/signup', viewsController.signup);
 
 router.get('/contact', viewsController.getContactPage);
 
+router.get('/order', authController.isLoggedIn,viewsController.getOrderPage);
+
 //router.get('/cart', authController.isLoggedIn, viewsController.getCartPage);
 
 router.get('/checkout', authController.isLoggedIn, viewsController.getCheckout);

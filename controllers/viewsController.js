@@ -158,6 +158,13 @@ exports.getContactPage = (req, res, next) => {
     });
 };
 
+//order
+exports.getOrderPage = (req, res, next) => {
+    res.status(200).render('order', {
+        title: 'My Order'
+    });
+};
+
 
 //cart
 // exports.getCartPage = (req, res, next) => {
