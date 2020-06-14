@@ -30,6 +30,7 @@ const bannerRoutes = require('./routes/bannerRoute');
 const viewsRoutes = require('./routes/viewsRoute');
 const contactRoutes = require('./routes/contactRoute');
 const commentsRoutes = require('./routes/commentsRoute');
+const cartRoutes = require('./routes/cartRoute');
 
 
 
@@ -88,12 +89,10 @@ app.use(function(req, res, next) {
 app.use(productRoutes);
 app.use(usersRoutes);
 app.use(viewsRoutes);
-
 app.use(reviewsRoutes);
-
 app.use(bannerRoutes);
-
 app.use(contactRoutes);
+app.use(cartRoutes);
 
 
 
