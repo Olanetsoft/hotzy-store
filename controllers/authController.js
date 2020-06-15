@@ -1,3 +1,6 @@
+const mailer = require('../utilities/mail/mail');
+const fPassTemplate = require('../utilities/mail/forgot-password');
+
 //requiring crypto
 const crypto = require('crypto');
 
@@ -317,7 +320,7 @@ exports.forgotPassword = async (req, res, next) => {
         //set validateBeforeSave to false to deactivate all the validator in the schema
         await user.save({ validateBeforeSave: false });
 
-        const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
+        const resetURL = `${req.protocol}://${req.get('host')}/reset/api/v1/users/resetPassword/${resetToken}`;
 
 
 
@@ -382,6 +385,7 @@ exports.resetPassword = async (req, res, next) => {
         });
 
 
+        console.log(user)
 
         //2) set the new password if token has not expired and there's a user
         if (!user) {
@@ -414,6 +418,7 @@ exports.resetPassword = async (req, res, next) => {
 
     }
     catch (err) {
+        console.log(err)
         res.status(400).json({
             status: 'failed',
             message: err

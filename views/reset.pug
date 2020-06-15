@@ -12,7 +12,10 @@ block content
 
                         form.row.tracking_form.reset(action="#" method="post" novalidate="novalidate")
                             .col-md-12.form-group.text-center
-                                input#email.form-control(type="email" name="email" placeholder="Email Address")
+                                input#password.form-control(type="password" name="password" placeholder="Password")
+                            .col-md-12.form-group.text-center
+                                input#passwordConfirm.form-control(type="password" name="passwordConfirm" placeholder="Confirm Password")
+                                //- input#token.form-control(type="hidden" name="token" value= tokenFetched)
                             .col-md-12.form-group.text-center
                                 button.btn_3(type="submit" value="submit") Submit
     // ================End Tracking Box Area =================

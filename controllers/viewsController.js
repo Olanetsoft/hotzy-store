@@ -167,10 +167,19 @@ exports.getOrderPage = (req, res, next) => {
 };
 
 
-//order
+//forgot
 exports.getForgotPasswordPage = (req, res, next) => {
     res.status(200).render('forgot', {
         title: 'Forgot Password ?'
+    });
+};
+
+//resetPage
+exports.getResetPasswordPage = (req, res, next) => {
+    tokenFetched = req.params.token;
+    res.status(200).render('reset', {
+        title: 'Reset Password',
+        tokenFetched
     });
 };
 

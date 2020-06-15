@@ -23,6 +23,8 @@ router.get('/contact', viewsController.getContactPage);
 
 router.get('/forgot', viewsController.getForgotPasswordPage);
 
+router.get('/reset/api/v1/users/resetPassword/:token', viewsController.getResetPasswordPage);
+
 
 router.get('/order', authController.isLoggedIn,viewsController.getOrderPage);
 

@@ -24,6 +24,7 @@ const signupForm = document.querySelector('.contact_form.signup');
 const contactPageForm = document.querySelector('.contact_form.contact-us');
 const reviewPageForm = document.querySelector('.contact_form.review');
 const forgotPasswordPageForm = document.querySelector('.tracking_form');
+const resetPasswordPageForm = document.querySelector('.tracking_form.reset');
 
 
 
@@ -125,6 +126,25 @@ if (forgotPasswordPageForm) {
         //get the details
         const email = document.getElementById('email').value;
         postForgetPassword(email);
+        //reviewPageForm.reset()
+    });
+};
+
+
+//reset password
+if (resetPasswordPageForm) {
+    resetPasswordPageForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        //VALUES
+        //get the details
+        const password = document.getElementById('password').value;
+        console.log(password)
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        console.log(passwordConfirm)
+        // const token = document.getElementById('token').value;
+        // console.log(token)
+        patchResetPassword(password, passwordConfirm);
         //reviewPageForm.reset()
     });
 };

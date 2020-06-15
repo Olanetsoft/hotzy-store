@@ -200,23 +200,26 @@ export const postForgetPassword = async (email) => {
 
 
 //exporting a js file is not like node just add export
-export const patchResetPassword = async (token) => {
+export const patchResetPassword = async (password, passwordConfirm) => {
     try {
-        const result = await axios({
+        const resetResult = await axios({
             method: 'PATCH',
-            url: `/api/v1/users/resetPassword/:${token}`,
+            url: '/api/v1/users/resetPassword/:token',
             data: {
-                token
+                password,
+                passwordConfirm
             }
         });
-        if (result.data.status === 'success') {
-            showAlert('success', "Password reset Successfully!");
+
+        console.log(resetResult.data)
+        if (resetResult.data.status === 'success') {
+            showAlert('success', "Password reset Successful!");
             window.setTimeout(() => {
                 location.assign(`/`);
             }, 1500)
         };
     } catch (err) {
-        //console.log(err)
+        console.log(err)
         showAlert('error', err);
     }
 
