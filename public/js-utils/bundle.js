@@ -8465,7 +8465,7 @@ var login2 = /*#__PURE__*/function () {
             //console.log(result)
             if (result.data.status === 'success') {
               //alert("Login omo aiye")
-              (0, _alert.showAlert)('success', 'Logged in Successfully');
+              (0, _alert.showAlert)('success', 'Logged in Successfully Kindly proceed!');
               window.setTimeout(function () {
                 location.assign('/checkout');
               }, 1500);

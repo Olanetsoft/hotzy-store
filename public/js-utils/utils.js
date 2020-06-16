@@ -48,7 +48,7 @@ export const login2 = async (email, password) => {
         //console.log(result)
         if (result.data.status === 'success') {
             //alert("Login omo aiye")
-            showAlert('success', 'Logged in Successfully');
+            showAlert('success', 'Logged in Successfully Kindly proceed!');
             window.setTimeout(() => {
                 location.assign('/checkout');
             }, 1500)

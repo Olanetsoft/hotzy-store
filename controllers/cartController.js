@@ -82,7 +82,7 @@ exports.order = async(req, res, next) => {
     });
     var totalPrice = cart.totalPrice;
 
-    if (!req.user) return res.render('login', { products: null });
+    if (!req.user) return res.render('checkout');
 
     
     const charge = await stripe.charges.create({

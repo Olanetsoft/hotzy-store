@@ -381,7 +381,7 @@ exports.resetPassword = async (req, res, next) => {
             .digest('hex');
 
             
-        console.log(hashTheTokenFromParams)
+        console.log(user)
 
         //Get the user base on the token gotten from the url params
         const user = await User.findOne({
