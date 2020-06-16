@@ -54,11 +54,11 @@ header.main_menu.home_menu
                                     //-     i.ti-heart
                                     .dropdown.cart
                                         a#navbarDropdown3.dropdown-toggle(href="/shopping-cart")
-                                            i.fas.fa-shopping-cart &nbsp;&nbsp;&nbsp;
+                                            i.fas.fa-shopping-cart &nbsp;
                                             if session.cart
-                                                span= session.cart.totalQty
+                                                span Item (#{session.cart.totalQty})
                                             else
-                                                span= 0
+                                                span Item (0)
                                             
                                         //
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
