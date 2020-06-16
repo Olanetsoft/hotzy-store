@@ -372,11 +372,16 @@ exports.resetPassword = async (req, res, next) => {
     try {
 
 
+        console.log(req.params.token)
+
         //1) Get user base on the tokens
         const hashTheTokenFromParams = crypto
             .createHash("sha256")
             .update(req.params.token)
             .digest('hex');
+
+            
+        console.log(hashTheTokenFromParams)
 
         //Get the user base on the token gotten from the url params
         const user = await User.findOne({
@@ -389,6 +394,7 @@ exports.resetPassword = async (req, res, next) => {
 
         //2) set the new password if token has not expired and there's a user
         if (!user) {
+            console.log("I no see user")
             return next(new AppError('Token is invalid or has Expired', 400))
         };
 

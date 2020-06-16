@@ -24,7 +24,7 @@ const signupForm = document.querySelector('.contact_form.signup');
 const contactPageForm = document.querySelector('.contact_form.contact-us');
 const reviewPageForm = document.querySelector('.contact_form.review');
 const forgotPasswordPageForm = document.querySelector('.tracking_form');
-const resetPasswordPageForm = document.querySelector('.tracking_form.reset');
+const resetPasswordPageForm = document.querySelector('.tracking_form.resetPassword');
 
 
 

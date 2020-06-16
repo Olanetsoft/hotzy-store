@@ -8786,7 +8786,7 @@ var patchResetPassword = /*#__PURE__*/function () {
             _context8.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: '/api/v1/users/resetPassword/:token',
+              url: '/reset/api/v1/users/resetPassword/:token',
               data: {
                 password: password,
                 passwordConfirm: passwordConfirm
@@ -9098,7 +9098,7 @@ var signupForm = document.querySelector('.contact_form.signup');
 var contactPageForm = document.querySelector('.contact_form.contact-us');
 var reviewPageForm = document.querySelector('.contact_form.review');
 var forgotPasswordPageForm = document.querySelector('.tracking_form');
-var resetPasswordPageForm = document.querySelector('.tracking_form.reset'); //Login
+var resetPasswordPageForm = document.querySelector('.tracking_form.resetPassword'); //Login
 
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
@@ -9239,7 +9239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58179" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61360" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

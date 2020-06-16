@@ -87,6 +87,40 @@ input:focus {
   background-color: #eb4d4b;
 }
 
+.google-btn {
+  height: 55px;
+  padding: 0 20px;
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 14px;
+  color: red;
+  font-weight: 700;
+  padding-left: 50px;
+  cursor: pointer;
+}
+
+.google-btn a {
+  text-decoration: none;
+  color: red;
+}
+
+.google-btn:hover {
+  border: 2px solid #bf2c2c;
+  color: #bf2c2c;
+  transition: 0.5s all;
+}
+
+.google-login-btn img {
+  position: absolute;
+  padding: 18px 13px 0px 15px;
+  width: 45px;
+}
+
+.google-login-btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
 
 
 
