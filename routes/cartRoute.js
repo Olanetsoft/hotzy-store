@@ -14,6 +14,8 @@ const cartController = require('../controllers/cartController');
 
 router.get('/add-to-cart/:id/:slug', cartController.addToCart);
 
+router.get('/delete-from-cart', cartController.deleteFromCart);
+
 router.get('/shopping-cart', cartController.getShoppingCart);
 
 router.post('/create-order', authController.isLoggedIn, cartController.order);

@@ -6,11 +6,11 @@ const orderSchema = new Schema({
     products: [
         {
             product: {
-                type: Object, 
+                type: Object,
                 required: true
             },
             quantity: {
-                type: Number, 
+                type: Number,
                 required: true
             }
         }
@@ -25,6 +25,10 @@ const orderSchema = new Schema({
             required: true,
             ref: 'User'
         }
+    },
+    orderId: {
+        type: String,
+        required: true
     }
 });
 

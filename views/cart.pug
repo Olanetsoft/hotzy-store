@@ -12,6 +12,7 @@ block content
                   th(scope="col").text-center Product
                   th(scope="col").text-center Price
                   th(scope="col").text-center Quantity
+                  th(scope="col").text-center Action
                   //- th(scope="col").text-center Total
               tbody.text-center
                 each prod in products
@@ -26,12 +27,15 @@ block content
                       h5.text-center $ #{prod.item.price}
                     td.text-center
                       h5.text-center= prod.qty
+                    td.text-center
+                      a.btn_1.checkout_btn_1(href="/delete-from-cart") Remove Item
                 tr
                   td
                   td
                     h5 Subtotal
                   td
                     h5 $ #{totalPrice}
+                  td
                 //- tr.shipping_area
                   td
                   td
