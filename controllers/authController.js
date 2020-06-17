@@ -20,6 +20,9 @@ const AppError = require('../utilities/appError');
 //import the email function
 const sendMail = require('../utilities/Email');
 
+//import cart
+var Cart = require('../models/cartModel');
+
 
 //signup user
 exports.signup = async (req, res, next) => {
@@ -115,6 +118,17 @@ exports.login = async (req, res, next) => {
         if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
         res.cookie('jwt', token, cookieOptions);
 
+        // if(req.session.oldUrl){
+        //     var oldUrl = req.session.oldUrl;
+        //     req.session.oldUrl = null;
+        //     res.redirect(oldUrl)
+
+        //     // res.status(200).json({
+        //     //     status: 'success',
+        //     //     token
+        //     // });
+
+        // }
 
         res.status(200).json({
             status: 'success',
@@ -172,6 +186,10 @@ exports.isLoggedIn = async (req, res, next) => {
             return next();
         }
     }
+
+    //Store the old url to check if the login comes from checkout page
+    req.session.oldUrl = req.url
+
     next();
     // } catch (err) {
     //     next(new AppError('failed 😒', 401));
@@ -348,7 +366,7 @@ exports.forgotPassword = async (req, res, next) => {
             user.passwordResetExpires = undefined;
             //set validateBeforeSave to false to deactivate all the validator in the schema
             await user.save({ validateBeforeSave: false });
-           
+
             return new AppError('There was an error sending mail. Try again later!', 500);
         };
 
@@ -380,8 +398,8 @@ exports.resetPassword = async (req, res, next) => {
             .update(req.params.token)
             .digest('hex');
 
-            
-        console.log(user)
+
+        console.log(hashTheTokenFromParams)
 
         //Get the user base on the token gotten from the url params
         const user = await User.findOne({
@@ -415,7 +433,7 @@ exports.resetPassword = async (req, res, next) => {
         });
 
 
-        
+
         res.status(201).json({
             status: 'success',
             token

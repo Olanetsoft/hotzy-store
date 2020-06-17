@@ -243,6 +243,11 @@ exports.getCheckout = (req, res, next) => {
     if (!req.session.cart) {
         return res.render('shopping-cart');
     }
+    if (!req.user) {
+        return res.redirect('login');
+    }
+
+
     var cart = new Cart(req.session.cart);
 
     res.render('checkout', {

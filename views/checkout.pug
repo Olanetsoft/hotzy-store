@@ -3,14 +3,14 @@ extends base
 block content
     section.checkout_area.padding_top
         .container
-            .returning_customer
+            .returning_customer.col-lg-10
                 .check_title
                     h2
                         | Returning Customer?
                         //- a(href="#") Click here to login
                 if user
-                    h2 Hey!    
-                        | #{user.name.toUpperCase()} Proceed to payment
+                    h2    
+                        | #{user.name.toUpperCase()} proceed to payment 👇
                 else
                     p
                         | If you have shopped with us before, please enter your details in the
@@ -39,56 +39,56 @@ block content
             //-     a.tp_btn(href="#") Apply Coupon
             .billing_details
                 .row
-                    .col-lg-8
-                        h3 Billing Details
-                        form.row.contact_form(action="#" method="post" novalidate="novalidate")
-                            .col-md-6.form-group.p_star
-                                input#first.form-control(type="text" name="name")
-                                span.placeholder(data-placeholder="First name")
-                            .col-md-6.form-group.p_star
-                                input#last.form-control(type="text" name="name")
-                                span.placeholder(data-placeholder="Last name")
-                            .col-md-12.form-group
-                                input#company.form-control(type="text" name="company" placeholder="Company name")
-                            .col-md-6.form-group.p_star
-                                input#number.form-control(type="text" name="number")
-                                span.placeholder(data-placeholder="Phone number")
-                            .col-md-6.form-group.p_star
-                                input#email.form-control(type="text" name="compemailany")
-                                span.placeholder(data-placeholder="Email Address")
-                            .col-md-12.form-group.p_star
-                                select.country_select
-                                    option(value="1") Country
-                                    option(value="2") Country
-                                    option(value="4") Country
-                            .col-md-12.form-group.p_star
-                                input#add1.form-control(type="text" name="add1")
-                                span.placeholder(data-placeholder="Address line 01")
-                            .col-md-12.form-group.p_star
-                                input#add2.form-control(type="text" name="add2")
-                                span.placeholder(data-placeholder="Address line 02")
-                            .col-md-12.form-group.p_star
-                                input#city.form-control(type="text" name="city")
-                                span.placeholder(data-placeholder="Town/City")
-                            .col-md-12.form-group.p_star
-                                select.country_select
-                                    option(value="1") District
-                                    option(value="2") District
-                                    option(value="4") District
-                            .col-md-12.form-group
-                                input#zip.form-control(type="text" name="zip" placeholder="Postcode/ZIP")
-                            .col-md-12.form-group
-                                .creat_account
-                                    input#f-option2(type="checkbox" name="selector")
-                                    label(for="f-option2") Create an account?
-                            .col-md-12.form-group
-                                .creat_account
-                                    h3 Shipping Details
-                                    input#f-option3(type="checkbox" name="selector")
-                                    label(for="f-option3") Ship to a different address?
-                                textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
+                    //- .col-lg-8
+                    //-     h3 Billing Details
+                    //-     form.row.contact_form(action="#" method="post" novalidate="novalidate")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#first.form-control(type="text" name="name")
+                    //-             span.placeholder(data-placeholder="First name")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#last.form-control(type="text" name="name")
+                    //-             span.placeholder(data-placeholder="Last name")
+                    //-         .col-md-12.form-group
+                    //-             input#company.form-control(type="text" name="company" placeholder="Company name")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#number.form-control(type="text" name="number")
+                    //-             span.placeholder(data-placeholder="Phone number")
+                    //-         .col-md-6.form-group.p_star
+                    //-             input#email.form-control(type="text" name="compemailany")
+                    //-             span.placeholder(data-placeholder="Email Address")
+                    //-         .col-md-12.form-group.p_star
+                    //-             select.country_select
+                    //-                 option(value="1") Country
+                    //-                 option(value="2") Country
+                    //-                 option(value="4") Country
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#add1.form-control(type="text" name="add1")
+                    //-             span.placeholder(data-placeholder="Address line 01")
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#add2.form-control(type="text" name="add2")
+                    //-             span.placeholder(data-placeholder="Address line 02")
+                    //-         .col-md-12.form-group.p_star
+                    //-             input#city.form-control(type="text" name="city")
+                    //-             span.placeholder(data-placeholder="Town/City")
+                    //-         .col-md-12.form-group.p_star
+                    //-             select.country_select
+                    //-                 option(value="1") District
+                    //-                 option(value="2") District
+                    //-                 option(value="4") District
+                    //-         .col-md-12.form-group
+                    //-             input#zip.form-control(type="text" name="zip" placeholder="Postcode/ZIP")
+                    //-         .col-md-12.form-group
+                    //-             .creat_account
+                    //-                 input#f-option2(type="checkbox" name="selector")
+                    //-                 label(for="f-option2") Create an account?
+                    //-         .col-md-12.form-group
+                    //-             .creat_account
+                    //-                 h3 Shipping Details
+                    //-                 input#f-option3(type="checkbox" name="selector")
+                    //-                 label(for="f-option3") Ship to a different address?
+                    //-             textarea#message.form-control(name="message" rows="1" placeholder="Order Notes")
 
-                    .col-lg-4.align-items-center
+                    .col-lg-10.align-items-center
                         .order_box
                             h2 Your Order
                             ul.list
@@ -127,23 +127,23 @@ block content
                                             | Total
                                             span $ #{v}
                                 br
-                                .payment_item
-                                    .radion_btn
-                                        input#f-option5(type="radio" name="selector")
-                                        label(for="f-option5") Paystack
-                                        img(src="/img/product/single-product/card.jpg" alt="")
-                                        .check
+                                //- .payment_item
+                                //-     .radion_btn
+                                //-         input#f-option5(type="radio" name="selector")
+                                //-         label(for="f-option5") Paystack
+                                //-         img(src="/img/product/single-product/card.jpg" alt="")
+                                //-         .check
 
-                                    p
-                                        | Please send a check to Store Name, Store Street, Store Town,
-                                        | Store State / County, Store Postcode.
-                                    br
-                                .creat_account
-                                    input#f-option4(type="checkbox" name="selector")
-                                    label(for="f-option4") I&rsquo;ve read and accept the 
-                                    a(href="#") terms &amp; conditions*
-                                a.btn_3(href="#") Continue with Paystack
-                                br
+                                //-     p
+                                //-         | Please send a check to Store Name, Store Street, Store Town,
+                                //-         | Store State / County, Store Postcode.
+                                //-     br
+                                //- .creat_account
+                                //-     input#f-option4(type="checkbox" name="selector")
+                                //-     label(for="f-option4") I&rsquo;ve read and accept the 
+                                //-     a(href="#") terms &amp; conditions*
+                                //- a.btn_3(href="#") Continue with Paystack
+                                //- br
                                 .payment_item.active
                                     .radion_btn
                                         input#f-option6(type="radio" name="selector")
@@ -161,7 +161,7 @@ block content
                                     form(action="/create-order" method="POST")
                                         script.stripe-button(src="https://checkout.stripe.com/checkout.js" data-key="pk_test_51GtiZ7KDOrmKc458YaNRnaNlmE6uI6IgNEwcPMtYWyP9JsTvrxyB7VD16zM2W6netqsFkNg0ZP9M9bxEZzf3tyEf00pBQDiNYI" data-amount= v*100 data-name="Your Order" data-description="All the items you ordered" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="usd")
                                             //- button.button.green.fsize-16.f-weight-400(type="submit") Purchase Here!
-                                        button.btn_3(type="submit") PROCEED WITH STRIPE...
+                                        button.btn_3(type="submit") CONTINUE WITH STRIPE
                                 script(src="/js/customStripeButton.js")
         // ================End Checkout Area =================
                                 
